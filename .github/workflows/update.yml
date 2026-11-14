@@ -1,4 +1,4 @@
-name: 每日自动更新 Clash 免费节点
+name: Scheduled Network Test & Sync
 
 on:
   schedule:
@@ -34,7 +34,7 @@ jobs:
         run: |
           git config --local user.email "action@github.com"
           git config --local user.name "GitHub Action"
-          git add free_proxies.yaml
+          git add config.yaml
           if git diff --staged --quiet; then
             echo "节点无变化，无需提交"
           else
