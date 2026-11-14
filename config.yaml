@@ -1,0 +1,83 @@
+proxies:
+- name: 201付费网关
+  type: http
+  server: 192.168.0.201
+  port: 7890
+- name: '[01] ⚡2ms - VMess_github.com/freefq - 美国CloudFlare公司CDN节点 9'
+  type: vmess
+  server: 104.21.82.183
+  port: 8880
+  uuid: 5a7021e0-26b4-45d6-b175-fe551601ca97
+  alterId: 0
+  cipher: auto
+  tls: false
+  network: ws
+  ws-opts:
+    path: /
+  udp: true
+- name: '[02] ⚡10ms - VMess_github.com/freefq - 美国CloudFlare公司CDN节点 4'
+  type: vmess
+  server: www.darkroom.lol
+  port: 8080
+  uuid: 22826b44-5c1a-4b4b-dbaa-83a2e8bd95f0
+  alterId: 0
+  cipher: auto
+  tls: false
+  network: ws
+  ws-opts:
+    path: /
+  udp: true
+- name: '[03] ⚡13ms - VMess_github.com/freefq - 美国Fastly全球Anycast节点 13'
+  type: vmess
+  server: gov.uk
+  port: 443
+  uuid: 77848824-93b7-4b89-ffd0-e91afff406ce
+  alterId: 0
+  cipher: auto
+  tls: true
+  network: ws
+  ws-opts:
+    path: /77848824
+  udp: true
+- name: '[04] ⚡158ms - Trojan_香港+葵兴数据中心'
+  type: trojan
+  server: sclass-b1.catcat321.com
+  port: 20027
+  password: d7563108-615c-4338-a7bd-77f359869a4a
+  sni: hk.catxstar.com
+  skip-cert-verify: true
+  udp: true
+proxy-groups:
+- name: Proxies
+  type: select
+  proxies:
+  - 自动选择
+  - '[01] ⚡2ms - VMess_github.com/freefq - 美国CloudFlare公司CDN节点 9'
+  - '[02] ⚡10ms - VMess_github.com/freefq - 美国CloudFlare公司CDN节点 4'
+  - '[03] ⚡13ms - VMess_github.com/freefq - 美国Fastly全球Anycast节点 13'
+  - '[04] ⚡158ms - Trojan_香港+葵兴数据中心'
+- name: 自动选择
+  type: url-test
+  url: http://www.gstatic.com/generate_204
+  interval: 300
+  tolerance: 50
+  proxies:
+  - '[01] ⚡2ms - VMess_github.com/freefq - 美国CloudFlare公司CDN节点 9'
+  - '[02] ⚡10ms - VMess_github.com/freefq - 美国CloudFlare公司CDN节点 4'
+  - '[03] ⚡13ms - VMess_github.com/freefq - 美国Fastly全球Anycast节点 13'
+  - '[04] ⚡158ms - Trojan_香港+葵兴数据中心'
+rules:
+- SRC-IP-CIDR,192.168.0.0/24,Proxies
+- DOMAIN-KEYWORD,github,201付费网关
+- DOMAIN-SUFFIX,githubusercontent.com,201付费网关
+- DOMAIN-SUFFIX,dler.io,201付费网关
+- DOMAIN-SUFFIX,wcc.best,201付费网关
+- DOMAIN-SUFFIX,id9.cc,201付费网关
+- DOMAIN-SUFFIX,v1.mk,201付费网关
+- DOMAIN-KEYWORD,openai,201付费网关
+- DOMAIN-SUFFIX,chatgpt.com,201付费网关
+- DOMAIN-KEYWORD,gemini,201付费网关
+- DOMAIN-SUFFIX,bard.google.com,201付费网关
+- GEOIP,LAN,DIRECT
+- GEOIP,CN,DIRECT
+- MATCH,Proxies
