@@ -33,7 +33,7 @@ MIRRORS = [
     "https://ghproxy.cn/",
 ]
 
-OUTPUT_FILE = "free_proxies.yaml"
+OUTPUT_FILE = "config.yaml"
 MAX_NODES = 30           # 最终保留的最优活节点数量
 TCP_TIMEOUT = 1.8        # 单个节点测速超时时间（秒）
 MAX_WORKERS = 50         # 测速并发线程数
