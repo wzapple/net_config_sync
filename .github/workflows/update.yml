@@ -2,8 +2,9 @@ name: 每日自动更新 Clash 免费节点
 
 on:
   schedule:
-    - cron: '0 20 * * *' # 每天北京时间 04:00 自动执行
-  workflow_dispatch:      # 允许手动点击按钮触发测试
+    # 每天北京时间凌晨 02:45 触发（对应 UTC 18:45，留足时间避免整点排队）
+    - cron: '45 18 * * *'
+  workflow_dispatch: # 保留该项，支持在网页上手动点击按钮触发
 
 permissions:
   contents: write
