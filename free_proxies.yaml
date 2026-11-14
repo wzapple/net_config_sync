@@ -2,18 +2,39 @@ proxies:
 - name: '[001] Trojan_香港+葵兴数据中心'
   type: trojan
   server: sclass-b1.catcat321.com
+  port: 20027
+  password: d7563108-615c-4338-a7bd-77f359869a4a
+  sni: hk.catxstar.com
+  skip-cert-verify: true
+- name: '[002] Trojan_美国+CloudFlare节点'
+  type: trojan
+  server: 104.18.35.86
+  port: 8443
+  password: trojan
+  sni: longwanghen.pages.dev
+  skip-cert-verify: true
+- name: '[003] Trojan_新加坡+Amazon数据中心'
+  type: trojan
+  server: sclass-01.catcat321.com
+  port: 20103
+  password: d7563108-615c-4338-a7bd-77f359869a4a
+  sni: hk.catxstar.com
+  skip-cert-verify: true
+- name: '[004] Trojan_香港+葵兴数据中心'
+  type: trojan
+  server: sclass-b1.catcat321.com
   port: 20028
   password: d7563108-615c-4338-a7bd-77f359869a4a
   sni: hk.catxstar.com
   skip-cert-verify: true
-- name: '[002] Trojan_日本+东京Amazon数据中心'
+- name: '[005] Trojan_日本+东京都亚马逊(Amazon)公司数据中心'
   type: trojan
   server: sclass-c2.catcat321.com
   port: 20051
   password: d9064589-74af-432a-9390-5d8a9da281bf
   sni: hk.catxstar.com
   skip-cert-verify: true
-- name: '[003] VMess_github.com/freefq - 印度  2'
+- name: '[006] VMess_github.com/freefq - 印度  2'
   type: vmess
   server: 202.78.162.5
   port: 443
@@ -24,7 +45,7 @@ proxies:
   network: ws
   ws-opts:
     path: /@forwardv2ray
-- name: '[004] VMess_github.com/freefq - 美国CloudFlare公司CDN节点 4'
+- name: '[007] VMess_github.com/freefq - 美国CloudFlare公司CDN节点 4'
   type: vmess
   server: www.darkroom.lol
   port: 8080
@@ -35,7 +56,7 @@ proxies:
   network: ws
   ws-opts:
     path: /
-- name: '[005] VMess_github.com/freefq - 美国CloudFlare公司CDN节点 6'
+- name: '[008] VMess_github.com/freefq - 美国CloudFlare公司CDN节点 6'
   type: vmess
   server: server31.beheshtbaneh.com
   port: 8880
@@ -46,7 +67,7 @@ proxies:
   network: ws
   ws-opts:
     path: /
-- name: '[006] VMess_github.com/freefq - 广东省移动 7'
+- name: '[009] VMess_github.com/freefq - 广东省移动 7'
   type: vmess
   server: data-us-v1.shwjfkw.cn
   port: 20401
@@ -57,7 +78,7 @@ proxies:
   network: ws
   ws-opts:
     path: /debian
-- name: '[007] VMess_github.com/freefq - 美国CloudFlare公司CDN节点 9'
+- name: '[010] VMess_github.com/freefq - 美国CloudFlare公司CDN节点 9'
   type: vmess
   server: 104.21.82.183
   port: 8880
@@ -68,7 +89,7 @@ proxies:
   network: ws
   ws-opts:
     path: /
-- name: '[008] VMess_github.com/freefq - 美国Fastly全球Anycast节点 13'
+- name: '[011] VMess_github.com/freefq - 美国Fastly全球Anycast节点 13'
   type: vmess
   server: gov.uk
   port: 443
@@ -79,7 +100,7 @@ proxies:
   network: ws
   ws-opts:
     path: /77848824
-- name: '[009] VMess_github.com/freefq - 美国CloudFlare节点 14'
+- name: '[012] VMess_github.com/freefq - 美国CloudFlare节点 14'
   type: vmess
   server: server32.beheshtbaneh.com
   port: 8880
