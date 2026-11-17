@@ -3,7 +3,15 @@ proxies:
   type: http
   server: 192.168.0.201
   port: 7890
-- name: '[01] ⚡17ms - VMess_github.com/freefq - 美国CloudFlare公司CDN节点 9'
+- name: '[01] ⚡41ms - Trojan_澳大利亚+V2CROSS.COM'
+  type: trojan
+  server: 103.11.76.183
+  port: 443
+  password: f426d3c9-fb43-43c0-868b-898dfa451a74
+  sni: likejennie.pages.dev
+  skip-cert-verify: true
+  udp: true
+- name: '[02] ⚡43ms - VMess_github.com/freefq - 美国CloudFlare公司CDN节点 9'
   type: vmess
   server: 104.21.82.183
   port: 8880
@@ -15,7 +23,7 @@ proxies:
   ws-opts:
     path: /
   udp: true
-- name: '[02] ⚡23ms - VMess_github.com/freefq - 美国Fastly全球Anycast节点 13'
+- name: '[03] ⚡43ms - VMess_github.com/freefq - 美国Fastly全球Anycast节点 13'
   type: vmess
   server: gov.uk
   port: 443
@@ -27,7 +35,7 @@ proxies:
   ws-opts:
     path: /77848824
   udp: true
-- name: '[03] ⚡26ms - VMess_github.com/freefq - 美国CloudFlare公司CDN节点 4'
+- name: '[04] ⚡85ms - VMess_github.com/freefq - 美国CloudFlare公司CDN节点 4'
   type: vmess
   server: www.darkroom.lol
   port: 8080
@@ -39,33 +47,48 @@ proxies:
   ws-opts:
     path: /
   udp: true
-- name: '[04] ⚡171ms - Trojan_香港+葵兴数据中心'
+- name: '[05] ⚡129ms - Trojan_新加坡+Amazon数据中心'
   type: trojan
-  server: sclass-b1.catcat321.com
-  port: 20051
+  server: sclass-01.catcat321.com
+  port: 20103
   password: d7563108-615c-4338-a7bd-77f359869a4a
   sni: hk.catxstar.com
   skip-cert-verify: true
+  udp: true
+- name: '[06] ⚡141ms - VMess_美国 Alabanza'
+  type: vmess
+  server: 65.108.240.210
+  port: 39018
+  uuid: 77fb7a80-4724-4e33-9558-4f20c1634c5a
+  alterId: 0
+  cipher: auto
+  tls: false
+  network: tcp
+  ws-opts: null
   udp: true
 proxy-groups:
 - name: Proxies
   type: select
   proxies:
   - 自动选择
-  - '[01] ⚡17ms - VMess_github.com/freefq - 美国CloudFlare公司CDN节点 9'
-  - '[02] ⚡23ms - VMess_github.com/freefq - 美国Fastly全球Anycast节点 13'
-  - '[03] ⚡26ms - VMess_github.com/freefq - 美国CloudFlare公司CDN节点 4'
-  - '[04] ⚡171ms - Trojan_香港+葵兴数据中心'
+  - '[01] ⚡41ms - Trojan_澳大利亚+V2CROSS.COM'
+  - '[02] ⚡43ms - VMess_github.com/freefq - 美国CloudFlare公司CDN节点 9'
+  - '[03] ⚡43ms - VMess_github.com/freefq - 美国Fastly全球Anycast节点 13'
+  - '[04] ⚡85ms - VMess_github.com/freefq - 美国CloudFlare公司CDN节点 4'
+  - '[05] ⚡129ms - Trojan_新加坡+Amazon数据中心'
+  - '[06] ⚡141ms - VMess_美国 Alabanza'
 - name: 自动选择
   type: url-test
   url: http://www.gstatic.com/generate_204
   interval: 300
   tolerance: 50
   proxies:
-  - '[01] ⚡17ms - VMess_github.com/freefq - 美国CloudFlare公司CDN节点 9'
-  - '[02] ⚡23ms - VMess_github.com/freefq - 美国Fastly全球Anycast节点 13'
-  - '[03] ⚡26ms - VMess_github.com/freefq - 美国CloudFlare公司CDN节点 4'
-  - '[04] ⚡171ms - Trojan_香港+葵兴数据中心'
+  - '[01] ⚡41ms - Trojan_澳大利亚+V2CROSS.COM'
+  - '[02] ⚡43ms - VMess_github.com/freefq - 美国CloudFlare公司CDN节点 9'
+  - '[03] ⚡43ms - VMess_github.com/freefq - 美国Fastly全球Anycast节点 13'
+  - '[04] ⚡85ms - VMess_github.com/freefq - 美国CloudFlare公司CDN节点 4'
+  - '[05] ⚡129ms - Trojan_新加坡+Amazon数据中心'
+  - '[06] ⚡141ms - VMess_美国 Alabanza'
 rules:
 - SRC-IP-CIDR,192.168.0.0/24,Proxies
 - DOMAIN-KEYWORD,github,201付费网关
