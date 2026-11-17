@@ -5,7 +5,7 @@ GitHub 免费 Clash 节点自动抓取、清洗与并发健康测速工具
 1. 定时拉取多个活跃公开源（支持多协议解析与镜像加速回退）；
 2. 高并发多线程 TCP 连通性测速，彻底剔除死节点；
 3. 过滤国内节点与垃圾广告节点，按延迟排序筛选最优质节点；
-4. 输出自带 201 借道网关、策略组及防蹭网隔离规则的完整配置文件。
+4. 输出自带 .2/.201 双网关自动切换、策略组及防蹭网隔离规则的完整配置文件。
 """
 
 import base64
@@ -37,6 +37,16 @@ OUTPUT_FILE = "config.yaml"
 MAX_NODES = 30           # 最终保留的最优活节点数量
 TCP_TIMEOUT = 1.8        # 单个节点测速超时时间（秒）
 MAX_WORKERS = 50         # 测速并发线程数
+
+# 生成配置中的更新网关：.2 优先，.201 备用，由 OpenClash/Mihomo 检测外网连通性。
+GATEWAY_GROUP_NAME = "订阅网关自动切换"
+GATEWAY_NODES = [
+    {"name": "2付费网关", "type": "http", "server": "192.168.0.2", "port": 7890},
+    {"name": "201付费网关", "type": "http", "server": "192.168.0.201", "port": 7890},
+]
+GATEWAY_TEST_URL = "https://www.gstatic.com/generate_204"
+GATEWAY_TEST_INTERVAL = 60  # 检测间隔，单位：秒
+GATEWAY_TEST_TIMEOUT = 5000  # 每个网关检测超时，单位：毫秒
 
 
 def fetch_url_content(url):
@@ -249,18 +259,11 @@ def main():
         print("[警告] 测速后无可用节点，保留原有配置不覆盖！")
         return
 
-    # 4. 构建包含 201 借道网关、策略组和规则的完整配置文件
+    # 4. 构建包含双网关自动切换、策略组和原有规则的完整配置文件
     node_names = [p["name"] for p in final_proxies]
 
-    # 添加 201 付费网关作为内部节点
-    full_proxies = [
-        {
-            "name": "201付费网关",
-            "type": "http",
-            "server": "192.168.0.201",
-            "port": 7890,
-        }
-    ] + final_proxies
+    # 两个网关均保留为独立 HTTP 节点，由下方 fallback 组按可用性选择。
+    full_proxies = [gateway.copy() for gateway in GATEWAY_NODES] + final_proxies
 
     full_config = {
         "proxies": full_proxies,
@@ -278,26 +281,36 @@ def main():
                 "tolerance": 50,
                 "proxies": node_names,
             },
+            {
+                "name": GATEWAY_GROUP_NAME,
+                "type": "fallback",
+                "proxies": [gateway["name"] for gateway in GATEWAY_NODES],
+                "url": GATEWAY_TEST_URL,
+                "interval": GATEWAY_TEST_INTERVAL,
+                "timeout": GATEWAY_TEST_TIMEOUT,
+                "lazy": False,
+                "max-failed-times": 1,
+            },
         ],
         "rules": [
             # 1. 局域网其他人的设备（192.168.0.X），访问 GitHub 强制走免费策略组 Proxies
             "SRC-IP-CIDR,192.168.0.0/24,Proxies",
 
-            # 2. 0.2 软路由本机更新拉取 GitHub 时，才走 201 付费网关
-            "DOMAIN-KEYWORD,github,201付费网关",
-            "DOMAIN-SUFFIX,githubusercontent.com,201付费网关",
+            # 2. 软路由本机更新拉取 GitHub，走双网关自动切换组
+            f"DOMAIN-KEYWORD,github,{GATEWAY_GROUP_NAME}",
+            f"DOMAIN-SUFFIX,githubusercontent.com,{GATEWAY_GROUP_NAME}",
 
-            # 3. 订阅转换服务器兜底走 201
-            "DOMAIN-SUFFIX,dler.io,201付费网关",
-            "DOMAIN-SUFFIX,wcc.best,201付费网关",
-            "DOMAIN-SUFFIX,id9.cc,201付费网关",
-            "DOMAIN-SUFFIX,v1.mk,201付费网关",
+            # 3. 订阅转换服务器使用双网关兜底
+            f"DOMAIN-SUFFIX,dler.io,{GATEWAY_GROUP_NAME}",
+            f"DOMAIN-SUFFIX,wcc.best,{GATEWAY_GROUP_NAME}",
+            f"DOMAIN-SUFFIX,id9.cc,{GATEWAY_GROUP_NAME}",
+            f"DOMAIN-SUFFIX,v1.mk,{GATEWAY_GROUP_NAME}",
 
-            # 4. OpenAI / Gemini 精准走 201（解决风控封禁）
-            "DOMAIN-KEYWORD,openai,201付费网关",
-            "DOMAIN-SUFFIX,chatgpt.com,201付费网关",
-            "DOMAIN-KEYWORD,gemini,201付费网关",
-            "DOMAIN-SUFFIX,bard.google.com,201付费网关",
+            # 4. OpenAI / Gemini 使用相同的双网关切换组
+            f"DOMAIN-KEYWORD,openai,{GATEWAY_GROUP_NAME}",
+            f"DOMAIN-SUFFIX,chatgpt.com,{GATEWAY_GROUP_NAME}",
+            f"DOMAIN-KEYWORD,gemini,{GATEWAY_GROUP_NAME}",
+            f"DOMAIN-SUFFIX,bard.google.com,{GATEWAY_GROUP_NAME}",
 
             # 5. 国内及局域网直连
             "GEOIP,LAN,DIRECT",
