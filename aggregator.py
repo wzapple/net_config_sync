@@ -20,11 +20,22 @@ import yaml
 
 # 活跃的高质量免费节点源池（涵盖 Clash YAML、Base64 等格式）
 SOURCE_URLS = [
+    # === 原有 5 个源（保留）===
     "https://raw.githubusercontent.com/Pawdroid/Free-servers/main/sub",
     "https://raw.githubusercontent.com/freefq/free/master/v2",
     "https://raw.githubusercontent.com/mfuu/v2ray/master/clash.yaml",
     "https://raw.githubusercontent.com/ermaozi/get_subscribe/main/subscribe/clash.yaml",
     "https://raw.githubusercontent.com/Leon406/SubCrawler/main/sub/share/all",
+
+    # === 新增：soroushmirzaei/telegram-configs-collector（每小时从TG频道采集）===
+    "https://raw.githubusercontent.com/soroushmirzaei/telegram-configs-collector/main/splitted/mixed",
+    "https://raw.githubusercontent.com/soroushmirzaei/telegram-configs-collector/main/channels/protocols/vmess",
+    "https://raw.githubusercontent.com/soroushmirzaei/telegram-configs-collector/main/channels/protocols/trojan",
+
+    # === 额外补充高质量源 ===
+    "https://raw.githubusercontent.com/aiboboxx/v2rayfree/main/v2",
+    "https://raw.githubusercontent.com/barry-far/V2ray-Configs/main/All_Configs_Sub.txt",
+    "https://raw.githubusercontent.com/mahdibland/V2RayAggregator/master/Eternity.yml",
 ]
 
 # GitHub 加速镜像前缀（直连拉取失败时自动降级尝试）
