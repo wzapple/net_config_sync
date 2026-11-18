@@ -7,7 +7,19 @@ proxies:
   type: http
   server: 192.168.0.201
   port: 7890
-- name: '[01] ⚡6ms - VMess_github.com/freefq - 美国CloudFlare公司CDN节点 9'
+- name: '[01] ⚡1ms - 🇺🇸US-45.86.51.18-0060 | 58.86MB'
+  server: 45.86.51.18
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: '[02] ⚡2ms - 🇺🇸US-185.230.230.18-0059 | 215.949MB'
+  server: 185.230.230.18
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: '[03] ⚡2ms - VMess_github.com/freefq - 美国CloudFlare公司CDN节点 9'
   type: vmess
   server: 104.21.82.183
   port: 8880
@@ -19,7 +31,19 @@ proxies:
   ws-opts:
     path: /
   udp: true
-- name: '[02] ⚡12ms - VMess_github.com/freefq - 美国Fastly全球Anycast节点 13'
+- name: '[04] ⚡2ms - 🇺🇸US-172.111.38.72-0116 | 31.245MB'
+  server: 172.111.38.72
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: '[05] ⚡2ms - 🇺🇸US-15.204.247.206-0163 | 9.963MB'
+  server: 15.204.247.206
+  port: 4444
+  type: ss
+  cipher: aes-256-gcm
+  password: pKEW8JPByTVTLtM
+- name: '[06] ⚡4ms - VMess_github.com/freefq - 美国Fastly全球Anycast节点 13'
   type: vmess
   server: gov.uk
   port: 443
@@ -31,7 +55,39 @@ proxies:
   ws-opts:
     path: /77848824
   udp: true
-- name: '[03] ⚡38ms - VMess_github.com/freefq - 美国CloudFlare公司CDN节点 4'
+- name: '[07] ⚡7ms - 🇺🇸US-38.91.100.39-0107 | 39.913MB'
+  server: 38.91.100.39
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: '[08] ⚡8ms - 🇺🇸US-193.151.163.18-0063 | 214.947MB'
+  server: 193.151.163.18
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: '[09] ⚡8ms - 🇺🇸US-198.98.53.130-0206 | 0.153MB'
+  server: 198.98.53.130
+  port: 443
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: eDfN7SODQceIOmIAbtJJtK
+- name: '[10] ⚡8ms - 🇺🇸US-13.248.169.48-4827 | 0.0MB'
+  server: 422wkl.fans8.xyz
+  port: 443
+  type: vmess
+  uuid: 7f4ff2e1-c08f-35bd-afe7-4a6a386907aa
+  alterId: 2
+  cipher: auto
+  tls: true
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: 422wkl.fans8.xyz
+- name: '[11] ⚡10ms - VMess_github.com/freefq - 美国CloudFlare公司CDN节点 4'
   type: vmess
   server: www.darkroom.lol
   port: 8080
@@ -43,43 +99,191 @@ proxies:
   ws-opts:
     path: /
   udp: true
-- name: '[04] ⚡239ms - Trojan_香港+葵兴数据中心'
-  type: trojan
-  server: sclass-01.catcat321.com
-  port: 20103
-  password: d7563108-615c-4338-a7bd-77f359869a4a
-  sni: hk.catxstar.com
-  skip-cert-verify: true
-  udp: true
-- name: '[05] ⚡251ms - Trojan_日本+东京Amazon数据中心'
-  type: trojan
-  server: sclass-c2.catcat321.com
-  port: 20051
-  password: d9064589-74af-432a-9390-5d8a9da281bf
-  sni: hk.catxstar.com
-  skip-cert-verify: true
-  udp: true
+- name: '[12] ⚡14ms - 🇨🇦CA-51.222.155.113-0177 | 6.203MB'
+  server: 51.222.155.113
+  port: 5601
+  type: ss
+  cipher: aes-256-gcm
+  password: Y6R9pAtvxxzmGC
+- name: '[13] ⚡14ms - 🇨🇦CA-51.222.141.125-0162 | 6.169MB'
+  server: 51.222.141.125
+  port: 445
+  type: ss
+  cipher: aes-256-gcm
+  password: zDNVedRFPQexG9v
+- name: '[14] ⚡14ms - 🇨🇦CA-51.79.85.185-0159 | 2.307MB'
+  server: 51.79.85.185
+  port: 8118
+  type: ss
+  cipher: aes-256-gcm
+  password: cdBIDV42DCwnfIN
+- name: '[15] ⚡15ms - 🇺🇸US-149.40.57.138-0068 | 76.15MB'
+  server: 149.40.57.138
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: '[16] ⚡15ms - 🇨🇦CA-51.222.12.127-0160 | 9.17MB'
+  server: 51.222.12.127
+  port: 445
+  type: ss
+  cipher: aes-256-gcm
+  password: zDNVedRFPQexG9v
+- name: '[17] ⚡15ms - 🇨🇦CA-51.222.136.236-0176 | 2.602MB'
+  server: 51.222.136.236
+  port: 8882
+  type: ss
+  cipher: aes-256-gcm
+  password: kDWvXYZoTBcGkC4
+- name: '[18] ⚡15ms - 🇨🇦CA-15.235.121.109-0203 | 2.298MB'
+  server: 15.235.121.109
+  port: 8080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: 575hiopq2h28yao6
+- name: '[19] ⚡15ms - 🇨🇦CA-51.222.200.165-0399 | 1.241MB'
+  server: 51.222.200.165
+  port: 5000
+  type: ss
+  cipher: aes-256-gcm
+  password: Y6R9pAtvxxzmGC
+- name: '[20] ⚡15ms - 🇨🇦CA-15.235.57.6-0164 | 0.0MB'
+  server: 15.235.57.6
+  port: 8080
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: kxhnt5jtykd328cg
+- name: '[21] ⚡17ms - 🇺🇸US-149.40.57.133-0113 | 45.941MB'
+  server: 149.40.57.133
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: '[22] ⚡17ms - 🇺🇸US-149.40.57.134-0131 | 5.312MB'
+  server: 149.40.57.134
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: '[23] ⚡22ms - 🇺🇸US-38.128.66.32-0165 | 79.964MB'
+  server: 38.128.66.32
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: '[24] ⚡22ms - 🇺🇸US-216.106.178.169-0154 | 75.801MB'
+  server: 216.106.178.169
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: '[25] ⚡25ms - 🇨🇦CA-137.184.174.93-0135 | 40.016MB'
+  server: 137.184.174.93
+  port: 8080
+  type: ss
+  cipher: rc4-md5
+  password: 14fFPrbezE3HDZzsMOr6
+- name: '[26] ⚡27ms - 🇺🇸US-193.151.160.18-0065 | 145.23MB'
+  server: 193.151.160.18
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: '[27] ⚡27ms - 🇺🇸US-193.151.160.9-0062 | 191.637MB'
+  server: 193.151.160.9
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: '[28] ⚡27ms - 🇺🇸US-162.251.62.31-0112 | 70.364MB'
+  server: 162.251.62.31
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: '[29] ⚡27ms - 🇺🇸US-38.91.107.188-0097 | 59.649MB'
+  server: 38.91.107.188
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: '[30] ⚡31ms - 🇺🇸US-167.88.62.203-0100 | 60.808MB'
+  server: 167.88.62.203
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
 proxy-groups:
 - name: Proxies
   type: select
   proxies:
   - 自动选择
-  - '[01] ⚡6ms - VMess_github.com/freefq - 美国CloudFlare公司CDN节点 9'
-  - '[02] ⚡12ms - VMess_github.com/freefq - 美国Fastly全球Anycast节点 13'
-  - '[03] ⚡38ms - VMess_github.com/freefq - 美国CloudFlare公司CDN节点 4'
-  - '[04] ⚡239ms - Trojan_香港+葵兴数据中心'
-  - '[05] ⚡251ms - Trojan_日本+东京Amazon数据中心'
+  - '[01] ⚡1ms - 🇺🇸US-45.86.51.18-0060 | 58.86MB'
+  - '[02] ⚡2ms - 🇺🇸US-185.230.230.18-0059 | 215.949MB'
+  - '[03] ⚡2ms - VMess_github.com/freefq - 美国CloudFlare公司CDN节点 9'
+  - '[04] ⚡2ms - 🇺🇸US-172.111.38.72-0116 | 31.245MB'
+  - '[05] ⚡2ms - 🇺🇸US-15.204.247.206-0163 | 9.963MB'
+  - '[06] ⚡4ms - VMess_github.com/freefq - 美国Fastly全球Anycast节点 13'
+  - '[07] ⚡7ms - 🇺🇸US-38.91.100.39-0107 | 39.913MB'
+  - '[08] ⚡8ms - 🇺🇸US-193.151.163.18-0063 | 214.947MB'
+  - '[09] ⚡8ms - 🇺🇸US-198.98.53.130-0206 | 0.153MB'
+  - '[10] ⚡8ms - 🇺🇸US-13.248.169.48-4827 | 0.0MB'
+  - '[11] ⚡10ms - VMess_github.com/freefq - 美国CloudFlare公司CDN节点 4'
+  - '[12] ⚡14ms - 🇨🇦CA-51.222.155.113-0177 | 6.203MB'
+  - '[13] ⚡14ms - 🇨🇦CA-51.222.141.125-0162 | 6.169MB'
+  - '[14] ⚡14ms - 🇨🇦CA-51.79.85.185-0159 | 2.307MB'
+  - '[15] ⚡15ms - 🇺🇸US-149.40.57.138-0068 | 76.15MB'
+  - '[16] ⚡15ms - 🇨🇦CA-51.222.12.127-0160 | 9.17MB'
+  - '[17] ⚡15ms - 🇨🇦CA-51.222.136.236-0176 | 2.602MB'
+  - '[18] ⚡15ms - 🇨🇦CA-15.235.121.109-0203 | 2.298MB'
+  - '[19] ⚡15ms - 🇨🇦CA-51.222.200.165-0399 | 1.241MB'
+  - '[20] ⚡15ms - 🇨🇦CA-15.235.57.6-0164 | 0.0MB'
+  - '[21] ⚡17ms - 🇺🇸US-149.40.57.133-0113 | 45.941MB'
+  - '[22] ⚡17ms - 🇺🇸US-149.40.57.134-0131 | 5.312MB'
+  - '[23] ⚡22ms - 🇺🇸US-38.128.66.32-0165 | 79.964MB'
+  - '[24] ⚡22ms - 🇺🇸US-216.106.178.169-0154 | 75.801MB'
+  - '[25] ⚡25ms - 🇨🇦CA-137.184.174.93-0135 | 40.016MB'
+  - '[26] ⚡27ms - 🇺🇸US-193.151.160.18-0065 | 145.23MB'
+  - '[27] ⚡27ms - 🇺🇸US-193.151.160.9-0062 | 191.637MB'
+  - '[28] ⚡27ms - 🇺🇸US-162.251.62.31-0112 | 70.364MB'
+  - '[29] ⚡27ms - 🇺🇸US-38.91.107.188-0097 | 59.649MB'
+  - '[30] ⚡31ms - 🇺🇸US-167.88.62.203-0100 | 60.808MB'
 - name: 自动选择
   type: url-test
   url: http://www.gstatic.com/generate_204
   interval: 300
   tolerance: 50
   proxies:
-  - '[01] ⚡6ms - VMess_github.com/freefq - 美国CloudFlare公司CDN节点 9'
-  - '[02] ⚡12ms - VMess_github.com/freefq - 美国Fastly全球Anycast节点 13'
-  - '[03] ⚡38ms - VMess_github.com/freefq - 美国CloudFlare公司CDN节点 4'
-  - '[04] ⚡239ms - Trojan_香港+葵兴数据中心'
-  - '[05] ⚡251ms - Trojan_日本+东京Amazon数据中心'
+  - '[01] ⚡1ms - 🇺🇸US-45.86.51.18-0060 | 58.86MB'
+  - '[02] ⚡2ms - 🇺🇸US-185.230.230.18-0059 | 215.949MB'
+  - '[03] ⚡2ms - VMess_github.com/freefq - 美国CloudFlare公司CDN节点 9'
+  - '[04] ⚡2ms - 🇺🇸US-172.111.38.72-0116 | 31.245MB'
+  - '[05] ⚡2ms - 🇺🇸US-15.204.247.206-0163 | 9.963MB'
+  - '[06] ⚡4ms - VMess_github.com/freefq - 美国Fastly全球Anycast节点 13'
+  - '[07] ⚡7ms - 🇺🇸US-38.91.100.39-0107 | 39.913MB'
+  - '[08] ⚡8ms - 🇺🇸US-193.151.163.18-0063 | 214.947MB'
+  - '[09] ⚡8ms - 🇺🇸US-198.98.53.130-0206 | 0.153MB'
+  - '[10] ⚡8ms - 🇺🇸US-13.248.169.48-4827 | 0.0MB'
+  - '[11] ⚡10ms - VMess_github.com/freefq - 美国CloudFlare公司CDN节点 4'
+  - '[12] ⚡14ms - 🇨🇦CA-51.222.155.113-0177 | 6.203MB'
+  - '[13] ⚡14ms - 🇨🇦CA-51.222.141.125-0162 | 6.169MB'
+  - '[14] ⚡14ms - 🇨🇦CA-51.79.85.185-0159 | 2.307MB'
+  - '[15] ⚡15ms - 🇺🇸US-149.40.57.138-0068 | 76.15MB'
+  - '[16] ⚡15ms - 🇨🇦CA-51.222.12.127-0160 | 9.17MB'
+  - '[17] ⚡15ms - 🇨🇦CA-51.222.136.236-0176 | 2.602MB'
+  - '[18] ⚡15ms - 🇨🇦CA-15.235.121.109-0203 | 2.298MB'
+  - '[19] ⚡15ms - 🇨🇦CA-51.222.200.165-0399 | 1.241MB'
+  - '[20] ⚡15ms - 🇨🇦CA-15.235.57.6-0164 | 0.0MB'
+  - '[21] ⚡17ms - 🇺🇸US-149.40.57.133-0113 | 45.941MB'
+  - '[22] ⚡17ms - 🇺🇸US-149.40.57.134-0131 | 5.312MB'
+  - '[23] ⚡22ms - 🇺🇸US-38.128.66.32-0165 | 79.964MB'
+  - '[24] ⚡22ms - 🇺🇸US-216.106.178.169-0154 | 75.801MB'
+  - '[25] ⚡25ms - 🇨🇦CA-137.184.174.93-0135 | 40.016MB'
+  - '[26] ⚡27ms - 🇺🇸US-193.151.160.18-0065 | 145.23MB'
+  - '[27] ⚡27ms - 🇺🇸US-193.151.160.9-0062 | 191.637MB'
+  - '[28] ⚡27ms - 🇺🇸US-162.251.62.31-0112 | 70.364MB'
+  - '[29] ⚡27ms - 🇺🇸US-38.91.107.188-0097 | 59.649MB'
+  - '[30] ⚡31ms - 🇺🇸US-167.88.62.203-0100 | 60.808MB'
 - name: 订阅网关自动切换
   type: fallback
   proxies:
