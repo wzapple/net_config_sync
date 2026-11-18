@@ -7,19 +7,7 @@ proxies:
   type: http
   server: 192.168.0.201
   port: 7890
-- name: '[01] ⚡1ms - 🇺🇸US-45.86.51.18-0060 | 58.86MB'
-  server: 45.86.51.18
-  port: 19999
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: '[02] ⚡2ms - 🇺🇸US-185.230.230.18-0059 | 215.949MB'
-  server: 185.230.230.18
-  port: 19999
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: '[03] ⚡2ms - VMess_github.com/freefq - 美国CloudFlare公司CDN节点 9'
+- name: '[01] ⚡7ms - VMess_github.com/freefq - 美国CloudFlare公司CDN节点 9'
   type: vmess
   server: 104.21.82.183
   port: 8880
@@ -31,19 +19,115 @@ proxies:
   ws-opts:
     path: /
   udp: true
-- name: '[04] ⚡2ms - 🇺🇸US-172.111.38.72-0116 | 31.245MB'
+- name: '[02] ⚡14ms - 🇺🇸US-167.88.62.203-0100 | 60.808MB'
+  server: 167.88.62.203
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: '[03] ⚡16ms - 🇺🇸US-156.146.38.167-0168 | 0.742MB'
+  server: 156.146.38.167
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: '[04] ⚡16ms - 🇺🇸US-156.146.38.169-0167 | 0.134MB'
+  server: 156.146.38.169
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: '[05] ⚡17ms - 🇺🇸US-156.146.38.170-0170 | 7.086MB'
+  server: 156.146.38.170
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: '[06] ⚡17ms - 🇺🇸US-156.146.38.168-0169 | 0.504MB'
+  server: 156.146.38.168
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: '[07] ⚡19ms - 🇺🇸US-216.106.178.169-0154 | 75.801MB'
+  server: 216.106.178.169
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: '[08] ⚡28ms - 🇺🇸US-38.128.66.32-0165 | 79.964MB'
+  server: 38.128.66.32
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: '[09] ⚡28ms - 🇨🇦CA-137.184.174.93-0135 | 40.016MB'
+  server: 137.184.174.93
+  port: 8080
+  type: ss
+  cipher: rc4-md5
+  password: 14fFPrbezE3HDZzsMOr6
+- name: '[10] ⚡29ms - 🇺🇸US-38.121.43.225-0103 | 69.062MB'
+  server: 38.121.43.225
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: '[11] ⚡29ms - 🇺🇸US-38.121.43.18-0087 | 49.773MB'
+  server: 38.121.43.18
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: '[12] ⚡29ms - 🇺🇸US-38.22.17.129-0078 | 28.443MB'
+  server: 38.22.17.129
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: '[13] ⚡30ms - 🇺🇸US-38.121.43.231-0091 | 18.172MB'
+  server: 38.121.43.231
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: '[14] ⚡30ms - 🇨🇦CA-51.222.136.236-0176 | 2.602MB'
+  server: 51.222.136.236
+  port: 8882
+  type: ss
+  cipher: aes-256-gcm
+  password: kDWvXYZoTBcGkC4
+- name: '[15] ⚡31ms - 🇺🇸US-193.151.163.18-0063 | 214.947MB'
+  server: 193.151.163.18
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: '[16] ⚡32ms - 🇨🇦CA-51.222.141.125-0162 | 6.169MB'
+  server: 51.222.141.125
+  port: 445
+  type: ss
+  cipher: aes-256-gcm
+  password: zDNVedRFPQexG9v
+- name: '[17] ⚡33ms - 🇺🇸US-38.22.17.219-0108 | 61.782MB'
+  server: 38.22.17.219
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: '[18] ⚡33ms - 🇺🇸US-172.111.38.72-0116 | 31.245MB'
   server: 172.111.38.72
   port: 19999
   type: ss
   cipher: aes-256-gcm
   password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: '[05] ⚡2ms - 🇺🇸US-15.204.247.206-0163 | 9.963MB'
-  server: 15.204.247.206
-  port: 4444
+- name: '[19] ⚡33ms - 🇨🇦CA-51.222.200.165-0399 | 1.241MB'
+  server: 51.222.200.165
+  port: 5000
   type: ss
   cipher: aes-256-gcm
-  password: pKEW8JPByTVTLtM
-- name: '[06] ⚡4ms - VMess_github.com/freefq - 美国Fastly全球Anycast节点 13'
+  password: Y6R9pAtvxxzmGC
+- name: '[20] ⚡36ms - VMess_github.com/freefq - 美国Fastly全球Anycast节点 13'
   type: vmess
   server: gov.uk
   port: 443
@@ -55,235 +139,137 @@ proxies:
   ws-opts:
     path: /77848824
   udp: true
-- name: '[07] ⚡7ms - 🇺🇸US-38.91.100.39-0107 | 39.913MB'
-  server: 38.91.100.39
+- name: '[21] ⚡36ms - 🇺🇸US-185.230.230.18-0059 | 215.949MB'
+  server: 185.230.230.18
   port: 19999
   type: ss
   cipher: aes-256-gcm
   password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: '[08] ⚡8ms - 🇺🇸US-193.151.163.18-0063 | 214.947MB'
-  server: 193.151.163.18
+- name: '[22] ⚡36ms - 🇺🇸US-45.86.51.18-0060 | 58.86MB'
+  server: 45.86.51.18
   port: 19999
   type: ss
   cipher: aes-256-gcm
   password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: '[09] ⚡8ms - 🇺🇸US-198.98.53.130-0206 | 0.153MB'
-  server: 198.98.53.130
-  port: 443
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: eDfN7SODQceIOmIAbtJJtK
-- name: '[10] ⚡8ms - 🇺🇸US-13.248.169.48-4827 | 0.0MB'
-  server: 422wkl.fans8.xyz
-  port: 443
-  type: vmess
-  uuid: 7f4ff2e1-c08f-35bd-afe7-4a6a386907aa
-  alterId: 2
-  cipher: auto
-  tls: true
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: 422wkl.fans8.xyz
-- name: '[11] ⚡10ms - VMess_github.com/freefq - 美国CloudFlare公司CDN节点 4'
-  type: vmess
-  server: www.darkroom.lol
-  port: 8080
-  uuid: 22826b44-5c1a-4b4b-dbaa-83a2e8bd95f0
-  alterId: 0
-  cipher: auto
-  tls: false
-  network: ws
-  ws-opts:
-    path: /
-  udp: true
-- name: '[12] ⚡14ms - 🇨🇦CA-51.222.155.113-0177 | 6.203MB'
-  server: 51.222.155.113
-  port: 5601
-  type: ss
-  cipher: aes-256-gcm
-  password: Y6R9pAtvxxzmGC
-- name: '[13] ⚡14ms - 🇨🇦CA-51.222.141.125-0162 | 6.169MB'
-  server: 51.222.141.125
-  port: 445
-  type: ss
-  cipher: aes-256-gcm
-  password: zDNVedRFPQexG9v
-- name: '[14] ⚡14ms - 🇨🇦CA-51.79.85.185-0159 | 2.307MB'
-  server: 51.79.85.185
-  port: 8118
-  type: ss
-  cipher: aes-256-gcm
-  password: cdBIDV42DCwnfIN
-- name: '[15] ⚡15ms - 🇺🇸US-149.40.57.138-0068 | 76.15MB'
-  server: 149.40.57.138
+- name: '[23] ⚡36ms - 🇺🇸US-172.111.36.123-0086 | 56.229MB'
+  server: 172.111.36.123
   port: 19999
   type: ss
   cipher: aes-256-gcm
   password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: '[16] ⚡15ms - 🇨🇦CA-51.222.12.127-0160 | 9.17MB'
-  server: 51.222.12.127
-  port: 445
+- name: '[24] ⚡36ms - 🇺🇸US-15.204.247.206-0163 | 9.963MB'
+  server: 15.204.247.206
+  port: 4444
   type: ss
   cipher: aes-256-gcm
-  password: zDNVedRFPQexG9v
-- name: '[17] ⚡15ms - 🇨🇦CA-51.222.136.236-0176 | 2.602MB'
-  server: 51.222.136.236
-  port: 8882
-  type: ss
-  cipher: aes-256-gcm
-  password: kDWvXYZoTBcGkC4
-- name: '[18] ⚡15ms - 🇨🇦CA-15.235.121.109-0203 | 2.298MB'
-  server: 15.235.121.109
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: 575hiopq2h28yao6
-- name: '[19] ⚡15ms - 🇨🇦CA-51.222.200.165-0399 | 1.241MB'
-  server: 51.222.200.165
-  port: 5000
-  type: ss
-  cipher: aes-256-gcm
-  password: Y6R9pAtvxxzmGC
-- name: '[20] ⚡15ms - 🇨🇦CA-15.235.57.6-0164 | 0.0MB'
-  server: 15.235.57.6
-  port: 8080
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: kxhnt5jtykd328cg
-- name: '[21] ⚡17ms - 🇺🇸US-149.40.57.133-0113 | 45.941MB'
+  password: pKEW8JPByTVTLtM
+- name: '[25] ⚡37ms - 🇺🇸US-149.40.57.133-0113 | 45.941MB'
   server: 149.40.57.133
   port: 19999
   type: ss
   cipher: aes-256-gcm
   password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: '[22] ⚡17ms - 🇺🇸US-149.40.57.134-0131 | 5.312MB'
-  server: 149.40.57.134
+- name: '[26] ⚡37ms - 🇺🇸US-38.91.100.39-0107 | 39.913MB'
+  server: 38.91.100.39
   port: 19999
   type: ss
   cipher: aes-256-gcm
   password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: '[23] ⚡22ms - 🇺🇸US-38.128.66.32-0165 | 79.964MB'
-  server: 38.128.66.32
+- name: '[27] ⚡38ms - 🇺🇸US-167.88.63.99-0102 | 71.472MB'
+  server: 167.88.63.99
   port: 19999
   type: ss
   cipher: aes-256-gcm
   password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: '[24] ⚡22ms - 🇺🇸US-216.106.178.169-0154 | 75.801MB'
-  server: 216.106.178.169
+- name: '[28] ⚡38ms - 🇺🇸US-149.40.57.138-0068 | 76.15MB'
+  server: 149.40.57.138
   port: 19999
   type: ss
   cipher: aes-256-gcm
   password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: '[25] ⚡25ms - 🇨🇦CA-137.184.174.93-0135 | 40.016MB'
-  server: 137.184.174.93
-  port: 8080
-  type: ss
-  cipher: rc4-md5
-  password: 14fFPrbezE3HDZzsMOr6
-- name: '[26] ⚡27ms - 🇺🇸US-193.151.160.18-0065 | 145.23MB'
-  server: 193.151.160.18
+- name: '[29] ⚡39ms - 🇺🇸US-137.184.89.151-0064 | 11.643MB'
+  server: 137.184.89.151
   port: 19999
   type: ss
   cipher: aes-256-gcm
   password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: '[27] ⚡27ms - 🇺🇸US-193.151.160.9-0062 | 191.637MB'
-  server: 193.151.160.9
-  port: 19999
+- name: '[30] ⚡39ms - 🇺🇸US-198.98.53.130-0206 | 0.153MB'
+  server: 198.98.53.130
+  port: 443
   type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: '[28] ⚡27ms - 🇺🇸US-162.251.62.31-0112 | 70.364MB'
-  server: 162.251.62.31
-  port: 19999
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: '[29] ⚡27ms - 🇺🇸US-38.91.107.188-0097 | 59.649MB'
-  server: 38.91.107.188
-  port: 19999
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: '[30] ⚡31ms - 🇺🇸US-167.88.62.203-0100 | 60.808MB'
-  server: 167.88.62.203
-  port: 19999
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+  cipher: chacha20-ietf-poly1305
+  password: eDfN7SODQceIOmIAbtJJtK
 proxy-groups:
 - name: Proxies
   type: select
   proxies:
   - 自动选择
-  - '[01] ⚡1ms - 🇺🇸US-45.86.51.18-0060 | 58.86MB'
-  - '[02] ⚡2ms - 🇺🇸US-185.230.230.18-0059 | 215.949MB'
-  - '[03] ⚡2ms - VMess_github.com/freefq - 美国CloudFlare公司CDN节点 9'
-  - '[04] ⚡2ms - 🇺🇸US-172.111.38.72-0116 | 31.245MB'
-  - '[05] ⚡2ms - 🇺🇸US-15.204.247.206-0163 | 9.963MB'
-  - '[06] ⚡4ms - VMess_github.com/freefq - 美国Fastly全球Anycast节点 13'
-  - '[07] ⚡7ms - 🇺🇸US-38.91.100.39-0107 | 39.913MB'
-  - '[08] ⚡8ms - 🇺🇸US-193.151.163.18-0063 | 214.947MB'
-  - '[09] ⚡8ms - 🇺🇸US-198.98.53.130-0206 | 0.153MB'
-  - '[10] ⚡8ms - 🇺🇸US-13.248.169.48-4827 | 0.0MB'
-  - '[11] ⚡10ms - VMess_github.com/freefq - 美国CloudFlare公司CDN节点 4'
-  - '[12] ⚡14ms - 🇨🇦CA-51.222.155.113-0177 | 6.203MB'
-  - '[13] ⚡14ms - 🇨🇦CA-51.222.141.125-0162 | 6.169MB'
-  - '[14] ⚡14ms - 🇨🇦CA-51.79.85.185-0159 | 2.307MB'
-  - '[15] ⚡15ms - 🇺🇸US-149.40.57.138-0068 | 76.15MB'
-  - '[16] ⚡15ms - 🇨🇦CA-51.222.12.127-0160 | 9.17MB'
-  - '[17] ⚡15ms - 🇨🇦CA-51.222.136.236-0176 | 2.602MB'
-  - '[18] ⚡15ms - 🇨🇦CA-15.235.121.109-0203 | 2.298MB'
-  - '[19] ⚡15ms - 🇨🇦CA-51.222.200.165-0399 | 1.241MB'
-  - '[20] ⚡15ms - 🇨🇦CA-15.235.57.6-0164 | 0.0MB'
-  - '[21] ⚡17ms - 🇺🇸US-149.40.57.133-0113 | 45.941MB'
-  - '[22] ⚡17ms - 🇺🇸US-149.40.57.134-0131 | 5.312MB'
-  - '[23] ⚡22ms - 🇺🇸US-38.128.66.32-0165 | 79.964MB'
-  - '[24] ⚡22ms - 🇺🇸US-216.106.178.169-0154 | 75.801MB'
-  - '[25] ⚡25ms - 🇨🇦CA-137.184.174.93-0135 | 40.016MB'
-  - '[26] ⚡27ms - 🇺🇸US-193.151.160.18-0065 | 145.23MB'
-  - '[27] ⚡27ms - 🇺🇸US-193.151.160.9-0062 | 191.637MB'
-  - '[28] ⚡27ms - 🇺🇸US-162.251.62.31-0112 | 70.364MB'
-  - '[29] ⚡27ms - 🇺🇸US-38.91.107.188-0097 | 59.649MB'
-  - '[30] ⚡31ms - 🇺🇸US-167.88.62.203-0100 | 60.808MB'
+  - '[01] ⚡7ms - VMess_github.com/freefq - 美国CloudFlare公司CDN节点 9'
+  - '[02] ⚡14ms - 🇺🇸US-167.88.62.203-0100 | 60.808MB'
+  - '[03] ⚡16ms - 🇺🇸US-156.146.38.167-0168 | 0.742MB'
+  - '[04] ⚡16ms - 🇺🇸US-156.146.38.169-0167 | 0.134MB'
+  - '[05] ⚡17ms - 🇺🇸US-156.146.38.170-0170 | 7.086MB'
+  - '[06] ⚡17ms - 🇺🇸US-156.146.38.168-0169 | 0.504MB'
+  - '[07] ⚡19ms - 🇺🇸US-216.106.178.169-0154 | 75.801MB'
+  - '[08] ⚡28ms - 🇺🇸US-38.128.66.32-0165 | 79.964MB'
+  - '[09] ⚡28ms - 🇨🇦CA-137.184.174.93-0135 | 40.016MB'
+  - '[10] ⚡29ms - 🇺🇸US-38.121.43.225-0103 | 69.062MB'
+  - '[11] ⚡29ms - 🇺🇸US-38.121.43.18-0087 | 49.773MB'
+  - '[12] ⚡29ms - 🇺🇸US-38.22.17.129-0078 | 28.443MB'
+  - '[13] ⚡30ms - 🇺🇸US-38.121.43.231-0091 | 18.172MB'
+  - '[14] ⚡30ms - 🇨🇦CA-51.222.136.236-0176 | 2.602MB'
+  - '[15] ⚡31ms - 🇺🇸US-193.151.163.18-0063 | 214.947MB'
+  - '[16] ⚡32ms - 🇨🇦CA-51.222.141.125-0162 | 6.169MB'
+  - '[17] ⚡33ms - 🇺🇸US-38.22.17.219-0108 | 61.782MB'
+  - '[18] ⚡33ms - 🇺🇸US-172.111.38.72-0116 | 31.245MB'
+  - '[19] ⚡33ms - 🇨🇦CA-51.222.200.165-0399 | 1.241MB'
+  - '[20] ⚡36ms - VMess_github.com/freefq - 美国Fastly全球Anycast节点 13'
+  - '[21] ⚡36ms - 🇺🇸US-185.230.230.18-0059 | 215.949MB'
+  - '[22] ⚡36ms - 🇺🇸US-45.86.51.18-0060 | 58.86MB'
+  - '[23] ⚡36ms - 🇺🇸US-172.111.36.123-0086 | 56.229MB'
+  - '[24] ⚡36ms - 🇺🇸US-15.204.247.206-0163 | 9.963MB'
+  - '[25] ⚡37ms - 🇺🇸US-149.40.57.133-0113 | 45.941MB'
+  - '[26] ⚡37ms - 🇺🇸US-38.91.100.39-0107 | 39.913MB'
+  - '[27] ⚡38ms - 🇺🇸US-167.88.63.99-0102 | 71.472MB'
+  - '[28] ⚡38ms - 🇺🇸US-149.40.57.138-0068 | 76.15MB'
+  - '[29] ⚡39ms - 🇺🇸US-137.184.89.151-0064 | 11.643MB'
+  - '[30] ⚡39ms - 🇺🇸US-198.98.53.130-0206 | 0.153MB'
 - name: 自动选择
   type: url-test
   url: http://www.gstatic.com/generate_204
   interval: 300
   tolerance: 50
   proxies:
-  - '[01] ⚡1ms - 🇺🇸US-45.86.51.18-0060 | 58.86MB'
-  - '[02] ⚡2ms - 🇺🇸US-185.230.230.18-0059 | 215.949MB'
-  - '[03] ⚡2ms - VMess_github.com/freefq - 美国CloudFlare公司CDN节点 9'
-  - '[04] ⚡2ms - 🇺🇸US-172.111.38.72-0116 | 31.245MB'
-  - '[05] ⚡2ms - 🇺🇸US-15.204.247.206-0163 | 9.963MB'
-  - '[06] ⚡4ms - VMess_github.com/freefq - 美国Fastly全球Anycast节点 13'
-  - '[07] ⚡7ms - 🇺🇸US-38.91.100.39-0107 | 39.913MB'
-  - '[08] ⚡8ms - 🇺🇸US-193.151.163.18-0063 | 214.947MB'
-  - '[09] ⚡8ms - 🇺🇸US-198.98.53.130-0206 | 0.153MB'
-  - '[10] ⚡8ms - 🇺🇸US-13.248.169.48-4827 | 0.0MB'
-  - '[11] ⚡10ms - VMess_github.com/freefq - 美国CloudFlare公司CDN节点 4'
-  - '[12] ⚡14ms - 🇨🇦CA-51.222.155.113-0177 | 6.203MB'
-  - '[13] ⚡14ms - 🇨🇦CA-51.222.141.125-0162 | 6.169MB'
-  - '[14] ⚡14ms - 🇨🇦CA-51.79.85.185-0159 | 2.307MB'
-  - '[15] ⚡15ms - 🇺🇸US-149.40.57.138-0068 | 76.15MB'
-  - '[16] ⚡15ms - 🇨🇦CA-51.222.12.127-0160 | 9.17MB'
-  - '[17] ⚡15ms - 🇨🇦CA-51.222.136.236-0176 | 2.602MB'
-  - '[18] ⚡15ms - 🇨🇦CA-15.235.121.109-0203 | 2.298MB'
-  - '[19] ⚡15ms - 🇨🇦CA-51.222.200.165-0399 | 1.241MB'
-  - '[20] ⚡15ms - 🇨🇦CA-15.235.57.6-0164 | 0.0MB'
-  - '[21] ⚡17ms - 🇺🇸US-149.40.57.133-0113 | 45.941MB'
-  - '[22] ⚡17ms - 🇺🇸US-149.40.57.134-0131 | 5.312MB'
-  - '[23] ⚡22ms - 🇺🇸US-38.128.66.32-0165 | 79.964MB'
-  - '[24] ⚡22ms - 🇺🇸US-216.106.178.169-0154 | 75.801MB'
-  - '[25] ⚡25ms - 🇨🇦CA-137.184.174.93-0135 | 40.016MB'
-  - '[26] ⚡27ms - 🇺🇸US-193.151.160.18-0065 | 145.23MB'
-  - '[27] ⚡27ms - 🇺🇸US-193.151.160.9-0062 | 191.637MB'
-  - '[28] ⚡27ms - 🇺🇸US-162.251.62.31-0112 | 70.364MB'
-  - '[29] ⚡27ms - 🇺🇸US-38.91.107.188-0097 | 59.649MB'
-  - '[30] ⚡31ms - 🇺🇸US-167.88.62.203-0100 | 60.808MB'
+  - '[01] ⚡7ms - VMess_github.com/freefq - 美国CloudFlare公司CDN节点 9'
+  - '[02] ⚡14ms - 🇺🇸US-167.88.62.203-0100 | 60.808MB'
+  - '[03] ⚡16ms - 🇺🇸US-156.146.38.167-0168 | 0.742MB'
+  - '[04] ⚡16ms - 🇺🇸US-156.146.38.169-0167 | 0.134MB'
+  - '[05] ⚡17ms - 🇺🇸US-156.146.38.170-0170 | 7.086MB'
+  - '[06] ⚡17ms - 🇺🇸US-156.146.38.168-0169 | 0.504MB'
+  - '[07] ⚡19ms - 🇺🇸US-216.106.178.169-0154 | 75.801MB'
+  - '[08] ⚡28ms - 🇺🇸US-38.128.66.32-0165 | 79.964MB'
+  - '[09] ⚡28ms - 🇨🇦CA-137.184.174.93-0135 | 40.016MB'
+  - '[10] ⚡29ms - 🇺🇸US-38.121.43.225-0103 | 69.062MB'
+  - '[11] ⚡29ms - 🇺🇸US-38.121.43.18-0087 | 49.773MB'
+  - '[12] ⚡29ms - 🇺🇸US-38.22.17.129-0078 | 28.443MB'
+  - '[13] ⚡30ms - 🇺🇸US-38.121.43.231-0091 | 18.172MB'
+  - '[14] ⚡30ms - 🇨🇦CA-51.222.136.236-0176 | 2.602MB'
+  - '[15] ⚡31ms - 🇺🇸US-193.151.163.18-0063 | 214.947MB'
+  - '[16] ⚡32ms - 🇨🇦CA-51.222.141.125-0162 | 6.169MB'
+  - '[17] ⚡33ms - 🇺🇸US-38.22.17.219-0108 | 61.782MB'
+  - '[18] ⚡33ms - 🇺🇸US-172.111.38.72-0116 | 31.245MB'
+  - '[19] ⚡33ms - 🇨🇦CA-51.222.200.165-0399 | 1.241MB'
+  - '[20] ⚡36ms - VMess_github.com/freefq - 美国Fastly全球Anycast节点 13'
+  - '[21] ⚡36ms - 🇺🇸US-185.230.230.18-0059 | 215.949MB'
+  - '[22] ⚡36ms - 🇺🇸US-45.86.51.18-0060 | 58.86MB'
+  - '[23] ⚡36ms - 🇺🇸US-172.111.36.123-0086 | 56.229MB'
+  - '[24] ⚡36ms - 🇺🇸US-15.204.247.206-0163 | 9.963MB'
+  - '[25] ⚡37ms - 🇺🇸US-149.40.57.133-0113 | 45.941MB'
+  - '[26] ⚡37ms - 🇺🇸US-38.91.100.39-0107 | 39.913MB'
+  - '[27] ⚡38ms - 🇺🇸US-167.88.63.99-0102 | 71.472MB'
+  - '[28] ⚡38ms - 🇺🇸US-149.40.57.138-0068 | 76.15MB'
+  - '[29] ⚡39ms - 🇺🇸US-137.184.89.151-0064 | 11.643MB'
+  - '[30] ⚡39ms - 🇺🇸US-198.98.53.130-0206 | 0.153MB'
 - name: 订阅网关自动切换
   type: fallback
   proxies:
