@@ -19,11 +19,26 @@ import yaml
 
 # ==================== 配置项 ====================
 SUBSCRIBE_URLS = [
-    # 优质 Clash 订阅源
-    "https://raw.githubusercontent.com/aiboboxx/clashfree/master/clash.yml",
-    # 更多备选源
+    # === 原有核心稳定源 ===
     "https://raw.githubusercontent.com/Pawdroid/Free-servers/main/sub",
-    # "https://raw.githubusercontent.com/mfuu/v2ray/master/clash.yaml",
+    "https://raw.githubusercontent.com/freefq/free/master/v2",
+    "https://raw.githubusercontent.com/mfuu/v2ray/master/clash.yaml",
+    "https://raw.githubusercontent.com/ermaozi/get_subscribe/main/subscribe/clash.yaml",
+    "https://raw.githubusercontent.com/Leon406/SubCrawler/main/sub/share/all",
+    "https://raw.githubusercontent.com/aiboboxx/clashfree/master/clash.yml",
+
+    # === 新增：soroushmirzaei/telegram-configs-collector（每小时从TG频道高频采集）===
+    "https://raw.githubusercontent.com/soroushmirzaei/telegram-configs-collector/main/splitted/mixed",
+    "https://raw.githubusercontent.com/soroushmirzaei/telegram-configs-collector/main/channels/protocols/vmess",
+    "https://raw.githubusercontent.com/soroushmirzaei/telegram-configs-collector/main/channels/protocols/trojan",
+
+    # === 额外补充的高质量聚合源 ===
+    "https://raw.githubusercontent.com/aiboboxx/v2rayfree/main/v2",
+    "https://raw.githubusercontent.com/barry-far/V2ray-Configs/main/All_Configs_Sub.txt",
+    "https://raw.githubusercontent.com/mahdibland/V2RayAggregator/master/Eternity.yml",
+
+    # === 你自己 Fork 的 V2RayAggregator（Clash YAML 格式，若有可解开注释）===
+    "https://raw.githubusercontent.com/wzapple/V2RayAggregator/master/Eternity.yml",
 ]
 
 # 保留最大节点数
