@@ -1,54 +1,33 @@
-# -*- coding: utf-8 -*-
 """
-GitHub 免费 Clash 节点自动抓取、清洗与并发健康测速工具
+Clash / Mihomo 节点自动聚合、清洗、测速及配置生成脚本
 功能：
 1. 定时拉取多个活跃公开源（支持多协议解析与镜像加速回退）；
 2. 高并发多线程 TCP 连通性测速，彻底剔除死节点；
 3. 过滤国内节点与垃圾广告节点，按延迟排序筛选最优质节点；
-4. 输出自带 .2/.201 双网关自动切换、策略组及防蹭网隔离规则的完整配置文件。
+4. 输出自带 .2/.201 双网关自动切换、策略组及分流规则的完整配置文件。
 """
 
 import base64
+import concurrent.futures
 import json
 import re
 import socket
 import time
 import urllib.parse
-from concurrent.futures import ThreadPoolExecutor, as_completed
 import requests
 import yaml
 
-# 活跃的高质量免费节点源池（涵盖 Clash YAML、Base64 等格式）
-SOURCE_URLS = [
-    # === 原有 5 个源（保留）===
+# ==================== 配置项 ====================
+SUBSCRIBE_URLS = [
+    # 优质 Clash 订阅源
+    "https://raw.githubusercontent.com/aiboboxx/clashfree/master/clash.yml",
+    # 更多备选源
     "https://raw.githubusercontent.com/Pawdroid/Free-servers/main/sub",
-    "https://raw.githubusercontent.com/freefq/free/master/v2",
-    "https://raw.githubusercontent.com/mfuu/v2ray/master/clash.yaml",
-    "https://raw.githubusercontent.com/ermaozi/get_subscribe/main/subscribe/clash.yaml",
-    "https://raw.githubusercontent.com/Leon406/SubCrawler/main/sub/share/all",
-
-    # === 新增：soroushmirzaei/telegram-configs-collector（每小时从TG频道采集）===
-    "https://raw.githubusercontent.com/soroushmirzaei/telegram-configs-collector/main/splitted/mixed",
-    "https://raw.githubusercontent.com/soroushmirzaei/telegram-configs-collector/main/channels/protocols/vmess",
-    "https://raw.githubusercontent.com/soroushmirzaei/telegram-configs-collector/main/channels/protocols/trojan",
-
-    # === 额外补充高质量源 ===
-    "https://raw.githubusercontent.com/aiboboxx/v2rayfree/main/v2",
-    "https://raw.githubusercontent.com/barry-far/V2ray-Configs/main/All_Configs_Sub.txt",
-    "https://raw.githubusercontent.com/mahdibland/V2RayAggregator/master/Eternity.yml",
-
-    # 直接拉取你自己 Fork 的 V2RayAggregator 输出（已经是 Clash YAML 格式）
-    # "https://raw.githubusercontent.com/wzapple/V2RayAggregator/master/Eternity.yml",
+    # "https://raw.githubusercontent.com/mfuu/v2ray/master/clash.yaml",
 ]
 
-# GitHub 加速镜像前缀（直连拉取失败时自动降级尝试）
-MIRRORS = [
-    "https://gh-proxy.com/",
-    "https://ghproxy.cn/",
-]
-
-OUTPUT_FILE = "config.yaml"
-MAX_NODES = 30           # 最终保留的最优活节点数量
+# 保留最大节点数
+MAX_PROXIES = 80
 TCP_TIMEOUT = 1.8        # 单个节点测速超时时间（秒）
 MAX_WORKERS = 50         # 测速并发线程数
 
@@ -59,54 +38,65 @@ GATEWAY_NODES = [
     {"name": "201付费网关", "type": "http", "server": "192.168.0.201", "port": 7890},
 ]
 GATEWAY_TEST_URL = "https://www.gstatic.com/generate_204"
-GATEWAY_TEST_INTERVAL = 60  # 检测间隔，单位：秒
+GATEWAY_TEST_INTERVAL = 60   # 检测间隔，单位：秒
 GATEWAY_TEST_TIMEOUT = 5000  # 每个网关检测超时，单位：毫秒
 
 
 def fetch_url_content(url):
     """拉取远程源，支持镜像前缀智能回退"""
     candidate_urls = [url]
-    for mirror in MIRRORS:
-        if "raw.githubusercontent.com" in url:
-            candidate_urls.append(mirror + url)
+    # 对 raw.githubusercontent.com 支持主流 GitHub 加速代理
+    if "raw.githubusercontent.com" in url:
+        path = url.replace("https://raw.githubusercontent.com/", "")
+        candidate_urls.extend([
+            f"https://ghproxy.net/https://raw.githubusercontent.com/{path}",
+            f"https://mirror.ghproxy.com/https://raw.githubusercontent.com/{path}",
+            f"https://fastly.jsdelivr.net/gh/{path.replace('/master/', '@master/').replace('/main/', '@main/')}"
+        ])
 
     headers = {
-        "User-Agent": "ClashforWindows/0.20.39 (Clash-Auto-Collector)"
+        "User-Agent": "ClashMeta; ClashforWindows/0.20.39; clash.meta"
     }
 
-    for target_url in candidate_urls:
+    for u in candidate_urls:
         try:
-            resp = requests.get(target_url, headers=headers, timeout=12)
-            if resp.status_code == 200 and resp.text.strip():
+            resp = requests.get(u, headers=headers, timeout=10)
+            if resp.status_code == 200 and len(resp.text.strip()) > 50:
+                print(f"[成功] 成功获取源数据: {u[:60]}... 长度: {len(resp.text)}")
                 return resp.text
         except Exception:
             continue
-    print(f"[警告] 无法拉取源: {url}")
-    return None
+    print(f"[失败] 所有镜像均无法访问: {url}")
+    return ""
+
+
+def parse_clash_yaml(content):
+    """解析 YAML 格式的 Clash 配置"""
+    try:
+        data = yaml.safe_load(content)
+        if isinstance(data, dict) and "proxies" in data and isinstance(data["proxies"], list):
+            return data["proxies"]
+    except Exception:
+        pass
+    return []
 
 
 def parse_vmess(link):
     """解析 vmess:// 链接"""
     try:
-        raw_b64 = link[8:].strip()
-        raw_b64 += "=" * ((4 - len(raw_b64) % 4) % 4)
-        data = json.loads(base64.b64decode(raw_b64).decode("utf-8", errors="ignore"))
-        server = data.get("add", "").strip()
-        port = int(data.get("port", 0))
-        if not server or not port:
-            return None
+        raw = link[8:]
+        padded = raw + '=' * (-len(raw) % 4)
+        info = json.loads(base64.b64decode(padded).decode('utf-8', errors='ignore'))
         return {
-            "name": f"VMess_{data.get('ps', 'Node')}".replace(":", "_"),
+            "name": info.get("ps", "vmess-node").strip(),
             "type": "vmess",
-            "server": server,
-            "port": port,
-            "uuid": data.get("id"),
-            "alterId": int(data.get("aid", 0)),
-            "cipher": "auto",
-            "tls": True if str(data.get("tls")).lower() in ["tls", "1", "true"] else False,
-            "network": data.get("net", "tcp"),
-            "ws-opts": {"path": data.get("path", "/")} if data.get("net") == "ws" else None,
-            "udp": True,
+            "server": info.get("add"),
+            "port": int(info.get("port")),
+            "uuid": info.get("id"),
+            "alterId": int(info.get("aid", 0)),
+            "cipher": info.get("scy", "auto"),
+            "network": info.get("net", "tcp"),
+            "tls": True if info.get("tls") == "tls" else False
         }
     except Exception:
         return None
@@ -115,182 +105,172 @@ def parse_vmess(link):
 def parse_trojan(link):
     """解析 trojan:// 链接"""
     try:
-        url_obj = urllib.parse.urlparse(link.strip())
-        server = url_obj.hostname
-        port = int(url_obj.port or 443)
-        if not server or not port:
-            return None
-        query = urllib.parse.parse_qs(url_obj.query)
-        name = urllib.parse.unquote(url_obj.fragment) or "Trojan_Node"
+        url = urllib.parse.urlparse(link)
+        name = urllib.parse.unquote(url.fragment) if url.fragment else "trojan-node"
         return {
-            "name": f"Trojan_{name}".replace(":", "_"),
+            "name": name.strip(),
             "type": "trojan",
-            "server": server,
-            "port": port,
-            "password": url_obj.username,
-            "sni": query.get("sni", [server])[0],
-            "skip-cert-verify": True,
-            "udp": True,
+            "server": url.hostname,
+            "port": url.port,
+            "password": url.username,
+            "sni": url.hostname
         }
     except Exception:
         return None
 
 
-def extract_proxies_from_raw(text):
-    """从源内容中提取节点字典"""
-    proxies = []
-
-    # 1. 尝试作为 YAML 解析 (Clash 格式)
+def parse_shadowsocks(link):
+    """解析 ss:// 链接"""
     try:
-        yaml_data = yaml.safe_load(text)
-        if isinstance(yaml_data, dict) and "proxies" in yaml_data:
-            for p in yaml_data["proxies"]:
-                if isinstance(p, dict) and p.get("server") and p.get("port"):
-                    proxies.append(p)
-            if proxies:
-                return proxies
+        url = urllib.parse.urlparse(link)
+        name = urllib.parse.unquote(url.fragment) if url.fragment else "ss-node"
+        userinfo = url.username
+        if not url.password and userinfo:
+            padded = userinfo + '=' * (-len(userinfo) % 4)
+            userinfo = base64.b64decode(padded).decode('utf-8', errors='ignore')
+        if ":" in userinfo:
+            cipher, password = userinfo.split(":", 1)
+            return {
+                "name": name.strip(),
+                "type": "ss",
+                "server": url.hostname,
+                "port": url.port,
+                "cipher": cipher,
+                "password": password
+            }
     except Exception:
-        pass
+        return None
 
-    # 2. 尝试作为 Base64 订阅解析
-    decoded_text = text
+
+def extract_proxies_from_raw(content):
+    """从原始内容提取节点列表（兼容 YAML 与 Base64 订阅）"""
+    # 优先尝试 YAML
+    proxies = parse_clash_yaml(content)
+    if proxies:
+        return proxies
+
+    # 尝试 Base64 解码
+    lines = []
     try:
-        clean = re.sub(r"\s+", "", text)
-        clean += "=" * ((4 - len(clean) % 4) % 4)
-        decoded_text = base64.b64decode(clean).decode("utf-8", errors="ignore")
+        padded = content.strip() + '=' * (-len(content.strip()) % 4)
+        decoded = base64.b64decode(padded).decode('utf-8', errors='ignore')
+        lines = [line.strip() for line in decoded.splitlines() if line.strip()]
     except Exception:
-        pass
+        lines = [line.strip() for line in content.splitlines() if line.strip()]
 
-    # 3. 按行解析单链接
-    for line in decoded_text.splitlines():
-        line = line.strip()
-        if not line:
-            continue
+    parsed = []
+    for line in lines:
+        node = None
         if line.startswith("vmess://"):
             node = parse_vmess(line)
-            if node:
-                proxies.append(node)
         elif line.startswith("trojan://"):
             node = parse_trojan(line)
-            if node:
-                proxies.append(node)
+        elif line.startswith("ss://"):
+            node = parse_shadowsocks(line)
+        if node and node.get("server") and node.get("port"):
+            parsed.append(node)
+    return parsed
 
-    return proxies
 
+def check_proxy_tcp(proxy):
+    """高并发 TCP 握手测速，返回 (proxy, 延迟ms) 元组，失败返回 None"""
+    server = proxy.get("server")
+    port = proxy.get("port")
+    if not server or not port:
+        return None
 
-def test_tcp_ping(node):
-    """测试单个节点的 TCP 端口连通性与握手延迟"""
-    server = node.get("server")
-    port = node.get("port")
+    # 过滤明显的垃圾广告节点
+    name = proxy.get("name", "")
+    ad_keywords = ["网站", "官网", "流量", "重置", "到期", "TG群", "通知", "群", "客服"]
+    if any(k in name for k in ad_keywords):
+        return None
+
     try:
-        start_time = time.time()
-        sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        sock.settimeout(TCP_TIMEOUT)
-        result = sock.connect_ex((server, int(port)))
-        sock.close()
-        if result == 0:
-            delay_ms = int((time.time() - start_time) * 1000)
-            return (node, delay_ms)
+        port = int(port)
+        start = time.time()
+        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        s.settimeout(TCP_TIMEOUT)
+        s.connect((server, port))
+        latency = (time.time() - start) * 1000
+        s.close()
+        return (proxy, latency)
     except Exception:
-        pass
-    return None
-
-
-def is_junk_or_domestic_node(name):
-    """过滤国内不能出海的节点及垃圾广告"""
-    junk_keywords = [
-        "中国", "移动", "联通", "电信", "回国", "直连",
-        "官网", "群", "返利", "购买", "剩余", "到期", "测试", "通知"
-    ]
-    for kw in junk_keywords:
-        if kw in name:
-            return True
-    return False
+        return None
 
 
 def main():
-    print("=== 开始并发抓取远程节点池 ===")
-    all_proxies = []
-
-    for url in SOURCE_URLS:
-        print(f"-> 正在拉取: {url}")
+    print("=" * 50)
+    print("开始拉取公开节点源...")
+    raw_nodes = []
+    for url in SUBSCRIBE_URLS:
         content = fetch_url_content(url)
         if content:
-            extracted = extract_proxies_from_raw(content)
-            print(f"   提取原始节点数: {len(extracted)}")
-            all_proxies.extend(extracted)
+            nodes = extract_proxies_from_raw(content)
+            print(f"-> 从源解析到 {len(nodes)} 个原始节点")
+            raw_nodes.extend(nodes)
 
-    # 1. IP+端口初步去重
-    seen = set()
-    deduped_proxies = []
-    for p in all_proxies:
-        server = p.get("server")
-        port = p.get("port")
-        if not server or not port:
-            continue
-        key = f"{server}:{port}"
-        if key not in seen:
-            seen.add(key)
-            deduped_proxies.append(p)
+    print(f"\n汇总得到 {len(raw_nodes)} 个节点，去重并过滤无效节点...")
+    unique_nodes = {}
+    for node in raw_nodes:
+        key = f"{node.get('server')}:{node.get('port')}"
+        if key not in unique_nodes:
+            unique_nodes[key] = node
+    candidates = list(unique_nodes.values())
+    print(f"去重后剩余候选节点: {len(candidates)} 个")
 
-    print(f"=== 初步去重后待测速候选节点: {len(deduped_proxies)} 个 ===")
-    if not deduped_proxies:
-        print("[错误] 未抓取到任何候选节点，跳过更新！")
-        return
-
-    # 2. 多线程高并发 TCP 握手测速（核心过滤死节点）
-    print(f"=== 正在进行高并发 TCP 连通性测速 (线程数: {MAX_WORKERS}) ===")
-    alive_nodes = []
-    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
-        futures = [executor.submit(test_tcp_ping, node) for node in deduped_proxies]
-        for f in as_completed(futures):
+    print(f"\n启动 {MAX_WORKERS} 线程高并发 TCP 连通性测速 (超时: {TCP_TIMEOUT}s)...")
+    valid_proxies = []
+    with concurrent.futures.ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+        futures = [executor.submit(check_proxy_tcp, node) for node in candidates]
+        for f in concurrent.futures.as_completed(futures):
             res = f.result()
             if res:
-                alive_nodes.append(res)
+                proxy, latency = res
+                valid_proxies.append((proxy, latency))
 
-    print(f"=== 测速完成！真实连通活节点数: {len(alive_nodes)} / {len(deduped_proxies)} ===")
+    print(f"测速完成，共存活节点: {len(valid_proxies)} 个")
 
-    # 3. 按延迟升序排序并过滤垃圾广告/国内无效节点
-    alive_nodes.sort(key=lambda x: x[1])
-
+    # 按延迟升序排序并格式化重命名
+    valid_proxies.sort(key=lambda x: x[1])
     final_proxies = []
-    for node, delay in alive_nodes:
-        original_name = node.get("name", "Node")
-        if is_junk_or_domestic_node(original_name):
-            continue
-
-        # 重新美化节点名称：带序号与真实延迟提示
-        clean_name = re.sub(r"^\[\d+\]\s*", "", original_name)
-        node["name"] = f"[{len(final_proxies)+1:02d}] ⚡{delay}ms - {clean_name}"
-        final_proxies.append(node)
-
-        if len(final_proxies) >= MAX_NODES:
-            break
-
-    print(f"=== 最终精选优质活节点数: {len(final_proxies)} 个 ===")
+    used_names = set()
+    for idx, (proxy, latency) in enumerate(valid_proxies[:MAX_PROXIES]):
+        p_type = proxy.get("type", "").upper()
+        # 命名规则：协议-延迟ms（取地区缩写）
+        region = ""
+        name_raw = proxy.get("name", "")
+        for tag in ["HK", "TW", "SG", "JP", "US", "DE", "UK", "KR", "AU"]:
+            if tag in name_raw.upper():
+                region = f"{tag}-"
+                break
+        clean_name = f"{region}{p_type}-{int(latency)}ms"
+        # 避免重名
+        base_name = clean_name
+        counter = 1
+        while clean_name in used_names:
+            clean_name = f"{base_name}-{counter}"
+            counter += 1
+        used_names.add(clean_name)
+        proxy["name"] = clean_name
+        final_proxies.append(proxy)
 
     if not final_proxies:
         print("[警告] 测速后无可用节点，保留原有配置不覆盖！")
         return
 
-    # 4. 构建包含双网关自动切换、策略组和原有规则的完整配置文件
+    # 构建包含双网关自动切换、策略组和分流规则的完整配置文件
     node_names = [p["name"] for p in final_proxies]
 
-    # 两个网关均保留为独立 HTTP 节点，由下方 fallback 组按可用性选择。
+    # 两个网关保留为独立 HTTP 节点，由 fallback 组按可用性自动切换
     full_proxies = [gateway.copy() for gateway in GATEWAY_NODES] + final_proxies
 
     full_config = {
         "proxies": full_proxies,
         "proxy-groups": [
             {
-                "name": "Proxies",
-                "type": "select",
-                "proxies": ["自动选择"] + node_names,
-            },
-            {
                 "name": "自动选择",
                 "type": "url-test",
-                "url": "http://www.gstatic.com/generate_204",
+                "url": "https://www.gstatic.com/generate_204",
                 "interval": 300,
                 "tolerance": 50,
                 "proxies": node_names,
@@ -302,41 +282,63 @@ def main():
                 "url": GATEWAY_TEST_URL,
                 "interval": GATEWAY_TEST_INTERVAL,
                 "timeout": GATEWAY_TEST_TIMEOUT,
-                "lazy": False,
-                "max-failed-times": 1,
+            },
+            {
+                "name": "节点选择",
+                "type": "select",
+                "proxies": ["自动选择", GATEWAY_GROUP_NAME, "DIRECT"] + node_names,
+            },
+            {
+                "name": "Proxies",
+                "type": "select",
+                "proxies": ["自动选择", GATEWAY_GROUP_NAME, "DIRECT"] + node_names,
             },
         ],
         "rules": [
-            # 1. 局域网其他人的设备（192.168.0.X），访问 GitHub 强制走免费策略组 Proxies
-            "SRC-IP-CIDR,192.168.0.0/24,Proxies",
+            # ✅ 第一优先级：局域网 & 国内直连（必须放最前，否则后续规则全部失效！）
+            "GEOIP,LAN,DIRECT",
+            "GEOIP,CN,DIRECT",
 
-            # 2. 软路由本机更新拉取 GitHub，走双网关自动切换组
+            # 常用国内大流量域名直连（GEOIP,CN 兜底前的快速匹配）
+            "DOMAIN-SUFFIX,bilibili.com,DIRECT",
+            "DOMAIN-SUFFIX,byteoversea.com,DIRECT",
+            "DOMAIN-SUFFIX,bytedance.com,DIRECT",
+            "DOMAIN-SUFFIX,qq.com,DIRECT",
+            "DOMAIN-SUFFIX,weixin.qq.com,DIRECT",
+            "DOMAIN-SUFFIX,baidu.com,DIRECT",
+
+            # 软路由拉取订阅配置走付费网关（优先 .2，失联自动切 .201）
             f"DOMAIN-KEYWORD,github,{GATEWAY_GROUP_NAME}",
             f"DOMAIN-SUFFIX,githubusercontent.com,{GATEWAY_GROUP_NAME}",
 
-            # 3. 订阅转换服务器使用双网关兜底
-            f"DOMAIN-SUFFIX,dler.io,{GATEWAY_GROUP_NAME}",
-            f"DOMAIN-SUFFIX,wcc.best,{GATEWAY_GROUP_NAME}",
-            f"DOMAIN-SUFFIX,id9.cc,{GATEWAY_GROUP_NAME}",
-            f"DOMAIN-SUFFIX,v1.mk,{GATEWAY_GROUP_NAME}",
-
-            # 4. OpenAI / Gemini 使用相同的双网关切换组
+            # AI 服务定向走付费网关
             f"DOMAIN-KEYWORD,openai,{GATEWAY_GROUP_NAME}",
             f"DOMAIN-SUFFIX,chatgpt.com,{GATEWAY_GROUP_NAME}",
+            f"DOMAIN-KEYWORD,anthropic,{GATEWAY_GROUP_NAME}",
+            f"DOMAIN-SUFFIX,claude.ai,{GATEWAY_GROUP_NAME}",
             f"DOMAIN-KEYWORD,gemini,{GATEWAY_GROUP_NAME}",
             f"DOMAIN-SUFFIX,bard.google.com,{GATEWAY_GROUP_NAME}",
 
-            # 5. 国内及局域网直连
-            "GEOIP,LAN,DIRECT",
-            "GEOIP,CN,DIRECT",
+            # 海外流媒体 & 社交走免费节点代理池
+            "DOMAIN-SUFFIX,youtube.com,Proxies",
+            "DOMAIN-SUFFIX,googlevideo.com,Proxies",
+            "DOMAIN-SUFFIX,google.com,Proxies",
+            "DOMAIN-SUFFIX,twitter.com,Proxies",
+            "DOMAIN-SUFFIX,x.com,Proxies",
+            "DOMAIN-SUFFIX,telegram.org,Proxies",
+            "DOMAIN-SUFFIX,t.me,Proxies",
+            "DOMAIN-SUFFIX,netflix.com,Proxies",
+            "DOMAIN-SUFFIX,instagram.com,Proxies",
+            "DOMAIN-SUFFIX,facebook.com,Proxies",
+
+            # 兜底：其余流量走代理
             "MATCH,Proxies",
         ],
     }
 
-    with open(OUTPUT_FILE, "w", encoding="utf-8") as f:
+    with open("config.yaml", "w", encoding="utf-8") as f:
         yaml.dump(full_config, f, allow_unicode=True, sort_keys=False)
-
-    print(f"=== 成功生成完整高质量配置文件: {OUTPUT_FILE} ===")
+    print(f"\n[完成] 成功写入完整配置至 config.yaml，包含 {len(full_proxies)} 个节点！")
 
 
 if __name__ == "__main__":
