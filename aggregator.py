@@ -38,7 +38,7 @@ SOURCE_URLS = [
     "https://raw.githubusercontent.com/mahdibland/V2RayAggregator/master/Eternity.yml",
 
     # 直接拉取你自己 Fork 的 V2RayAggregator 输出（已经是 Clash YAML 格式）
-    "https://raw.githubusercontent.com/wzapple/V2RayAggregator/master/Eternity.yml",
+    # "https://raw.githubusercontent.com/wzapple/V2RayAggregator/master/Eternity.yml",
 ]
 
 # GitHub 加速镜像前缀（直连拉取失败时自动降级尝试）
