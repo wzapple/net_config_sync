@@ -7,21 +7,7 @@ proxies:
   type: http
   server: 192.168.0.201
   port: 7890
-- name: VMESS-5ms
-  server: 172.64.154.222
-  port: 443
-  type: vmess
-  uuid: fcfaec91-6096-44d8-956c-7868d9e874b1
-  alterId: 0
-  cipher: auto
-  tls: true
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: lg1.cfcdn1.xyz
-- name: VMESS-5ms-1
+- name: VMESS-10ms
   server: 172.64.152.150
   port: 443
   type: vmess
@@ -35,7 +21,7 @@ proxies:
     path: /
     headers:
       Host: clash6.ssr-free.xyz
-- name: VMESS-5ms-2
+- name: VMESS-10ms-1
   server: 198.41.203.3
   port: 443
   type: vmess
@@ -49,7 +35,48 @@ proxies:
     path: /
     headers:
       Host: lg1.cfcdn3.xyz
-- name: VMESS-5ms-3
+- name: US-SS-10ms
+  server: 156.146.38.168
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: VMESS-11ms
+  server: 172.64.154.222
+  port: 443
+  type: vmess
+  uuid: fcfaec91-6096-44d8-956c-7868d9e874b1
+  alterId: 0
+  cipher: auto
+  tls: true
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: lg1.cfcdn1.xyz
+- name: US-SS-12ms
+  server: 156.146.38.169
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: US-SS-12ms-1
+  server: 156.146.38.170
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: VMESS-13ms
+  type: vmess
+  server: 104.21.82.183
+  port: 8880
+  uuid: 5a7021e0-26b4-45d6-b175-fe551601ca97
+  alterId: 0
+  cipher: auto
+  network: ws
+  tls: false
+- name: VMESS-13ms-1
   server: 198.41.203.1
   port: 443
   type: vmess
@@ -63,7 +90,7 @@ proxies:
     path: /
     headers:
       Host: lg1.cfcdn2.xyz
-- name: VMESS-5ms-4
+- name: VMESS-14ms
   server: 104.24.0.1
   port: 8443
   type: vmess
@@ -77,22 +104,7 @@ proxies:
     path: /
     headers:
       Host: v2ray1.dozapp.xyz
-- name: VMESS-7ms
-  type: vmess
-  server: gov.uk
-  port: 443
-  uuid: 77848824-93b7-4b89-ffd0-e91afff406ce
-  alterId: 0
-  cipher: auto
-  network: ws
-  tls: true
-- name: SS-9ms
-  server: 149.22.95.183
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-- name: VMESS-17ms
+- name: VMESS-25ms
   server: www.digitalocean.com
   port: 80
   type: vmess
@@ -106,20 +118,91 @@ proxies:
     path: /
     headers:
       Host: ssrsub.v01.asuka.buzz
-- name: US-SS-23ms
-  server: 169.197.142.68
+- name: US-SS-27ms
+  server: 167.88.63.99
   port: 19999
   type: ss
   cipher: aes-256-gcm
   password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: US-TROJAN-23ms
-  server: 167.88.61.52
-  port: 443
-  type: trojan
-  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  sni: courses.browseseniorrolesandenhanceyourcareertoday.com
-  skip-cert-verify: false
-- name: US-VMESS-24ms
+- name: US-SS-28ms
+  server: 149.40.57.133
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: US-SS-29ms
+  server: 38.22.17.129
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: US-SS-30ms
+  server: 38.22.17.219
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: US-SS-30ms-1
+  server: 38.121.43.225
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: US-SS-31ms
+  server: 172.111.36.123
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: US-SS-31ms-1
+  server: 149.40.57.138
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: US-SS-31ms-2
+  server: 38.121.43.18
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: US-SS-31ms-3
+  server: 149.40.57.134
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: US-SS-32ms
+  server: 38.121.43.231
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: US-SS-33ms
+  server: 137.184.89.151
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: US-SS-33ms-1
+  server: 38.91.107.188
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: US-SS-34ms
+  server: 95.215.201.18
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: US-SS-34ms-1
+  server: 23.150.152.38
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: US-VMESS-34ms
   server: 47.88.52.220
   port: 80
   type: vmess
@@ -133,289 +216,164 @@ proxies:
     path: /
     headers:
       Host: w.800876.xyz
-- name: US-SS-30ms
-  server: 23.150.152.38
-  port: 19999
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: US-SS-36ms
-  server: 95.215.201.18
-  port: 19999
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: US-SS-39ms
-  server: 173.244.56.6
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-- name: US-SS-39ms-1
-  server: 173.244.56.9
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-- name: US-SS-44ms
-  server: 137.184.89.151
-  port: 19999
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: US-SS-48ms
-  server: 38.128.66.32
-  port: 19999
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: US-SS-48ms-1
-  server: 216.106.178.169
-  port: 19999
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: US-SS-52ms
-  server: 156.146.38.169
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-- name: US-SS-56ms
-  server: 156.146.38.168
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-- name: US-SS-56ms-1
-  server: 156.146.38.170
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-- name: US-SS-58ms
-  server: 167.88.63.99
-  port: 19999
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: US-SS-58ms-1
-  server: 149.40.57.138
-  port: 19999
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: US-SS-58ms-2
-  server: 38.22.17.129
-  port: 19999
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: US-SS-59ms
-  server: 38.121.43.231
-  port: 19999
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: US-SS-59ms-1
-  server: 38.22.17.219
-  port: 19999
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: US-SS-59ms-2
-  server: 149.40.57.134
-  port: 19999
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: US-SS-59ms-3
-  server: 172.111.36.123
-  port: 19999
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: US-SS-59ms-4
-  server: 149.40.57.133
-  port: 19999
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: US-SS-59ms-5
-  server: 38.121.43.18
-  port: 19999
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: US-SS-59ms-6
-  server: 38.121.43.225
-  port: 19999
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: US-SS-59ms-7
-  server: 185.230.230.18
-  port: 19999
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: US-SS-59ms-8
-  server: 15.204.247.206
-  port: 4444
-  type: ss
-  cipher: aes-256-gcm
-  password: pKEW8JPByTVTLtM
-- name: US-SS-60ms
-  server: 172.111.38.72
-  port: 19999
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: US-SS-60ms-1
-  server: 45.86.51.18
-  port: 19999
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: US-SS-61ms
-  server: 38.91.100.39
-  port: 19999
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: US-SS-62ms
-  server: 37.19.198.160
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-- name: US-SS-62ms-1
-  server: 37.19.198.236
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-- name: US-SS-62ms-2
-  server: 37.19.198.243
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-- name: US-SS-63ms
-  server: 37.19.198.244
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-- name: US-SS-65ms
-  server: 193.151.163.18
-  port: 19999
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: SS-65ms
-  server: 51.222.141.125
-  port: 445
-  type: ss
-  cipher: aes-256-gcm
-  password: zDNVedRFPQexG9v
-- name: SS-65ms-1
-  server: 51.222.136.236
-  port: 8882
-  type: ss
-  cipher: aes-256-gcm
-  password: kDWvXYZoTBcGkC4
-- name: SS-65ms-2
-  server: 51.222.12.127
-  port: 445
-  type: ss
-  cipher: aes-256-gcm
-  password: zDNVedRFPQexG9v
-- name: US-SS-65ms-1
-  server: 198.98.53.130
-  port: 443
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: eDfN7SODQceIOmIAbtJJtK
-- name: SS-65ms-3
-  server: 51.79.49.116
-  port: 8882
-  type: ss
-  cipher: aes-256-gcm
-  password: kDWvXYZoTBcGkC4
-- name: SS-65ms-4
-  server: 51.222.200.165
-  port: 5000
-  type: ss
-  cipher: aes-256-gcm
-  password: Y6R9pAtvxxzmGC
-- name: SS-65ms-5
-  server: 51.79.85.185
-  port: 8118
-  type: ss
-  cipher: aes-256-gcm
-  password: cdBIDV42DCwnfIN
-- name: US-SS-72ms
-  server: 193.151.160.18
-  port: 19999
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: US-SS-72ms-1
-  server: 193.151.160.9
-  port: 19999
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: US-SS-72ms-2
+- name: US-SS-35ms
   server: 162.251.62.31
   port: 19999
   type: ss
   cipher: aes-256-gcm
   password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: US-SS-73ms
-  server: 38.91.107.188
+- name: US-SS-35ms-1
+  server: 38.128.66.32
   port: 19999
   type: ss
   cipher: aes-256-gcm
   password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: SS-80ms
+- name: US-SS-38ms
+  server: 37.19.198.236
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: US-SS-38ms-1
+  server: 37.19.198.160
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: US-SS-39ms
+  server: 216.106.178.169
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: US-SS-40ms
+  server: 172.111.38.72
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: US-SS-40ms-1
+  server: 37.19.198.243
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: US-SS-42ms
+  server: 198.98.53.130
+  port: 443
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: eDfN7SODQceIOmIAbtJJtK
+- name: US-SS-42ms-1
+  server: 173.244.56.6
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: US-SS-42ms-2
+  server: 173.244.56.9
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: US-SS-43ms
+  server: 37.19.198.244
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: US-TROJAN-43ms
+  server: 167.88.61.52
+  port: 443
+  type: trojan
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: courses.browseseniorrolesandenhanceyourcareertoday.com
+  skip-cert-verify: false
+- name: US-SS-43ms-1
+  server: 38.91.100.39
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: US-SS-43ms-2
+  server: 193.151.160.18
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: US-SS-44ms
+  server: 193.151.163.18
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: US-SS-44ms-1
+  server: 169.197.142.68
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: US-SS-44ms-2
+  server: 193.151.160.9
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: SS-45ms
+  server: 51.222.136.236
+  port: 8882
+  type: ss
+  cipher: aes-256-gcm
+  password: kDWvXYZoTBcGkC4
+- name: US-SS-45ms
+  server: 45.86.51.18
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: US-SS-45ms-1
+  server: 185.230.230.18
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: SS-45ms-1
+  server: 51.222.200.165
+  port: 5000
+  type: ss
+  cipher: aes-256-gcm
+  password: Y6R9pAtvxxzmGC
+- name: SS-46ms
+  server: 51.222.141.125
+  port: 445
+  type: ss
+  cipher: aes-256-gcm
+  password: zDNVedRFPQexG9v
+- name: SS-47ms
+  server: 51.79.49.116
+  port: 8882
+  type: ss
+  cipher: aes-256-gcm
+  password: kDWvXYZoTBcGkC4
+- name: SS-48ms
+  server: 51.222.12.127
+  port: 445
+  type: ss
+  cipher: aes-256-gcm
+  password: zDNVedRFPQexG9v
+- name: SS-48ms-1
+  server: 51.79.85.185
+  port: 8118
+  type: ss
+  cipher: aes-256-gcm
+  password: cdBIDV42DCwnfIN
+- name: SS-55ms
   server: 137.184.174.93
   port: 8080
   type: ss
   cipher: rc4-md5
   password: 14fFPrbezE3HDZzsMOr6
-- name: JP-SS-97ms
-  server: 149.22.87.204
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-- name: JP-SS-98ms
-  server: 168.138.205.100
-  port: 53758
-  type: ss
-  cipher: aes-128-gcm
-  password: Bwlqh7GcFB
-- name: JP-SS-98ms-1
-  server: 149.22.87.240
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-- name: JP-SS-99ms
-  server: 149.22.87.241
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-- name: JP-SS-103ms
-  server: 84.247.155.196
-  port: 80
-  type: ss
-  cipher: aes-256-gcm
-  password: 3eOFeNssde7PYYMv
-- name: VMESS-107ms
+- name: VMESS-67ms
   type: vmess
   server: www.darkroom.lol
   port: 8080
@@ -424,129 +382,171 @@ proxies:
   cipher: auto
   network: ws
   tls: false
-- name: KR-SS-121ms
-  server: 211.178.105.134
-  port: 6123
-  type: ss
-  cipher: aes-256-cfb
-  password: qwerREWQ@@
-- name: JP-SS-123ms
-  server: 84.247.155.196
+- name: SS-70ms
+  server: 149.22.95.183
   port: 443
   type: ss
-  cipher: aes-256-gcm
-  password: 3eOFeNssde7PYYMv
-- name: JP-SS-128ms
-  server: jpa.123069.xyz
-  port: 53758
-  type: ss
   cipher: aes-128-gcm
-  password: Bwlqh7GcFB
-- name: US-TROJAN-128ms
-  server: sclass-01.catcat321.com
-  port: 20103
-  type: trojan
-  password: d7563108-615c-4338-a7bd-77f359869a4a
-  sni: hk.catxstar.com
-  skip-cert-verify: false
-- name: SS-132ms
-  server: 198.244.202.215
-  port: 19999
+  password: shadowsocks
+- name: US-SS-75ms
+  server: 15.204.247.206
+  port: 4444
   type: ss
   cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: SS-136ms
-  server: 142.202.51.22
-  port: 19999
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: SS-137ms
-  server: 146.70.61.37
-  port: 8080
-  type: ss
-  cipher: rc4-md5
-  password: 14fFPrbezE3HDZzsMOr6
-- name: SS-137ms-1
-  server: 5.188.181.201
-  port: 9030
-  type: ss
-  cipher: aes-256-cfb
-  password: GeregetR8cvQHzYr
-- name: SS-137ms-2
+  password: pKEW8JPByTVTLtM
+- name: SS-101ms
   server: 5.188.181.201
   port: 9042
   type: ss
   cipher: aes-256-cfb
   password: S7KwUu7yBy58S3Ga
-- name: SS-138ms
-  server: 5.188.181.201
-  port: 9025
-  type: ss
-  cipher: aes-256-cfb
-  password: XPtzA9sCug3SPR4c
-- name: SS-138ms-1
-  server: 158.173.24.73
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-- name: SS-138ms-2
-  server: 198.244.201.129
-  port: 19999
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: SS-139ms
-  server: 5.188.181.201
-  port: 9019
-  type: ss
-  cipher: aes-256-cfb
-  password: GA9KzeEgvfxNrgmM
-- name: SS-139ms-1
+- name: SS-101ms-1
   server: 5.188.181.201
   port: 9040
   type: ss
   cipher: aes-256-cfb
   password: p9z5BVADH2YFs3MN
-- name: SS-139ms-2
+- name: SS-101ms-2
+  server: 5.188.181.201
+  port: 9030
+  type: ss
+  cipher: aes-256-cfb
+  password: GeregetR8cvQHzYr
+- name: SS-101ms-3
   server: 5.188.181.201
   port: 9011
   type: ss
   cipher: aes-256-cfb
   password: M3t2ZEQcMGRWBjRa
-- name: SS-139ms-3
+- name: SS-101ms-4
   server: 5.188.181.201
   port: 9014
   type: ss
   cipher: aes-256-cfb
   password: KnJGad3FqTvjqbaX
-- name: SS-141ms
-  server: 141.98.101.178
+- name: SS-101ms-5
+  server: 5.188.181.201
+  port: 9019
+  type: ss
+  cipher: aes-256-cfb
+  password: GA9KzeEgvfxNrgmM
+- name: SS-103ms
+  server: 5.188.181.201
+  port: 9025
+  type: ss
+  cipher: aes-256-cfb
+  password: XPtzA9sCug3SPR4c
+- name: TROJAN-103ms
+  type: trojan
+  server: sclass-01.catcat321.com
+  port: 20103
+  password: d7563108-615c-4338-a7bd-77f359869a4a
+  sni: sclass-01.catcat321.com
+- name: SS-109ms
+  server: 158.173.24.73
   port: 443
   type: ss
   cipher: aes-128-gcm
   password: shadowsocks
-- name: SS-142ms
-  server: 185.176.206.9
-  port: 19999
+- name: SS-109ms-1
+  server: 146.70.61.37
+  port: 8080
   type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: SS-143ms
+  cipher: rc4-md5
+  password: 14fFPrbezE3HDZzsMOr6
+- name: SS-110ms
   server: 38.114.120.221
   port: 19999
   type: ss
   cipher: aes-256-gcm
   password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: SS-143ms-1
+- name: SS-112ms
+  server: 198.244.201.129
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: SS-112ms-1
+  server: 141.98.101.181
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: SS-114ms
+  server: 151.241.19.36
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: SS-114ms-1
+  server: 141.98.101.178
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: SS-114ms-2
+  server: 142.202.51.22
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: SS-115ms
+  server: 185.176.206.9
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: SS-116ms
+  server: 151.241.19.29
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: TROJAN-116ms
+  server: 64.176.7.205
+  port: 443
+  type: trojan
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: advanceyouremploymentskillsandcareerdevelopmenthub.com
+  skip-cert-verify: false
+- name: SS-117ms
   server: 109.201.152.181
   port: 443
   type: ss
   cipher: aes-128-cfb
   password: shadowsocks
-- name: SS-143ms-2
-  server: 151.241.19.29
+- name: US-SS-117ms
+  server: 23.230.52.119
+  port: 42878
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: ijoUwfdnkz7mX4pWdkSpmEixTZCt2TRm1JDr4BSaBAWkLxYGoXBHXadFKY5D5ZfoVTwqsx46jCmEUDnQUizJDYrM7B5anhnu
+- name: DE-SS-118ms
+  server: 156.67.120.205
+  port: 51628
+  type: ss
+  cipher: chacha20-ietf-poly1305
+  password: 29ZZXVa34x7sC48w9FKQ54UKHiJJGTVgKFppBRgviLrVCAYVVyKZdD3obbpjCyk31V5b2G2d7xzqmaPBFdcheCVB9UQ4ZghF
+- name: SS-119ms
+  type: ss
+  server: 47.254.128.109
+  port: 443
+  cipher: 2022-blake3-chacha20-poly1305
+  password: 8yO3ANWefuuGs1lRKXECQA1FEhxlWFV2ppQMcBaZo5Y=
+- name: SS-121ms
+  server: 167.17.64.22
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: SS-121ms-1
+  server: 38.109.228.110
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: SS-121ms-2
+  server: 167.17.64.27
   port: 19999
   type: ss
   cipher: aes-256-gcm
@@ -558,86 +558,86 @@ proxy-groups:
   interval: 300
   tolerance: 50
   proxies:
-  - VMESS-5ms
-  - VMESS-5ms-1
-  - VMESS-5ms-2
-  - VMESS-5ms-3
-  - VMESS-5ms-4
-  - VMESS-7ms
-  - SS-9ms
-  - VMESS-17ms
-  - US-SS-23ms
-  - US-TROJAN-23ms
-  - US-VMESS-24ms
+  - VMESS-10ms
+  - VMESS-10ms-1
+  - US-SS-10ms
+  - VMESS-11ms
+  - US-SS-12ms
+  - US-SS-12ms-1
+  - VMESS-13ms
+  - VMESS-13ms-1
+  - VMESS-14ms
+  - VMESS-25ms
+  - US-SS-27ms
+  - US-SS-28ms
+  - US-SS-29ms
   - US-SS-30ms
-  - US-SS-36ms
+  - US-SS-30ms-1
+  - US-SS-31ms
+  - US-SS-31ms-1
+  - US-SS-31ms-2
+  - US-SS-31ms-3
+  - US-SS-32ms
+  - US-SS-33ms
+  - US-SS-33ms-1
+  - US-SS-34ms
+  - US-SS-34ms-1
+  - US-VMESS-34ms
+  - US-SS-35ms
+  - US-SS-35ms-1
+  - US-SS-38ms
+  - US-SS-38ms-1
   - US-SS-39ms
-  - US-SS-39ms-1
+  - US-SS-40ms
+  - US-SS-40ms-1
+  - US-SS-42ms
+  - US-SS-42ms-1
+  - US-SS-42ms-2
+  - US-SS-43ms
+  - US-TROJAN-43ms
+  - US-SS-43ms-1
+  - US-SS-43ms-2
   - US-SS-44ms
-  - US-SS-48ms
-  - US-SS-48ms-1
-  - US-SS-52ms
-  - US-SS-56ms
-  - US-SS-56ms-1
-  - US-SS-58ms
-  - US-SS-58ms-1
-  - US-SS-58ms-2
-  - US-SS-59ms
-  - US-SS-59ms-1
-  - US-SS-59ms-2
-  - US-SS-59ms-3
-  - US-SS-59ms-4
-  - US-SS-59ms-5
-  - US-SS-59ms-6
-  - US-SS-59ms-7
-  - US-SS-59ms-8
-  - US-SS-60ms
-  - US-SS-60ms-1
-  - US-SS-61ms
-  - US-SS-62ms
-  - US-SS-62ms-1
-  - US-SS-62ms-2
-  - US-SS-63ms
-  - US-SS-65ms
-  - SS-65ms
-  - SS-65ms-1
-  - SS-65ms-2
-  - US-SS-65ms-1
-  - SS-65ms-3
-  - SS-65ms-4
-  - SS-65ms-5
-  - US-SS-72ms
-  - US-SS-72ms-1
-  - US-SS-72ms-2
-  - US-SS-73ms
-  - SS-80ms
-  - JP-SS-97ms
-  - JP-SS-98ms
-  - JP-SS-98ms-1
-  - JP-SS-99ms
-  - JP-SS-103ms
-  - VMESS-107ms
-  - KR-SS-121ms
-  - JP-SS-123ms
-  - JP-SS-128ms
-  - US-TROJAN-128ms
-  - SS-132ms
-  - SS-136ms
-  - SS-137ms
-  - SS-137ms-1
-  - SS-137ms-2
-  - SS-138ms
-  - SS-138ms-1
-  - SS-138ms-2
-  - SS-139ms
-  - SS-139ms-1
-  - SS-139ms-2
-  - SS-139ms-3
-  - SS-141ms
-  - SS-142ms
-  - SS-143ms
-  - SS-143ms-1
-  - SS-143ms-2
+  - US-SS-44ms-1
+  - US-SS-44ms-2
+  - SS-45ms
+  - US-SS-45ms
+  - US-SS-45ms-1
+  - SS-45ms-1
+  - SS-46ms
+  - SS-47ms
+  - SS-48ms
+  - SS-48ms-1
+  - SS-55ms
+  - VMESS-67ms
+  - SS-70ms
+  - US-SS-75ms
+  - SS-101ms
+  - SS-101ms-1
+  - SS-101ms-2
+  - SS-101ms-3
+  - SS-101ms-4
+  - SS-101ms-5
+  - SS-103ms
+  - TROJAN-103ms
+  - SS-109ms
+  - SS-109ms-1
+  - SS-110ms
+  - SS-112ms
+  - SS-112ms-1
+  - SS-114ms
+  - SS-114ms-1
+  - SS-114ms-2
+  - SS-115ms
+  - SS-116ms
+  - TROJAN-116ms
+  - SS-117ms
+  - US-SS-117ms
+  - DE-SS-118ms
+  - SS-119ms
+  - SS-121ms
+  - SS-121ms-1
+  - SS-121ms-2
 - name: 订阅网关自动切换
   type: fallback
   proxies:
@@ -652,172 +652,172 @@ proxy-groups:
   - 自动选择
   - 订阅网关自动切换
   - DIRECT
-  - VMESS-5ms
-  - VMESS-5ms-1
-  - VMESS-5ms-2
-  - VMESS-5ms-3
-  - VMESS-5ms-4
-  - VMESS-7ms
-  - SS-9ms
-  - VMESS-17ms
-  - US-SS-23ms
-  - US-TROJAN-23ms
-  - US-VMESS-24ms
+  - VMESS-10ms
+  - VMESS-10ms-1
+  - US-SS-10ms
+  - VMESS-11ms
+  - US-SS-12ms
+  - US-SS-12ms-1
+  - VMESS-13ms
+  - VMESS-13ms-1
+  - VMESS-14ms
+  - VMESS-25ms
+  - US-SS-27ms
+  - US-SS-28ms
+  - US-SS-29ms
   - US-SS-30ms
-  - US-SS-36ms
+  - US-SS-30ms-1
+  - US-SS-31ms
+  - US-SS-31ms-1
+  - US-SS-31ms-2
+  - US-SS-31ms-3
+  - US-SS-32ms
+  - US-SS-33ms
+  - US-SS-33ms-1
+  - US-SS-34ms
+  - US-SS-34ms-1
+  - US-VMESS-34ms
+  - US-SS-35ms
+  - US-SS-35ms-1
+  - US-SS-38ms
+  - US-SS-38ms-1
   - US-SS-39ms
-  - US-SS-39ms-1
+  - US-SS-40ms
+  - US-SS-40ms-1
+  - US-SS-42ms
+  - US-SS-42ms-1
+  - US-SS-42ms-2
+  - US-SS-43ms
+  - US-TROJAN-43ms
+  - US-SS-43ms-1
+  - US-SS-43ms-2
   - US-SS-44ms
-  - US-SS-48ms
-  - US-SS-48ms-1
-  - US-SS-52ms
-  - US-SS-56ms
-  - US-SS-56ms-1
-  - US-SS-58ms
-  - US-SS-58ms-1
-  - US-SS-58ms-2
-  - US-SS-59ms
-  - US-SS-59ms-1
-  - US-SS-59ms-2
-  - US-SS-59ms-3
-  - US-SS-59ms-4
-  - US-SS-59ms-5
-  - US-SS-59ms-6
-  - US-SS-59ms-7
-  - US-SS-59ms-8
-  - US-SS-60ms
-  - US-SS-60ms-1
-  - US-SS-61ms
-  - US-SS-62ms
-  - US-SS-62ms-1
-  - US-SS-62ms-2
-  - US-SS-63ms
-  - US-SS-65ms
-  - SS-65ms
-  - SS-65ms-1
-  - SS-65ms-2
-  - US-SS-65ms-1
-  - SS-65ms-3
-  - SS-65ms-4
-  - SS-65ms-5
-  - US-SS-72ms
-  - US-SS-72ms-1
-  - US-SS-72ms-2
-  - US-SS-73ms
-  - SS-80ms
-  - JP-SS-97ms
-  - JP-SS-98ms
-  - JP-SS-98ms-1
-  - JP-SS-99ms
-  - JP-SS-103ms
-  - VMESS-107ms
-  - KR-SS-121ms
-  - JP-SS-123ms
-  - JP-SS-128ms
-  - US-TROJAN-128ms
-  - SS-132ms
-  - SS-136ms
-  - SS-137ms
-  - SS-137ms-1
-  - SS-137ms-2
-  - SS-138ms
-  - SS-138ms-1
-  - SS-138ms-2
-  - SS-139ms
-  - SS-139ms-1
-  - SS-139ms-2
-  - SS-139ms-3
-  - SS-141ms
-  - SS-142ms
-  - SS-143ms
-  - SS-143ms-1
-  - SS-143ms-2
+  - US-SS-44ms-1
+  - US-SS-44ms-2
+  - SS-45ms
+  - US-SS-45ms
+  - US-SS-45ms-1
+  - SS-45ms-1
+  - SS-46ms
+  - SS-47ms
+  - SS-48ms
+  - SS-48ms-1
+  - SS-55ms
+  - VMESS-67ms
+  - SS-70ms
+  - US-SS-75ms
+  - SS-101ms
+  - SS-101ms-1
+  - SS-101ms-2
+  - SS-101ms-3
+  - SS-101ms-4
+  - SS-101ms-5
+  - SS-103ms
+  - TROJAN-103ms
+  - SS-109ms
+  - SS-109ms-1
+  - SS-110ms
+  - SS-112ms
+  - SS-112ms-1
+  - SS-114ms
+  - SS-114ms-1
+  - SS-114ms-2
+  - SS-115ms
+  - SS-116ms
+  - TROJAN-116ms
+  - SS-117ms
+  - US-SS-117ms
+  - DE-SS-118ms
+  - SS-119ms
+  - SS-121ms
+  - SS-121ms-1
+  - SS-121ms-2
 - name: Proxies
   type: select
   proxies:
   - 自动选择
   - 订阅网关自动切换
   - DIRECT
-  - VMESS-5ms
-  - VMESS-5ms-1
-  - VMESS-5ms-2
-  - VMESS-5ms-3
-  - VMESS-5ms-4
-  - VMESS-7ms
-  - SS-9ms
-  - VMESS-17ms
-  - US-SS-23ms
-  - US-TROJAN-23ms
-  - US-VMESS-24ms
+  - VMESS-10ms
+  - VMESS-10ms-1
+  - US-SS-10ms
+  - VMESS-11ms
+  - US-SS-12ms
+  - US-SS-12ms-1
+  - VMESS-13ms
+  - VMESS-13ms-1
+  - VMESS-14ms
+  - VMESS-25ms
+  - US-SS-27ms
+  - US-SS-28ms
+  - US-SS-29ms
   - US-SS-30ms
-  - US-SS-36ms
+  - US-SS-30ms-1
+  - US-SS-31ms
+  - US-SS-31ms-1
+  - US-SS-31ms-2
+  - US-SS-31ms-3
+  - US-SS-32ms
+  - US-SS-33ms
+  - US-SS-33ms-1
+  - US-SS-34ms
+  - US-SS-34ms-1
+  - US-VMESS-34ms
+  - US-SS-35ms
+  - US-SS-35ms-1
+  - US-SS-38ms
+  - US-SS-38ms-1
   - US-SS-39ms
-  - US-SS-39ms-1
+  - US-SS-40ms
+  - US-SS-40ms-1
+  - US-SS-42ms
+  - US-SS-42ms-1
+  - US-SS-42ms-2
+  - US-SS-43ms
+  - US-TROJAN-43ms
+  - US-SS-43ms-1
+  - US-SS-43ms-2
   - US-SS-44ms
-  - US-SS-48ms
-  - US-SS-48ms-1
-  - US-SS-52ms
-  - US-SS-56ms
-  - US-SS-56ms-1
-  - US-SS-58ms
-  - US-SS-58ms-1
-  - US-SS-58ms-2
-  - US-SS-59ms
-  - US-SS-59ms-1
-  - US-SS-59ms-2
-  - US-SS-59ms-3
-  - US-SS-59ms-4
-  - US-SS-59ms-5
-  - US-SS-59ms-6
-  - US-SS-59ms-7
-  - US-SS-59ms-8
-  - US-SS-60ms
-  - US-SS-60ms-1
-  - US-SS-61ms
-  - US-SS-62ms
-  - US-SS-62ms-1
-  - US-SS-62ms-2
-  - US-SS-63ms
-  - US-SS-65ms
-  - SS-65ms
-  - SS-65ms-1
-  - SS-65ms-2
-  - US-SS-65ms-1
-  - SS-65ms-3
-  - SS-65ms-4
-  - SS-65ms-5
-  - US-SS-72ms
-  - US-SS-72ms-1
-  - US-SS-72ms-2
-  - US-SS-73ms
-  - SS-80ms
-  - JP-SS-97ms
-  - JP-SS-98ms
-  - JP-SS-98ms-1
-  - JP-SS-99ms
-  - JP-SS-103ms
-  - VMESS-107ms
-  - KR-SS-121ms
-  - JP-SS-123ms
-  - JP-SS-128ms
-  - US-TROJAN-128ms
-  - SS-132ms
-  - SS-136ms
-  - SS-137ms
-  - SS-137ms-1
-  - SS-137ms-2
-  - SS-138ms
-  - SS-138ms-1
-  - SS-138ms-2
-  - SS-139ms
-  - SS-139ms-1
-  - SS-139ms-2
-  - SS-139ms-3
-  - SS-141ms
-  - SS-142ms
-  - SS-143ms
-  - SS-143ms-1
-  - SS-143ms-2
+  - US-SS-44ms-1
+  - US-SS-44ms-2
+  - SS-45ms
+  - US-SS-45ms
+  - US-SS-45ms-1
+  - SS-45ms-1
+  - SS-46ms
+  - SS-47ms
+  - SS-48ms
+  - SS-48ms-1
+  - SS-55ms
+  - VMESS-67ms
+  - SS-70ms
+  - US-SS-75ms
+  - SS-101ms
+  - SS-101ms-1
+  - SS-101ms-2
+  - SS-101ms-3
+  - SS-101ms-4
+  - SS-101ms-5
+  - SS-103ms
+  - TROJAN-103ms
+  - SS-109ms
+  - SS-109ms-1
+  - SS-110ms
+  - SS-112ms
+  - SS-112ms-1
+  - SS-114ms
+  - SS-114ms-1
+  - SS-114ms-2
+  - SS-115ms
+  - SS-116ms
+  - TROJAN-116ms
+  - SS-117ms
+  - US-SS-117ms
+  - DE-SS-118ms
+  - SS-119ms
+  - SS-121ms
+  - SS-121ms-1
+  - SS-121ms-2
 rules:
 - GEOIP,LAN,DIRECT
 - GEOIP,CN,DIRECT
