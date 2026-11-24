@@ -554,6 +554,358 @@ proxies:
   cipher: aes-256-gcm
   password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
 proxy-groups:
+- name: YouTube
+  type: select
+  proxies:
+  - YouTube自动优选
+  - 订阅网关自动切换
+  - Proxies
+  - DIRECT
+  - VMESS-6ms
+  - VMESS-8ms
+  - US-SS-13ms
+  - VMESS-14ms
+  - US-SS-17ms
+  - US-SS-18ms
+  - VMESS-19ms
+  - VMESS-21ms
+  - US-SS-23ms
+  - US-SS-26ms
+  - US-SS-28ms
+  - US-SS-28ms-1
+  - US-SS-29ms
+  - VMESS-29ms
+  - US-SS-29ms-1
+  - SS-30ms
+  - SS-30ms-1
+  - US-SS-30ms
+  - SS-30ms-2
+  - US-SS-31ms
+  - US-SS-31ms-1
+  - US-SS-31ms-2
+  - US-SS-32ms
+  - US-SS-32ms-1
+  - SS-33ms
+  - SS-33ms-1
+  - VMESS-34ms
+  - US-SS-34ms
+  - US-SS-34ms-1
+  - US-SS-36ms
+  - SS-36ms
+  - US-SS-37ms
+  - US-VMESS-40ms
+  - US-SS-40ms
+  - US-SS-40ms-1
+  - US-SS-41ms
+  - US-SS-41ms-1
+  - US-SS-42ms
+  - US-SS-43ms
+  - US-SS-43ms-1
+  - SS-45ms
+  - VMESS-45ms
+  - US-SS-46ms
+  - US-SS-47ms
+  - US-SS-47ms-1
+  - US-SS-48ms
+  - US-TROJAN-48ms
+  - US-SS-49ms
+  - US-SS-49ms-1
+  - US-SS-50ms
+  - US-SS-51ms
+  - US-SS-52ms
+  - SS-60ms
+  - VMESS-67ms
+  - US-SS-85ms
+  - SS-98ms
+  - SS-100ms
+  - SS-102ms
+  - SS-103ms
+  - SS-103ms-1
+  - SS-103ms-2
+  - SS-105ms
+  - SS-106ms
+  - SS-107ms
+  - SS-108ms
+  - SS-108ms-1
+  - SS-109ms
+  - SS-109ms-1
+  - SS-110ms
+  - SS-112ms
+  - SS-113ms
+  - SS-113ms-1
+  - SS-113ms-2
+  - SS-113ms-3
+  - SS-114ms
+  - SS-114ms-1
+  - SS-114ms-2
+  - SS-114ms-3
+  - SS-115ms
+  - SS-115ms-1
+- name: YouTube自动优选
+  type: url-test
+  url: https://www.youtube.com/generate_204
+  interval: 180
+  tolerance: 50
+  lazy: true
+  proxies:
+  - 2付费网关
+  - 201付费网关
+  - VMESS-6ms
+  - VMESS-8ms
+  - US-SS-13ms
+  - VMESS-14ms
+  - US-SS-17ms
+  - US-SS-18ms
+  - VMESS-19ms
+  - VMESS-21ms
+  - US-SS-23ms
+  - US-SS-26ms
+  - US-SS-28ms
+  - US-SS-28ms-1
+  - US-SS-29ms
+  - VMESS-29ms
+  - US-SS-29ms-1
+  - SS-30ms
+  - SS-30ms-1
+  - US-SS-30ms
+  - SS-30ms-2
+  - US-SS-31ms
+  - US-SS-31ms-1
+  - US-SS-31ms-2
+  - US-SS-32ms
+  - US-SS-32ms-1
+  - SS-33ms
+  - SS-33ms-1
+  - VMESS-34ms
+  - US-SS-34ms
+  - US-SS-34ms-1
+  - US-SS-36ms
+  - SS-36ms
+  - US-SS-37ms
+  - US-VMESS-40ms
+  - US-SS-40ms
+  - US-SS-40ms-1
+  - US-SS-41ms
+  - US-SS-41ms-1
+  - US-SS-42ms
+  - US-SS-43ms
+  - US-SS-43ms-1
+  - SS-45ms
+  - VMESS-45ms
+  - US-SS-46ms
+  - US-SS-47ms
+  - US-SS-47ms-1
+  - US-SS-48ms
+  - US-TROJAN-48ms
+  - US-SS-49ms
+  - US-SS-49ms-1
+  - US-SS-50ms
+  - US-SS-51ms
+  - US-SS-52ms
+  - SS-60ms
+  - VMESS-67ms
+  - US-SS-85ms
+  - SS-98ms
+  - SS-100ms
+  - SS-102ms
+  - SS-103ms
+  - SS-103ms-1
+  - SS-103ms-2
+  - SS-105ms
+  - SS-106ms
+  - SS-107ms
+  - SS-108ms
+  - SS-108ms-1
+  - SS-109ms
+  - SS-109ms-1
+  - SS-110ms
+  - SS-112ms
+  - SS-113ms
+  - SS-113ms-1
+  - SS-113ms-2
+  - SS-113ms-3
+  - SS-114ms
+  - SS-114ms-1
+  - SS-114ms-2
+  - SS-114ms-3
+  - SS-115ms
+  - SS-115ms-1
+- name: GitHub
+  type: select
+  proxies:
+  - GitHub自动优选
+  - 订阅网关自动切换
+  - Proxies
+  - DIRECT
+  - VMESS-6ms
+  - VMESS-8ms
+  - US-SS-13ms
+  - VMESS-14ms
+  - US-SS-17ms
+  - US-SS-18ms
+  - VMESS-19ms
+  - VMESS-21ms
+  - US-SS-23ms
+  - US-SS-26ms
+  - US-SS-28ms
+  - US-SS-28ms-1
+  - US-SS-29ms
+  - VMESS-29ms
+  - US-SS-29ms-1
+  - SS-30ms
+  - SS-30ms-1
+  - US-SS-30ms
+  - SS-30ms-2
+  - US-SS-31ms
+  - US-SS-31ms-1
+  - US-SS-31ms-2
+  - US-SS-32ms
+  - US-SS-32ms-1
+  - SS-33ms
+  - SS-33ms-1
+  - VMESS-34ms
+  - US-SS-34ms
+  - US-SS-34ms-1
+  - US-SS-36ms
+  - SS-36ms
+  - US-SS-37ms
+  - US-VMESS-40ms
+  - US-SS-40ms
+  - US-SS-40ms-1
+  - US-SS-41ms
+  - US-SS-41ms-1
+  - US-SS-42ms
+  - US-SS-43ms
+  - US-SS-43ms-1
+  - SS-45ms
+  - VMESS-45ms
+  - US-SS-46ms
+  - US-SS-47ms
+  - US-SS-47ms-1
+  - US-SS-48ms
+  - US-TROJAN-48ms
+  - US-SS-49ms
+  - US-SS-49ms-1
+  - US-SS-50ms
+  - US-SS-51ms
+  - US-SS-52ms
+  - SS-60ms
+  - VMESS-67ms
+  - US-SS-85ms
+  - SS-98ms
+  - SS-100ms
+  - SS-102ms
+  - SS-103ms
+  - SS-103ms-1
+  - SS-103ms-2
+  - SS-105ms
+  - SS-106ms
+  - SS-107ms
+  - SS-108ms
+  - SS-108ms-1
+  - SS-109ms
+  - SS-109ms-1
+  - SS-110ms
+  - SS-112ms
+  - SS-113ms
+  - SS-113ms-1
+  - SS-113ms-2
+  - SS-113ms-3
+  - SS-114ms
+  - SS-114ms-1
+  - SS-114ms-2
+  - SS-114ms-3
+  - SS-115ms
+  - SS-115ms-1
+- name: GitHub自动优选
+  type: url-test
+  url: https://raw.githubusercontent.com
+  interval: 300
+  tolerance: 50
+  lazy: true
+  proxies:
+  - 2付费网关
+  - 201付费网关
+  - VMESS-6ms
+  - VMESS-8ms
+  - US-SS-13ms
+  - VMESS-14ms
+  - US-SS-17ms
+  - US-SS-18ms
+  - VMESS-19ms
+  - VMESS-21ms
+  - US-SS-23ms
+  - US-SS-26ms
+  - US-SS-28ms
+  - US-SS-28ms-1
+  - US-SS-29ms
+  - VMESS-29ms
+  - US-SS-29ms-1
+  - SS-30ms
+  - SS-30ms-1
+  - US-SS-30ms
+  - SS-30ms-2
+  - US-SS-31ms
+  - US-SS-31ms-1
+  - US-SS-31ms-2
+  - US-SS-32ms
+  - US-SS-32ms-1
+  - SS-33ms
+  - SS-33ms-1
+  - VMESS-34ms
+  - US-SS-34ms
+  - US-SS-34ms-1
+  - US-SS-36ms
+  - SS-36ms
+  - US-SS-37ms
+  - US-VMESS-40ms
+  - US-SS-40ms
+  - US-SS-40ms-1
+  - US-SS-41ms
+  - US-SS-41ms-1
+  - US-SS-42ms
+  - US-SS-43ms
+  - US-SS-43ms-1
+  - SS-45ms
+  - VMESS-45ms
+  - US-SS-46ms
+  - US-SS-47ms
+  - US-SS-47ms-1
+  - US-SS-48ms
+  - US-TROJAN-48ms
+  - US-SS-49ms
+  - US-SS-49ms-1
+  - US-SS-50ms
+  - US-SS-51ms
+  - US-SS-52ms
+  - SS-60ms
+  - VMESS-67ms
+  - US-SS-85ms
+  - SS-98ms
+  - SS-100ms
+  - SS-102ms
+  - SS-103ms
+  - SS-103ms-1
+  - SS-103ms-2
+  - SS-105ms
+  - SS-106ms
+  - SS-107ms
+  - SS-108ms
+  - SS-108ms-1
+  - SS-109ms
+  - SS-109ms-1
+  - SS-110ms
+  - SS-112ms
+  - SS-113ms
+  - SS-113ms-1
+  - SS-113ms-2
+  - SS-113ms-3
+  - SS-114ms
+  - SS-114ms-1
+  - SS-114ms-2
+  - SS-114ms-3
+  - SS-115ms
+  - SS-115ms-1
 - name: 自动选择
   type: url-test
   url: https://www.gstatic.com/generate_204
@@ -829,16 +1181,23 @@ rules:
 - DOMAIN-SUFFIX,qq.com,DIRECT
 - DOMAIN-SUFFIX,weixin.qq.com,DIRECT
 - DOMAIN-SUFFIX,baidu.com,DIRECT
-- DOMAIN-KEYWORD,github,订阅网关自动切换
-- DOMAIN-SUFFIX,githubusercontent.com,订阅网关自动切换
+- DOMAIN-KEYWORD,github,GitHub
+- DOMAIN-SUFFIX,github.com,GitHub
+- DOMAIN-SUFFIX,github.io,GitHub
+- DOMAIN-SUFFIX,githubusercontent.com,GitHub
+- DOMAIN-SUFFIX,githubassets.com,GitHub
+- DOMAIN-KEYWORD,youtube,YouTube
+- DOMAIN-SUFFIX,youtube.com,YouTube
+- DOMAIN-SUFFIX,googlevideo.com,YouTube
+- DOMAIN-SUFFIX,ytimg.com,YouTube
+- DOMAIN-SUFFIX,youtu.be,YouTube
+- DOMAIN-SUFFIX,ggpht.com,YouTube
 - DOMAIN-KEYWORD,openai,订阅网关自动切换
 - DOMAIN-SUFFIX,chatgpt.com,订阅网关自动切换
 - DOMAIN-KEYWORD,anthropic,订阅网关自动切换
 - DOMAIN-SUFFIX,claude.ai,订阅网关自动切换
 - DOMAIN-KEYWORD,gemini,订阅网关自动切换
 - DOMAIN-SUFFIX,bard.google.com,订阅网关自动切换
-- DOMAIN-SUFFIX,youtube.com,Proxies
-- DOMAIN-SUFFIX,googlevideo.com,Proxies
 - DOMAIN-SUFFIX,google.com,Proxies
 - DOMAIN-SUFFIX,twitter.com,Proxies
 - DOMAIN-SUFFIX,x.com,Proxies

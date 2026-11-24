@@ -283,6 +283,34 @@ def main():
         "proxies": full_proxies,
         "proxy-groups": [
             {
+                "name": "YouTube",
+                "type": "select",
+                "proxies": ["YouTube自动优选", GATEWAY_GROUP_NAME, "Proxies", "DIRECT"] + node_names,
+            },
+            {
+                "name": "YouTube自动优选",
+                "type": "url-test",
+                "url": "https://www.youtube.com/generate_204",
+                "interval": 180,
+                "tolerance": 50,
+                "lazy": True,
+                "proxies": [gateway["name"] for gateway in GATEWAY_NODES] + node_names,
+            },
+            {
+                "name": "GitHub",
+                "type": "select",
+                "proxies": ["GitHub自动优选", GATEWAY_GROUP_NAME, "Proxies", "DIRECT"] + node_names,
+            },
+            {
+                "name": "GitHub自动优选",
+                "type": "url-test",
+                "url": "https://raw.githubusercontent.com",
+                "interval": 300,
+                "tolerance": 50,
+                "lazy": True,
+                "proxies": [gateway["name"] for gateway in GATEWAY_NODES] + node_names,
+            },
+            {
                 "name": "自动选择",
                 "type": "url-test",
                 "url": "https://www.gstatic.com/generate_204",
@@ -322,9 +350,20 @@ def main():
             "DOMAIN-SUFFIX,weixin.qq.com,DIRECT",
             "DOMAIN-SUFFIX,baidu.com,DIRECT",
 
-            # 软路由拉取订阅配置走付费网关（优先 .2，失联自动切 .201）
-            f"DOMAIN-KEYWORD,github,{GATEWAY_GROUP_NAME}",
-            f"DOMAIN-SUFFIX,githubusercontent.com,{GATEWAY_GROUP_NAME}",
+            # GitHub 流量专属策略组（自动测速选优 + 双付费网关兜底）
+            "DOMAIN-KEYWORD,github,GitHub",
+            "DOMAIN-SUFFIX,github.com,GitHub",
+            "DOMAIN-SUFFIX,github.io,GitHub",
+            "DOMAIN-SUFFIX,githubusercontent.com,GitHub",
+            "DOMAIN-SUFFIX,githubassets.com,GitHub",
+
+            # YouTube 流量专属策略组（专属 204 测速选优 + 双付费网关兜底）
+            "DOMAIN-KEYWORD,youtube,YouTube",
+            "DOMAIN-SUFFIX,youtube.com,YouTube",
+            "DOMAIN-SUFFIX,googlevideo.com,YouTube",
+            "DOMAIN-SUFFIX,ytimg.com,YouTube",
+            "DOMAIN-SUFFIX,youtu.be,YouTube",
+            "DOMAIN-SUFFIX,ggpht.com,YouTube",
 
             # AI 服务定向走付费网关
             f"DOMAIN-KEYWORD,openai,{GATEWAY_GROUP_NAME}",
@@ -335,8 +374,6 @@ def main():
             f"DOMAIN-SUFFIX,bard.google.com,{GATEWAY_GROUP_NAME}",
 
             # 海外流媒体 & 社交走免费节点代理池
-            "DOMAIN-SUFFIX,youtube.com,Proxies",
-            "DOMAIN-SUFFIX,googlevideo.com,Proxies",
             "DOMAIN-SUFFIX,google.com,Proxies",
             "DOMAIN-SUFFIX,twitter.com,Proxies",
             "DOMAIN-SUFFIX,x.com,Proxies",
