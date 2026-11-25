@@ -4,7 +4,7 @@ Clash / Mihomo 节点自动聚合、清洗、测速及配置生成脚本
 1. 定时拉取多个活跃公开源（支持多协议解析与镜像加速回退）；
 2. 高并发多线程 TCP 连通性测速，彻底剔除死节点；
 3. 过滤国内节点与垃圾广告节点，按延迟排序筛选最优质节点；
-4. 输出自带 .2/.201 双网关自动切换、策略组及分流规则的完整配置文件。
+4. 输出包含独立上游网关、策略组及分流规则的完整配置文件。
 """
 
 import base64
@@ -46,10 +46,9 @@ MAX_PROXIES = 80
 TCP_TIMEOUT = 1.8        # 单个节点测速超时时间（秒）
 MAX_WORKERS = 50         # 测速并发线程数
 
-# 生成配置中的更新网关：.2 优先，.201 备用，由 OpenClash/Mihomo 检测外网连通性。
+# 这里只能配置独立上游，不能把本机 OpenClash 监听端口当作节点。
 GATEWAY_GROUP_NAME = "订阅网关自动切换"
 GATEWAY_NODES = [
-    {"name": "2付费网关", "type": "http", "server": "192.168.0.2", "port": 7890},
     {"name": "201付费网关", "type": "http", "server": "192.168.0.201", "port": 7890},
 ]
 GATEWAY_TEST_URL = "https://www.gstatic.com/generate_204"
@@ -273,10 +272,9 @@ def main():
         print("[警告] 测速后无可用节点，保留原有配置不覆盖！")
         return
 
-    # 构建包含双网关自动切换、策略组和分流规则的完整配置文件
+    # 构建包含独立上游、策略组和分流规则的完整配置文件
     node_names = [p["name"] for p in final_proxies]
 
-    # 两个网关保留为独立 HTTP 节点，由 fallback 组按可用性自动切换
     full_proxies = [gateway.copy() for gateway in GATEWAY_NODES] + final_proxies
 
     full_config = {
@@ -350,14 +348,14 @@ def main():
             "DOMAIN-SUFFIX,weixin.qq.com,DIRECT",
             "DOMAIN-SUFFIX,baidu.com,DIRECT",
 
-            # GitHub 流量专属策略组（自动测速选优 + 双付费网关兜底）
+            # GitHub 流量专属策略组
             "DOMAIN-KEYWORD,github,GitHub",
             "DOMAIN-SUFFIX,github.com,GitHub",
             "DOMAIN-SUFFIX,github.io,GitHub",
             "DOMAIN-SUFFIX,githubusercontent.com,GitHub",
             "DOMAIN-SUFFIX,githubassets.com,GitHub",
 
-            # YouTube 流量专属策略组（专属 204 测速选优 + 双付费网关兜底）
+            # YouTube 流量专属策略组（专属 204 测速选优）
             "DOMAIN-KEYWORD,youtube,YouTube",
             "DOMAIN-SUFFIX,youtube.com,YouTube",
             "DOMAIN-SUFFIX,googlevideo.com,YouTube",

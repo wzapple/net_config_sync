@@ -1,8 +1,4 @@
 proxies:
-- name: 2付费网关
-  type: http
-  server: 192.168.0.2
-  port: 7890
 - name: 201付费网关
   type: http
   server: 192.168.0.201
@@ -720,7 +716,6 @@ proxy-groups:
   tolerance: 50
   lazy: true
   proxies:
-  - 2付费网关
   - 201付费网关
   - US-SS-3ms
   - VMESS-8ms
@@ -896,7 +891,6 @@ proxy-groups:
   tolerance: 50
   lazy: true
   proxies:
-  - 2付费网关
   - 201付费网关
   - US-SS-3ms
   - VMESS-8ms
@@ -1067,7 +1061,6 @@ proxy-groups:
 - name: 订阅网关自动切换
   type: fallback
   proxies:
-  - 2付费网关
   - 201付费网关
   url: https://www.gstatic.com/generate_204
   interval: 60
