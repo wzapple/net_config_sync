@@ -280,6 +280,23 @@ def main():
     full_config = {
         "proxies": full_proxies,
         "proxy-groups": [
+            *[
+                {
+                    "name": name,
+                    "type": "url-test",
+                    "url": url,
+                    "expected-status": status,
+                    "interval": 900,
+                    "timeout": 5000,
+                    "lazy": True,
+                    "include-all-proxies": True,
+                    "exclude-filter": "^201付费网关$",
+                }
+                for name, url, status in (
+                    ("Google", "https://www.google.com/generate_204", 204),
+                    ("Telegram", "https://web.telegram.org/", 200),
+                )
+            ],
             {
                 "name": "YouTube",
                 "type": "select",
@@ -338,6 +355,11 @@ def main():
         "rules": [
             # ✅ 第一优先级：局域网 & 国内直连（必须放最前，否则后续规则全部失效！）
             "GEOIP,LAN,DIRECT",
+            f"DOMAIN-SUFFIX,bard.google.com,{GATEWAY_GROUP_NAME}",
+            "DOMAIN-SUFFIX,google.com,Google",
+            "DOMAIN-SUFFIX,telegram.org,Telegram",
+            "DOMAIN-SUFFIX,t.me,Telegram",
+            "GEOIP,telegram,Telegram,no-resolve",
             "GEOIP,CN,DIRECT",
 
             # 常用国内大流量域名直连（GEOIP,CN 兜底前的快速匹配）
@@ -369,14 +391,10 @@ def main():
             f"DOMAIN-KEYWORD,anthropic,{GATEWAY_GROUP_NAME}",
             f"DOMAIN-SUFFIX,claude.ai,{GATEWAY_GROUP_NAME}",
             f"DOMAIN-KEYWORD,gemini,{GATEWAY_GROUP_NAME}",
-            f"DOMAIN-SUFFIX,bard.google.com,{GATEWAY_GROUP_NAME}",
 
             # 海外流媒体 & 社交走免费节点代理池
-            "DOMAIN-SUFFIX,google.com,Proxies",
             "DOMAIN-SUFFIX,twitter.com,Proxies",
             "DOMAIN-SUFFIX,x.com,Proxies",
-            "DOMAIN-SUFFIX,telegram.org,Proxies",
-            "DOMAIN-SUFFIX,t.me,Proxies",
             "DOMAIN-SUFFIX,netflix.com,Proxies",
             "DOMAIN-SUFFIX,instagram.com,Proxies",
             "DOMAIN-SUFFIX,facebook.com,Proxies",

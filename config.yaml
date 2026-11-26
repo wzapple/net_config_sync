@@ -560,6 +560,24 @@ proxies:
   cipher: chacha20-ietf-poly1305
   password: QCXDxuDlTTMD7jtgHUjIoj
 proxy-groups:
+- name: Google
+  type: url-test
+  url: https://www.google.com/generate_204
+  expected-status: 204
+  interval: 900
+  timeout: 5000
+  lazy: true
+  include-all-proxies: true
+  exclude-filter: ^201付费网关$
+- name: Telegram
+  type: url-test
+  url: https://web.telegram.org/
+  expected-status: 200
+  interval: 900
+  timeout: 5000
+  lazy: true
+  include-all-proxies: true
+  exclude-filter: ^201付费网关$
 - name: YouTube
   type: select
   proxies:
@@ -1177,6 +1195,11 @@ proxy-groups:
   - SS-153ms
 rules:
 - GEOIP,LAN,DIRECT
+- DOMAIN-SUFFIX,bard.google.com,订阅网关自动切换
+- DOMAIN-SUFFIX,google.com,Google
+- DOMAIN-SUFFIX,telegram.org,Telegram
+- DOMAIN-SUFFIX,t.me,Telegram
+- GEOIP,telegram,Telegram,no-resolve
 - GEOIP,CN,DIRECT
 - DOMAIN-SUFFIX,bilibili.com,DIRECT
 - DOMAIN-SUFFIX,byteoversea.com,DIRECT
@@ -1200,12 +1223,8 @@ rules:
 - DOMAIN-KEYWORD,anthropic,订阅网关自动切换
 - DOMAIN-SUFFIX,claude.ai,订阅网关自动切换
 - DOMAIN-KEYWORD,gemini,订阅网关自动切换
-- DOMAIN-SUFFIX,bard.google.com,订阅网关自动切换
-- DOMAIN-SUFFIX,google.com,Proxies
 - DOMAIN-SUFFIX,twitter.com,Proxies
 - DOMAIN-SUFFIX,x.com,Proxies
-- DOMAIN-SUFFIX,telegram.org,Proxies
-- DOMAIN-SUFFIX,t.me,Proxies
 - DOMAIN-SUFFIX,netflix.com,Proxies
 - DOMAIN-SUFFIX,instagram.com,Proxies
 - DOMAIN-SUFFIX,facebook.com,Proxies
