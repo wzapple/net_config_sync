@@ -46,16 +46,6 @@ MAX_PROXIES = 80
 TCP_TIMEOUT = 1.8        # 单个节点测速超时时间（秒）
 MAX_WORKERS = 50         # 测速并发线程数
 
-# 这里只能配置独立上游，不能把本机 OpenClash 监听端口当作节点。
-GATEWAY_GROUP_NAME = "订阅网关自动切换"
-GATEWAY_NODES = [
-    {"name": "201付费网关", "type": "http", "server": "192.168.0.201", "port": 7890},
-]
-GATEWAY_TEST_URL = "https://www.gstatic.com/generate_204"
-GATEWAY_TEST_INTERVAL = 60   # 检测间隔，单位：秒
-GATEWAY_TEST_TIMEOUT = 5000  # 每个网关检测超时，单位：毫秒
-
-
 def fetch_url_content(url):
     """拉取远程源，支持镜像前缀智能回退"""
     candidate_urls = [url]
@@ -272,13 +262,10 @@ def main():
         print("[警告] 测速后无可用节点，保留原有配置不覆盖！")
         return
 
-    # 构建包含独立上游、策略组和分流规则的完整配置文件
     node_names = [p["name"] for p in final_proxies]
 
-    full_proxies = [gateway.copy() for gateway in GATEWAY_NODES] + final_proxies
-
     full_config = {
-        "proxies": full_proxies,
+        "proxies": final_proxies,
         "proxy-groups": [
             *[
                 {
@@ -289,8 +276,7 @@ def main():
                     "interval": 900,
                     "timeout": 5000,
                     "lazy": True,
-                    "include-all-proxies": True,
-                    "exclude-filter": "^201付费网关$",
+                    "proxies": node_names,
                 }
                 for name, url, status in (
                     ("Google", "https://www.google.com/generate_204", 204),
@@ -300,7 +286,7 @@ def main():
             {
                 "name": "YouTube",
                 "type": "select",
-                "proxies": ["YouTube自动优选", GATEWAY_GROUP_NAME, "Proxies", "DIRECT"] + node_names,
+                "proxies": ["YouTube自动优选", "Proxies", "DIRECT"] + node_names,
             },
             {
                 "name": "YouTube自动优选",
@@ -309,12 +295,12 @@ def main():
                 "interval": 180,
                 "tolerance": 50,
                 "lazy": True,
-                "proxies": [gateway["name"] for gateway in GATEWAY_NODES] + node_names,
+                "proxies": node_names,
             },
             {
                 "name": "GitHub",
                 "type": "select",
-                "proxies": ["GitHub自动优选", GATEWAY_GROUP_NAME, "Proxies", "DIRECT"] + node_names,
+                "proxies": ["GitHub自动优选", "Proxies", "DIRECT"] + node_names,
             },
             {
                 "name": "GitHub自动优选",
@@ -323,7 +309,7 @@ def main():
                 "interval": 300,
                 "tolerance": 50,
                 "lazy": True,
-                "proxies": [gateway["name"] for gateway in GATEWAY_NODES] + node_names,
+                "proxies": node_names,
             },
             {
                 "name": "自动选择",
@@ -334,28 +320,19 @@ def main():
                 "proxies": node_names,
             },
             {
-                "name": GATEWAY_GROUP_NAME,
-                "type": "fallback",
-                "proxies": [gateway["name"] for gateway in GATEWAY_NODES],
-                "url": GATEWAY_TEST_URL,
-                "interval": GATEWAY_TEST_INTERVAL,
-                "timeout": GATEWAY_TEST_TIMEOUT,
-            },
-            {
                 "name": "节点选择",
                 "type": "select",
-                "proxies": ["自动选择", GATEWAY_GROUP_NAME, "DIRECT"] + node_names,
+                "proxies": ["自动选择", "DIRECT"] + node_names,
             },
             {
                 "name": "Proxies",
                 "type": "select",
-                "proxies": ["自动选择", GATEWAY_GROUP_NAME, "DIRECT"] + node_names,
+                "proxies": ["自动选择", "DIRECT"] + node_names,
             },
         ],
         "rules": [
             # ✅ 第一优先级：局域网 & 国内直连（必须放最前，否则后续规则全部失效！）
             "GEOIP,LAN,DIRECT",
-            f"DOMAIN-SUFFIX,bard.google.com,{GATEWAY_GROUP_NAME}",
             "DOMAIN-SUFFIX,google.com,Google",
             "DOMAIN-SUFFIX,telegram.org,Telegram",
             "DOMAIN-SUFFIX,t.me,Telegram",
@@ -385,13 +362,6 @@ def main():
             "DOMAIN-SUFFIX,youtu.be,YouTube",
             "DOMAIN-SUFFIX,ggpht.com,YouTube",
 
-            # AI 服务定向走付费网关
-            f"DOMAIN-KEYWORD,openai,{GATEWAY_GROUP_NAME}",
-            f"DOMAIN-SUFFIX,chatgpt.com,{GATEWAY_GROUP_NAME}",
-            f"DOMAIN-KEYWORD,anthropic,{GATEWAY_GROUP_NAME}",
-            f"DOMAIN-SUFFIX,claude.ai,{GATEWAY_GROUP_NAME}",
-            f"DOMAIN-KEYWORD,gemini,{GATEWAY_GROUP_NAME}",
-
             # 海外流媒体 & 社交走免费节点代理池
             "DOMAIN-SUFFIX,twitter.com,Proxies",
             "DOMAIN-SUFFIX,x.com,Proxies",
@@ -406,7 +376,7 @@ def main():
 
     with open("config.yaml", "w", encoding="utf-8") as f:
         yaml.dump(full_config, f, allow_unicode=True, sort_keys=False)
-    print(f"\n[完成] 成功写入完整配置至 config.yaml，包含 {len(full_proxies)} 个节点！")
+    print(f"\n[完成] 成功写入完整配置至 config.yaml，包含 {len(final_proxies)} 个节点！")
 
 
 if __name__ == "__main__":

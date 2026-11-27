@@ -1,8 +1,4 @@
 proxies:
-- name: 201付费网关
-  type: http
-  server: 192.168.0.201
-  port: 7890
 - name: US-TROJAN-2ms
   server: 66.163.112.13
   port: 443
@@ -534,8 +530,87 @@ proxy-groups:
   interval: 900
   timeout: 5000
   lazy: true
-  include-all-proxies: true
-  exclude-filter: ^201付费网关$
+  proxies:
+  - US-TROJAN-2ms
+  - US-SS-3ms
+  - US-TROJAN-8ms
+  - US-SS-8ms
+  - VMESS-8ms
+  - VMESS-8ms-1
+  - VMESS-9ms
+  - US-SS-10ms
+  - US-SS-10ms-1
+  - US-SS-10ms-2
+  - US-SS-16ms
+  - US-SS-17ms
+  - US-TROJAN-18ms
+  - VMESS-19ms
+  - US-SS-26ms
+  - US-SS-28ms
+  - US-SS-28ms-1
+  - US-TROJAN-29ms
+  - US-TROJAN-29ms-1
+  - US-VMESS-34ms
+  - US-SS-43ms
+  - US-SS-44ms
+  - US-SS-44ms-1
+  - US-SS-44ms-2
+  - US-SS-45ms
+  - US-SS-45ms-1
+  - US-SS-45ms-2
+  - US-SS-46ms
+  - US-SS-46ms-1
+  - US-SS-46ms-2
+  - US-SS-48ms
+  - US-SS-48ms-1
+  - SS-48ms
+  - US-SS-49ms
+  - US-SS-50ms
+  - US-SS-50ms-1
+  - US-SS-50ms-2
+  - US-SS-51ms
+  - US-SS-51ms-1
+  - US-SS-51ms-2
+  - US-TROJAN-52ms
+  - US-SS-55ms
+  - US-SS-55ms-1
+  - US-SS-55ms-2
+  - US-SS-55ms-3
+  - US-SS-56ms
+  - US-SS-56ms-1
+  - US-SS-57ms
+  - US-SS-60ms
+  - US-SS-60ms-1
+  - US-SS-60ms-2
+  - TROJAN-60ms
+  - TROJAN-60ms-1
+  - US-SS-70ms
+  - SS-72ms
+  - SS-72ms-1
+  - SS-72ms-2
+  - SS-72ms-3
+  - SS-72ms-4
+  - SS-74ms
+  - JP-SS-107ms
+  - JP-SS-108ms
+  - JP-VMESS-108ms
+  - JP-SS-108ms-1
+  - JP-SS-108ms-2
+  - SS-118ms
+  - SS-118ms-1
+  - SS-118ms-2
+  - SS-119ms
+  - SS-119ms-1
+  - US-SS-119ms
+  - SS-119ms-2
+  - SS-120ms
+  - SS-121ms
+  - SS-121ms-1
+  - SS-121ms-2
+  - SS-122ms
+  - SS-122ms-1
+  - SS-123ms
+  - SS-123ms-1
 - name: Telegram
   type: url-test
   url: https://web.telegram.org/
@@ -543,13 +618,91 @@ proxy-groups:
   interval: 900
   timeout: 5000
   lazy: true
-  include-all-proxies: true
-  exclude-filter: ^201付费网关$
+  proxies:
+  - US-TROJAN-2ms
+  - US-SS-3ms
+  - US-TROJAN-8ms
+  - US-SS-8ms
+  - VMESS-8ms
+  - VMESS-8ms-1
+  - VMESS-9ms
+  - US-SS-10ms
+  - US-SS-10ms-1
+  - US-SS-10ms-2
+  - US-SS-16ms
+  - US-SS-17ms
+  - US-TROJAN-18ms
+  - VMESS-19ms
+  - US-SS-26ms
+  - US-SS-28ms
+  - US-SS-28ms-1
+  - US-TROJAN-29ms
+  - US-TROJAN-29ms-1
+  - US-VMESS-34ms
+  - US-SS-43ms
+  - US-SS-44ms
+  - US-SS-44ms-1
+  - US-SS-44ms-2
+  - US-SS-45ms
+  - US-SS-45ms-1
+  - US-SS-45ms-2
+  - US-SS-46ms
+  - US-SS-46ms-1
+  - US-SS-46ms-2
+  - US-SS-48ms
+  - US-SS-48ms-1
+  - SS-48ms
+  - US-SS-49ms
+  - US-SS-50ms
+  - US-SS-50ms-1
+  - US-SS-50ms-2
+  - US-SS-51ms
+  - US-SS-51ms-1
+  - US-SS-51ms-2
+  - US-TROJAN-52ms
+  - US-SS-55ms
+  - US-SS-55ms-1
+  - US-SS-55ms-2
+  - US-SS-55ms-3
+  - US-SS-56ms
+  - US-SS-56ms-1
+  - US-SS-57ms
+  - US-SS-60ms
+  - US-SS-60ms-1
+  - US-SS-60ms-2
+  - TROJAN-60ms
+  - TROJAN-60ms-1
+  - US-SS-70ms
+  - SS-72ms
+  - SS-72ms-1
+  - SS-72ms-2
+  - SS-72ms-3
+  - SS-72ms-4
+  - SS-74ms
+  - JP-SS-107ms
+  - JP-SS-108ms
+  - JP-VMESS-108ms
+  - JP-SS-108ms-1
+  - JP-SS-108ms-2
+  - SS-118ms
+  - SS-118ms-1
+  - SS-118ms-2
+  - SS-119ms
+  - SS-119ms-1
+  - US-SS-119ms
+  - SS-119ms-2
+  - SS-120ms
+  - SS-121ms
+  - SS-121ms-1
+  - SS-121ms-2
+  - SS-122ms
+  - SS-122ms-1
+  - SS-123ms
+  - SS-123ms-1
 - name: YouTube
   type: select
   proxies:
   - YouTube自动优选
-  - 订阅网关自动切换
   - Proxies
   - DIRECT
   - US-TROJAN-2ms
@@ -639,7 +792,6 @@ proxy-groups:
   tolerance: 50
   lazy: true
   proxies:
-  - 201付费网关
   - US-TROJAN-2ms
   - US-SS-3ms
   - US-TROJAN-8ms
@@ -724,7 +876,6 @@ proxy-groups:
   type: select
   proxies:
   - GitHub自动优选
-  - 订阅网关自动切换
   - Proxies
   - DIRECT
   - US-TROJAN-2ms
@@ -814,7 +965,6 @@ proxy-groups:
   tolerance: 50
   lazy: true
   proxies:
-  - 201付费网关
   - US-TROJAN-2ms
   - US-SS-3ms
   - US-TROJAN-8ms
@@ -981,18 +1131,10 @@ proxy-groups:
   - SS-122ms-1
   - SS-123ms
   - SS-123ms-1
-- name: 订阅网关自动切换
-  type: fallback
-  proxies:
-  - 201付费网关
-  url: https://www.gstatic.com/generate_204
-  interval: 60
-  timeout: 5000
 - name: 节点选择
   type: select
   proxies:
   - 自动选择
-  - 订阅网关自动切换
   - DIRECT
   - US-TROJAN-2ms
   - US-SS-3ms
@@ -1078,7 +1220,6 @@ proxy-groups:
   type: select
   proxies:
   - 自动选择
-  - 订阅网关自动切换
   - DIRECT
   - US-TROJAN-2ms
   - US-SS-3ms
@@ -1162,7 +1303,6 @@ proxy-groups:
   - SS-123ms-1
 rules:
 - GEOIP,LAN,DIRECT
-- DOMAIN-SUFFIX,bard.google.com,订阅网关自动切换
 - DOMAIN-SUFFIX,google.com,Google
 - DOMAIN-SUFFIX,telegram.org,Telegram
 - DOMAIN-SUFFIX,t.me,Telegram
@@ -1185,11 +1325,6 @@ rules:
 - DOMAIN-SUFFIX,ytimg.com,YouTube
 - DOMAIN-SUFFIX,youtu.be,YouTube
 - DOMAIN-SUFFIX,ggpht.com,YouTube
-- DOMAIN-KEYWORD,openai,订阅网关自动切换
-- DOMAIN-SUFFIX,chatgpt.com,订阅网关自动切换
-- DOMAIN-KEYWORD,anthropic,订阅网关自动切换
-- DOMAIN-SUFFIX,claude.ai,订阅网关自动切换
-- DOMAIN-KEYWORD,gemini,订阅网关自动切换
 - DOMAIN-SUFFIX,twitter.com,Proxies
 - DOMAIN-SUFFIX,x.com,Proxies
 - DOMAIN-SUFFIX,netflix.com,Proxies
