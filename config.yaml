@@ -1,6 +1,27 @@
 proxies:
-- name: VMESS-90b0e98e6ae3
-  server: 172.64.154.102
+- name: VMESS-27176818c9e2
+  server: 172.64.80.1
+  port: 8443
+  type: vmess
+  uuid: 60441548-b68e-43b2-8191-e3b884be4b3c
+  alterId: 0
+  cipher: auto
+  tls: true
+  skip-cert-verify: false
+  servername: RELAY-172.64.80.1-0441 | 0.364MB
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: v2ray1.dozapp.xyz
+- name: SS-1eabf2467f51
+  server: 156.146.38.170
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: VMESS-dcea97b05e1c
+  server: 141.101.114.102
   port: 443
   type: vmess
   uuid: 5f64fa65-7b14-49c5-954d-aa15c6bfcacd
@@ -13,92 +34,6 @@ proxies:
     path: /
     headers:
       Host: clash6.ssr-free.xyz
-- name: VMESS-e90347feaa8a
-  server: 172.67.152.183
-  port: 443
-  type: vmess
-  uuid: 0cf6d970-3f1d-4aae-a989-92a8f76ae3db
-  alterId: 0
-  cipher: auto
-  tls: true
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: vmess.lbw666.dpdns.org
-- name: VMESS-b47085d4eaa5
-  server: 104.21.0.1
-  port: 8443
-  type: vmess
-  uuid: 60441548-b68e-43b2-8191-e3b884be4b3c
-  alterId: 0
-  cipher: auto
-  tls: true
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: v2ray1.dozapp.xyz
-- name: VMESS-2e6a8ab8c5cc
-  server: 172.64.153.150
-  port: 443
-  type: vmess
-  uuid: 5f64fa65-7b14-49c5-954d-aa15c6bfcacd
-  alterId: 0
-  cipher: auto
-  tls: true
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: clash6.ssr-free.xyz
-- name: VMESS-7ac0c10eb811
-  server: 104.17.77.77
-  port: 8443
-  type: vmess
-  uuid: 60441548-b68e-43b2-8191-e3b884be4b3c
-  alterId: 0
-  cipher: auto
-  tls: true
-  skip-cert-verify: false
-  servername: RELAY-104.17.77.77-0442 | 0.307MB
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: v2ray1.dozapp.xyz
-- name: VMESS-7d961a84c05e
-  server: 104.21.0.1
-  port: 80
-  type: vmess
-  uuid: 0cf6d970-3f1d-4aae-a989-92a8f76ae3db
-  alterId: 0
-  cipher: auto
-  tls: false
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: vmess.lbw666.dpdns.org
-- name: VMESS-abc3dd15692a
-  server: 104.17.77.77
-  port: 8443
-  type: vmess
-  uuid: 60441548-b68e-43b2-8191-e3b884be4b3c
-  alterId: 0
-  cipher: auto
-  tls: true
-  skip-cert-verify: false
-  servername: RELAY-104.17.77.77-0442 | 0.248MB
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: v2ray1.dozapp.xyz
 - name: VMESS-ed8f949e00b5
   type: vmess
   server: 104.21.82.183
@@ -112,20 +47,8 @@ proxies:
     path: /
     headers:
       Host: server26.beheshtbaneh.com
-- name: VMESS-cea70129f4a3
-  server: 154.92.9.101
-  port: 80
-  type: vmess
-  uuid: dd41b5cb-b72e-4a8c-c75a-3ecc928d6eb3
-  alterId: 0
-  cipher: auto
-  tls: false
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /
-- name: VMESS-0644e5fd5351
-  server: chatgpt.com
+- name: VMESS-ae3d09354d3f
+  server: 104.18.0.1
   port: 8443
   type: vmess
   uuid: 60441548-b68e-43b2-8191-e3b884be4b3c
@@ -138,12 +61,6 @@ proxies:
     path: /
     headers:
       Host: v2ray1.dozapp.xyz
-- name: SS-698e212810cb
-  server: 38.128.66.32
-  port: 19999
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
 - name: VMESS-965a0033ce62
   server: 141.101.114.100
   port: 443
@@ -172,22 +89,8 @@ proxies:
     path: /
     headers:
       Host: lg1.cfcdn3.xyz
-- name: VMESS-6b1a9673a6fe
-  server: 141.101.114.20
-  port: 443
-  type: vmess
-  uuid: 176b598f-445b-41ac-9d2a-430c5c4df26a
-  alterId: 0
-  cipher: auto
-  tls: true
-  skip-cert-verify: false
-  network: ws
-  ws-opts:
-    path: /
-    headers:
-      Host: clash1.trump2023.net
-- name: VMESS-dcea97b05e1c
-  server: 141.101.114.102
+- name: VMESS-90b0e98e6ae3
+  server: 172.64.154.102
   port: 443
   type: vmess
   uuid: 5f64fa65-7b14-49c5-954d-aa15c6bfcacd
@@ -200,12 +103,6 @@ proxies:
     path: /
     headers:
       Host: clash6.ssr-free.xyz
-- name: SS-1eabf2467f51
-  server: 156.146.38.170
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
 - name: SS-d0f7636f5293
   server: 156.146.38.169
   port: 443
@@ -218,33 +115,75 @@ proxies:
   type: ss
   cipher: aes-128-gcm
   password: shadowsocks
-- name: SS-75b7971c282e
-  server: 216.106.178.169
+- name: VMESS-b021ee17e860
+  server: 172.64.80.1
+  port: 8443
+  type: vmess
+  uuid: 60441548-b68e-43b2-8191-e3b884be4b3c
+  alterId: 0
+  cipher: auto
+  tls: true
+  skip-cert-verify: false
+  servername: RELAY-172.64.80.1-0441 | 0.173MB
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: v2ray1.dozapp.xyz
+- name: VMESS-2e6a8ab8c5cc
+  server: 172.64.153.150
+  port: 443
+  type: vmess
+  uuid: 5f64fa65-7b14-49c5-954d-aa15c6bfcacd
+  alterId: 0
+  cipher: auto
+  tls: true
+  skip-cert-verify: false
+  network: ws
+  ws-opts:
+    path: /
+    headers:
+      Host: clash6.ssr-free.xyz
+- name: TROJAN-5337384e162c
+  server: 66.163.114.166
+  port: 443
+  type: trojan
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: blog.findconnectwithemployersandbuildprofessionalnetwork.com
+  skip-cert-verify: false
+- name: SS-cff500f5cf29
+  server: 173.244.56.9
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: SS-3d5509d0a859
+  server: 149.40.57.138
   port: 19999
   type: ss
   cipher: aes-256-gcm
   password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: TROJAN-712e129522c2
-  server: 66.163.114.106
+- name: TROJAN-c9e90f67bd35
+  server: 66.163.112.13
   port: 443
   type: trojan
   password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  sni: www.findconnectwithemployersandbuildprofessionalnetwork.com
+  sni: blog.unlockyourfuturefindyourperfectcareer.com
   skip-cert-verify: false
-- name: SS-8f95b3a219d3
-  server: 137.184.174.93
-  port: 8080
-  type: ss
-  cipher: rc4-md5
-  password: 14fFPrbezE3HDZzsMOr6
-- name: SS-6ee7dddd6261
-  server: 15.204.247.244
-  port: 443
+- name: SS-90e7ced46e96
+  server: 95.215.201.18
+  port: 19999
   type: ss
   cipher: aes-256-gcm
-  password: pKEW8JPByTVTLtM
-- name: SS-e4891f040b2d
-  server: 38.22.17.219
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: SS-47e06b976788
+  server: 149.40.57.133
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: SS-f56a46cdb266
+  server: 167.88.63.99
   port: 19999
   type: ss
   cipher: aes-256-gcm
@@ -255,24 +194,171 @@ proxies:
   type: ss
   cipher: aes-256-gcm
   password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: SS-c5975a9cae1d
-  server: 37.19.198.244
+- name: SS-fc28683d087b
+  server: 172.111.36.123
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: SS-e4891f040b2d
+  server: 38.22.17.219
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: SS-436624e2ee19
+  server: 173.244.56.6
   port: 443
   type: ss
   cipher: aes-128-gcm
   password: shadowsocks
+- name: SS-698e212810cb
+  server: 38.128.66.32
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: SS-d94bf29dae94
+  server: 149.40.57.134
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: SS-f0aff5d44fae
+  server: 162.251.62.31
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: SS-75b7971c282e
+  server: 216.106.178.169
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: SS-f9a0f6124e32
+  server: 15.204.246.132
+  port: 7307
+  type: ss
+  cipher: aes-256-gcm
+  password: FoOiGlkAA9yPEGP
+- name: SS-e495d662abac
+  server: 38.121.43.231
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: SS-c0862e2e0724
+  server: 38.121.43.18
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: SS-894c6f0783be
+  server: 172.111.38.72
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: SS-316955220d8b
+  server: 45.86.51.18
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
 - name: SS-df5676b0d3fa
   server: 37.19.198.160
   port: 443
   type: ss
   cipher: aes-128-gcm
   password: shadowsocks
+- name: SS-431081f33797
+  server: 38.91.107.188
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: SS-9d1044c36d88
+  server: 23.150.152.38
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: SS-6baf350e513f
+  server: 193.151.160.18
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
 - name: SS-73481e04c45b
   server: 37.19.198.243
   port: 443
   type: ss
   cipher: aes-128-gcm
   password: shadowsocks
+- name: SS-3a1728bc53e9
+  server: 193.151.160.9
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: SS-513f4bdcb852
+  server: 15.204.246.108
+  port: 8881
+  type: ss
+  cipher: aes-256-gcm
+  password: kDWvXYZoTBcGkC4
+- name: SS-5fe2dc722932
+  server: 37.19.198.236
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: TROJAN-1b536e579618
+  server: 66.163.122.25
+  port: 443
+  type: trojan
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: cdn.searchnationwidecareerchangehelperandguidancetoday.com
+  skip-cert-verify: false
+- name: SS-8f375ac5803f
+  server: 15.204.233.41
+  port: 8882
+  type: ss
+  cipher: aes-256-gcm
+  password: kDWvXYZoTBcGkC4
+- name: SS-2b6511b7421a
+  server: 185.230.230.18
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: TROJAN-3816893049cb
+  server: 167.88.61.52
+  port: 443
+  type: trojan
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: courses.browseseniorrolesandenhanceyourcareertoday.com
+  skip-cert-verify: false
+- name: SS-84f96d101af2
+  server: 38.91.100.39
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+- name: TROJAN-a768304cd760
+  server: 216.152.147.79
+  port: 443
+  type: trojan
+  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
+  sni: blog.connectingpeoplewithgreatjobs.com
+  skip-cert-verify: false
+- name: SS-6edccc37290c
+  server: 169.197.142.68
+  port: 19999
+  type: ss
+  cipher: aes-256-gcm
+  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
 - name: VMESS-064b072dff01
   type: vmess
   server: gov.uk
@@ -287,97 +373,48 @@ proxies:
     path: /77848824
     headers:
       Host: zheshiscp.com
-- name: SS-894c6f0783be
-  server: 172.111.38.72
-  port: 19999
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: SS-2b6511b7421a
-  server: 185.230.230.18
-  port: 19999
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: SS-5fe2dc722932
-  server: 37.19.198.236
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-- name: SS-f56a46cdb266
-  server: 167.88.63.99
-  port: 19999
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: SS-e495d662abac
-  server: 38.121.43.231
-  port: 19999
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: SS-fc28683d087b
-  server: 172.111.36.123
-  port: 19999
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: TROJAN-a768304cd760
-  server: 216.152.147.79
-  port: 443
-  type: trojan
-  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  sni: blog.connectingpeoplewithgreatjobs.com
-  skip-cert-verify: false
-- name: SS-569af469695d
-  server: 51.222.141.125
+- name: SS-9445f35dbbed
+  server: 51.222.12.127
   port: 445
   type: ss
   cipher: aes-256-gcm
   password: zDNVedRFPQexG9v
-- name: SS-9d547e65eab9
-  server: 51.222.136.236
-  port: 8882
+- name: SS-c5975a9cae1d
+  server: 37.19.198.244
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
+- name: SS-a78fe6aeb728
+  server: 51.222.155.113
+  port: 5601
   type: ss
   cipher: aes-256-gcm
-  password: kDWvXYZoTBcGkC4
+  password: Y6R9pAtvxxzmGC
 - name: SS-05726b5486f2
   server: 38.22.17.129
   port: 19999
   type: ss
   cipher: aes-256-gcm
   password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: SS-a16848884c07
-  server: 51.222.200.165
-  port: 5000
+- name: SS-7a3812c7c5df
+  server: 51.79.85.185
+  port: 8118
   type: ss
   cipher: aes-256-gcm
-  password: Y6R9pAtvxxzmGC
-- name: SS-8f375ac5803f
-  server: 15.204.233.41
+  password: cdBIDV42DCwnfIN
+- name: SS-47517da612ee
+  server: 51.79.49.116
   port: 8882
   type: ss
   cipher: aes-256-gcm
   password: kDWvXYZoTBcGkC4
-- name: SS-f9a0f6124e32
-  server: 15.204.246.132
-  port: 7307
+- name: SS-793635766ef1
+  server: 198.98.53.130
+  port: 443
   type: ss
-  cipher: aes-256-gcm
-  password: FoOiGlkAA9yPEGP
-- name: SS-c0862e2e0724
-  server: 38.121.43.18
-  port: 19999
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: SS-513f4bdcb852
-  server: 15.204.246.108
-  port: 8881
-  type: ss
-  cipher: aes-256-gcm
-  password: kDWvXYZoTBcGkC4
+  cipher: chacha20-ietf-poly1305
+  password: eDfN7SODQceIOmIAbtJJtK
 - name: TROJAN-cb5f52e303d3
   server: 216.152.147.93
   port: 443
@@ -385,137 +422,32 @@ proxies:
   password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
   sni: connectingpeoplewithgreatjobs.com
   skip-cert-verify: false
-- name: TROJAN-1b536e579618
-  server: 66.163.122.25
-  port: 443
-  type: trojan
-  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  sni: cdn.searchnationwidecareerchangehelperandguidancetoday.com
-  skip-cert-verify: false
-- name: SS-47517da612ee
-  server: 51.79.49.116
-  port: 8882
+- name: SS-569af469695d
+  server: 51.222.141.125
+  port: 445
   type: ss
   cipher: aes-256-gcm
-  password: kDWvXYZoTBcGkC4
-- name: SS-d94bf29dae94
-  server: 149.40.57.134
-  port: 19999
+  password: zDNVedRFPQexG9v
+- name: SS-a16848884c07
+  server: 51.222.200.165
+  port: 5000
   type: ss
   cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: SS-47e06b976788
-  server: 149.40.57.133
-  port: 19999
+  password: Y6R9pAtvxxzmGC
+- name: SS-8f95b3a219d3
+  server: 137.184.174.93
+  port: 8080
   type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: SS-e252d42bbc16
-  server: 137.184.89.151
-  port: 19999
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: SS-436624e2ee19
-  server: 173.244.56.6
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-- name: SS-316955220d8b
-  server: 45.86.51.18
-  port: 19999
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: SS-84f96d101af2
-  server: 38.91.100.39
-  port: 19999
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: SS-3d5509d0a859
-  server: 149.40.57.138
-  port: 19999
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: TROJAN-c9e90f67bd35
-  server: 66.163.112.13
-  port: 443
-  type: trojan
-  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  sni: blog.unlockyourfuturefindyourperfectcareer.com
-  skip-cert-verify: false
-- name: SS-f0aff5d44fae
-  server: 162.251.62.31
-  port: 19999
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+  cipher: rc4-md5
+  password: 14fFPrbezE3HDZzsMOr6
 - name: SS-91efd066a8b2
   server: 193.151.163.18
   port: 19999
   type: ss
   cipher: aes-256-gcm
   password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: SS-793635766ef1
-  server: 198.98.53.130
-  port: 443
-  type: ss
-  cipher: chacha20-ietf-poly1305
-  password: eDfN7SODQceIOmIAbtJJtK
-- name: SS-9445f35dbbed
-  server: 51.222.12.127
-  port: 445
-  type: ss
-  cipher: aes-256-gcm
-  password: zDNVedRFPQexG9v
-- name: SS-431081f33797
-  server: 38.91.107.188
-  port: 19999
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: SS-6baf350e513f
-  server: 193.151.160.18
-  port: 19999
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: SS-3a1728bc53e9
-  server: 193.151.160.9
-  port: 19999
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: SS-9d1044c36d88
-  server: 23.150.152.38
-  port: 19999
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: TROJAN-3816893049cb
-  server: 167.88.61.52
-  port: 443
-  type: trojan
-  password: 0ab6c98dae3b48e8b9c4a776b6c9c19a
-  sni: courses.browseseniorrolesandenhanceyourcareertoday.com
-  skip-cert-verify: false
-- name: SS-cff500f5cf29
-  server: 173.244.56.9
-  port: 443
-  type: ss
-  cipher: aes-128-gcm
-  password: shadowsocks
-- name: SS-6edccc37290c
-  server: 169.197.142.68
-  port: 19999
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: SS-90e7ced46e96
-  server: 95.215.201.18
+- name: SS-e252d42bbc16
+  server: 137.184.89.151
   port: 19999
   type: ss
   cipher: aes-256-gcm
@@ -540,79 +472,115 @@ proxies:
     path: /
     headers:
       Host: uk2.v2rayserv.com
-- name: SS-2e5648c54f12
-  server: 15.204.247.206
-  port: 4444
+- name: SS-9d547e65eab9
+  server: 51.222.136.236
+  port: 8882
+  type: ss
+  cipher: aes-256-gcm
+  password: kDWvXYZoTBcGkC4
+- name: VMESS-0e7c531d2696
+  type: vmess
+  server: www.darkroom.lol
+  port: 8080
+  uuid: 22826b44-5c1a-4b4b-dbaa-83a2e8bd95f0
+  alterId: 0
+  cipher: auto
+  network: ws
+  tls: false
+  ws-opts:
+    path: /
+    headers:
+      Host: www.darkroom.lol
+- name: SS-6ee7dddd6261
+  server: 15.204.247.244
+  port: 443
   type: ss
   cipher: aes-256-gcm
   password: pKEW8JPByTVTLtM
-- name: TROJAN-dcb0bf30aa8e
-  server: resources.findlocaljobnetworkandbuildcommunityconnections.com
-  port: 443
-  type: trojan
-  password: f0eb8c92ce8946aaba856569cff1a16b
-  sni: resources.findlocaljobnetworkandbuildcommunityconnections.com
-  skip-cert-verify: false
-- name: SS-0a84d14b5d3c
+- name: SS-494ebacb9dd0
   server: 5.188.181.201
-  port: 9030
+  port: 9042
   type: ss
   cipher: aes-256-cfb
-  password: GeregetR8cvQHzYr
-- name: SS-69de6332fcdc
-  server: 185.176.206.9
-  port: 19999
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
-- name: SS-1981ac79af4f
-  server: 5.188.181.201
-  port: 9037
-  type: ss
-  cipher: aes-256-cfb
-  password: TN2YqghxeFDKZfLU
-- name: SS-32889d70171f
-  server: 5.188.181.201
-  port: 9031
-  type: ss
-  cipher: aes-256-cfb
-  password: BwcAUZk8hUFAkDGN
-- name: SS-90a568ec00c7
-  server: 5.188.181.201
-  port: 9029
-  type: ss
-  cipher: aes-256-cfb
-  password: dU3DSNS8wYPXzEKw
-- name: SS-e5df8a61beb8
-  server: 5.188.181.201
-  port: 9011
-  type: ss
-  cipher: aes-256-cfb
-  password: M3t2ZEQcMGRWBjRa
-- name: SS-85003718d17b
-  server: 5.188.181.201
-  port: 9041
-  type: ss
-  cipher: aes-256-cfb
-  password: U6qnYRhfyDmn8sgn
-- name: SS-14d88f46ae71
-  server: 5.188.181.201
-  port: 9025
-  type: ss
-  cipher: aes-256-cfb
-  password: XPtzA9sCug3SPR4c
-- name: SS-73337896c036
-  server: 198.244.201.129
-  port: 19999
-  type: ss
-  cipher: aes-256-gcm
-  password: ZRpgaBeGxtENIXgvhpkZBKz9GnWRS2dYcx9O+a2iwN4=
+  password: S7KwUu7yBy58S3Ga
 - name: SS-f52b09ee3a96
   server: 5.188.181.201
   port: 9005
   type: ss
   cipher: aes-256-cfb
   password: ZET59LF6DvCC8KVt
+- name: SS-1d993c00fa4f
+  server: 5.188.181.201
+  port: 9040
+  type: ss
+  cipher: aes-256-cfb
+  password: p9z5BVADH2YFs3MN
+- name: SS-e5df8a61beb8
+  server: 5.188.181.201
+  port: 9011
+  type: ss
+  cipher: aes-256-cfb
+  password: M3t2ZEQcMGRWBjRa
+- name: SS-512f050aa579
+  server: 5.188.181.201
+  port: 9019
+  type: ss
+  cipher: aes-256-cfb
+  password: GA9KzeEgvfxNrgmM
+- name: SS-14d88f46ae71
+  server: 5.188.181.201
+  port: 9025
+  type: ss
+  cipher: aes-256-cfb
+  password: XPtzA9sCug3SPR4c
+- name: SS-0c454e9ec16d
+  server: 5.188.181.201
+  port: 9054
+  type: ss
+  cipher: aes-256-cfb
+  password: VcFuyXvND2yQWSFY
+- name: SS-0a84d14b5d3c
+  server: 5.188.181.201
+  port: 9030
+  type: ss
+  cipher: aes-256-cfb
+  password: GeregetR8cvQHzYr
+- name: SS-7bea110ac09f
+  server: 5.188.181.201
+  port: 9001
+  type: ss
+  cipher: aes-256-cfb
+  password: UkXRsXvR6buDMG2Y
+- name: SS-e69beb28aba2
+  server: 5.188.181.201
+  port: 9014
+  type: ss
+  cipher: aes-256-cfb
+  password: KnJGad3FqTvjqbaX
+- name: SS-32889d70171f
+  server: 5.188.181.201
+  port: 9031
+  type: ss
+  cipher: aes-256-cfb
+  password: BwcAUZk8hUFAkDGN
+- name: SS-85003718d17b
+  server: 5.188.181.201
+  port: 9041
+  type: ss
+  cipher: aes-256-cfb
+  password: U6qnYRhfyDmn8sgn
+- name: SS-90a568ec00c7
+  server: 5.188.181.201
+  port: 9029
+  type: ss
+  cipher: aes-256-cfb
+  password: dU3DSNS8wYPXzEKw
+- name: SS-c256a8bfe4ee
+  server: 158.173.24.73
+  port: 443
+  type: ss
+  cipher: aes-128-gcm
+  password: shadowsocks
 proxy-groups:
 - name: Google
   type: url-test
@@ -624,86 +592,86 @@ proxy-groups:
   tolerance: 50
   lazy: false
   proxies: &id001
-  - VMESS-90b0e98e6ae3
-  - VMESS-e90347feaa8a
-  - VMESS-b47085d4eaa5
-  - VMESS-2e6a8ab8c5cc
-  - VMESS-7ac0c10eb811
-  - VMESS-7d961a84c05e
-  - VMESS-abc3dd15692a
+  - VMESS-27176818c9e2
+  - SS-1eabf2467f51
+  - VMESS-dcea97b05e1c
   - VMESS-ed8f949e00b5
-  - VMESS-cea70129f4a3
-  - VMESS-0644e5fd5351
-  - SS-698e212810cb
+  - VMESS-ae3d09354d3f
   - VMESS-965a0033ce62
   - VMESS-199c2a0ba9e0
-  - VMESS-6b1a9673a6fe
-  - VMESS-dcea97b05e1c
-  - SS-1eabf2467f51
+  - VMESS-90b0e98e6ae3
   - SS-d0f7636f5293
   - SS-2fe129117ebc
-  - SS-75b7971c282e
-  - TROJAN-712e129522c2
-  - SS-8f95b3a219d3
-  - SS-6ee7dddd6261
-  - SS-e4891f040b2d
-  - SS-c872ac151609
-  - SS-c5975a9cae1d
-  - SS-df5676b0d3fa
-  - SS-73481e04c45b
-  - VMESS-064b072dff01
-  - SS-894c6f0783be
-  - SS-2b6511b7421a
-  - SS-5fe2dc722932
-  - SS-f56a46cdb266
-  - SS-e495d662abac
-  - SS-fc28683d087b
-  - TROJAN-a768304cd760
-  - SS-569af469695d
-  - SS-9d547e65eab9
-  - SS-05726b5486f2
-  - SS-a16848884c07
-  - SS-8f375ac5803f
-  - SS-f9a0f6124e32
-  - SS-c0862e2e0724
-  - SS-513f4bdcb852
-  - TROJAN-cb5f52e303d3
-  - TROJAN-1b536e579618
-  - SS-47517da612ee
-  - SS-d94bf29dae94
-  - SS-47e06b976788
-  - SS-e252d42bbc16
-  - SS-436624e2ee19
-  - SS-316955220d8b
-  - SS-84f96d101af2
+  - VMESS-b021ee17e860
+  - VMESS-2e6a8ab8c5cc
+  - TROJAN-5337384e162c
+  - SS-cff500f5cf29
   - SS-3d5509d0a859
   - TROJAN-c9e90f67bd35
-  - SS-f0aff5d44fae
-  - SS-91efd066a8b2
-  - SS-793635766ef1
-  - SS-9445f35dbbed
-  - SS-431081f33797
-  - SS-6baf350e513f
-  - SS-3a1728bc53e9
-  - SS-9d1044c36d88
-  - TROJAN-3816893049cb
-  - SS-cff500f5cf29
-  - SS-6edccc37290c
   - SS-90e7ced46e96
+  - SS-47e06b976788
+  - SS-f56a46cdb266
+  - SS-c872ac151609
+  - SS-fc28683d087b
+  - SS-e4891f040b2d
+  - SS-436624e2ee19
+  - SS-698e212810cb
+  - SS-d94bf29dae94
+  - SS-f0aff5d44fae
+  - SS-75b7971c282e
+  - SS-f9a0f6124e32
+  - SS-e495d662abac
+  - SS-c0862e2e0724
+  - SS-894c6f0783be
+  - SS-316955220d8b
+  - SS-df5676b0d3fa
+  - SS-431081f33797
+  - SS-9d1044c36d88
+  - SS-6baf350e513f
+  - SS-73481e04c45b
+  - SS-3a1728bc53e9
+  - SS-513f4bdcb852
+  - SS-5fe2dc722932
+  - TROJAN-1b536e579618
+  - SS-8f375ac5803f
+  - SS-2b6511b7421a
+  - TROJAN-3816893049cb
+  - SS-84f96d101af2
+  - TROJAN-a768304cd760
+  - SS-6edccc37290c
+  - VMESS-064b072dff01
+  - SS-9445f35dbbed
+  - SS-c5975a9cae1d
+  - SS-a78fe6aeb728
+  - SS-05726b5486f2
+  - SS-7a3812c7c5df
+  - SS-47517da612ee
+  - SS-793635766ef1
+  - TROJAN-cb5f52e303d3
+  - SS-569af469695d
+  - SS-a16848884c07
+  - SS-8f95b3a219d3
+  - SS-91efd066a8b2
+  - SS-e252d42bbc16
   - SS-431cc5eb68e5
   - VMESS-bfff79016f7f
-  - SS-2e5648c54f12
-  - TROJAN-dcb0bf30aa8e
-  - SS-0a84d14b5d3c
-  - SS-69de6332fcdc
-  - SS-1981ac79af4f
-  - SS-32889d70171f
-  - SS-90a568ec00c7
-  - SS-e5df8a61beb8
-  - SS-85003718d17b
-  - SS-14d88f46ae71
-  - SS-73337896c036
+  - SS-9d547e65eab9
+  - VMESS-0e7c531d2696
+  - SS-6ee7dddd6261
+  - SS-494ebacb9dd0
   - SS-f52b09ee3a96
+  - SS-1d993c00fa4f
+  - SS-e5df8a61beb8
+  - SS-512f050aa579
+  - SS-14d88f46ae71
+  - SS-0c454e9ec16d
+  - SS-0a84d14b5d3c
+  - SS-7bea110ac09f
+  - SS-e69beb28aba2
+  - SS-32889d70171f
+  - SS-85003718d17b
+  - SS-90a568ec00c7
+  - SS-c256a8bfe4ee
 - name: Telegram
   type: url-test
   url: https://web.telegram.org/
@@ -748,338 +716,338 @@ proxy-groups:
   type: select
   proxies:
   - YouTube自动优选
-  - VMESS-90b0e98e6ae3
-  - VMESS-e90347feaa8a
-  - VMESS-b47085d4eaa5
-  - VMESS-2e6a8ab8c5cc
-  - VMESS-7ac0c10eb811
-  - VMESS-7d961a84c05e
-  - VMESS-abc3dd15692a
+  - VMESS-27176818c9e2
+  - SS-1eabf2467f51
+  - VMESS-dcea97b05e1c
   - VMESS-ed8f949e00b5
-  - VMESS-cea70129f4a3
-  - VMESS-0644e5fd5351
-  - SS-698e212810cb
+  - VMESS-ae3d09354d3f
   - VMESS-965a0033ce62
   - VMESS-199c2a0ba9e0
-  - VMESS-6b1a9673a6fe
-  - VMESS-dcea97b05e1c
-  - SS-1eabf2467f51
+  - VMESS-90b0e98e6ae3
   - SS-d0f7636f5293
   - SS-2fe129117ebc
-  - SS-75b7971c282e
-  - TROJAN-712e129522c2
-  - SS-8f95b3a219d3
-  - SS-6ee7dddd6261
-  - SS-e4891f040b2d
-  - SS-c872ac151609
-  - SS-c5975a9cae1d
-  - SS-df5676b0d3fa
-  - SS-73481e04c45b
-  - VMESS-064b072dff01
-  - SS-894c6f0783be
-  - SS-2b6511b7421a
-  - SS-5fe2dc722932
-  - SS-f56a46cdb266
-  - SS-e495d662abac
-  - SS-fc28683d087b
-  - TROJAN-a768304cd760
-  - SS-569af469695d
-  - SS-9d547e65eab9
-  - SS-05726b5486f2
-  - SS-a16848884c07
-  - SS-8f375ac5803f
-  - SS-f9a0f6124e32
-  - SS-c0862e2e0724
-  - SS-513f4bdcb852
-  - TROJAN-cb5f52e303d3
-  - TROJAN-1b536e579618
-  - SS-47517da612ee
-  - SS-d94bf29dae94
-  - SS-47e06b976788
-  - SS-e252d42bbc16
-  - SS-436624e2ee19
-  - SS-316955220d8b
-  - SS-84f96d101af2
+  - VMESS-b021ee17e860
+  - VMESS-2e6a8ab8c5cc
+  - TROJAN-5337384e162c
+  - SS-cff500f5cf29
   - SS-3d5509d0a859
   - TROJAN-c9e90f67bd35
-  - SS-f0aff5d44fae
-  - SS-91efd066a8b2
-  - SS-793635766ef1
-  - SS-9445f35dbbed
-  - SS-431081f33797
-  - SS-6baf350e513f
-  - SS-3a1728bc53e9
-  - SS-9d1044c36d88
-  - TROJAN-3816893049cb
-  - SS-cff500f5cf29
-  - SS-6edccc37290c
   - SS-90e7ced46e96
+  - SS-47e06b976788
+  - SS-f56a46cdb266
+  - SS-c872ac151609
+  - SS-fc28683d087b
+  - SS-e4891f040b2d
+  - SS-436624e2ee19
+  - SS-698e212810cb
+  - SS-d94bf29dae94
+  - SS-f0aff5d44fae
+  - SS-75b7971c282e
+  - SS-f9a0f6124e32
+  - SS-e495d662abac
+  - SS-c0862e2e0724
+  - SS-894c6f0783be
+  - SS-316955220d8b
+  - SS-df5676b0d3fa
+  - SS-431081f33797
+  - SS-9d1044c36d88
+  - SS-6baf350e513f
+  - SS-73481e04c45b
+  - SS-3a1728bc53e9
+  - SS-513f4bdcb852
+  - SS-5fe2dc722932
+  - TROJAN-1b536e579618
+  - SS-8f375ac5803f
+  - SS-2b6511b7421a
+  - TROJAN-3816893049cb
+  - SS-84f96d101af2
+  - TROJAN-a768304cd760
+  - SS-6edccc37290c
+  - VMESS-064b072dff01
+  - SS-9445f35dbbed
+  - SS-c5975a9cae1d
+  - SS-a78fe6aeb728
+  - SS-05726b5486f2
+  - SS-7a3812c7c5df
+  - SS-47517da612ee
+  - SS-793635766ef1
+  - TROJAN-cb5f52e303d3
+  - SS-569af469695d
+  - SS-a16848884c07
+  - SS-8f95b3a219d3
+  - SS-91efd066a8b2
+  - SS-e252d42bbc16
   - SS-431cc5eb68e5
   - VMESS-bfff79016f7f
-  - SS-2e5648c54f12
-  - TROJAN-dcb0bf30aa8e
-  - SS-0a84d14b5d3c
-  - SS-69de6332fcdc
-  - SS-1981ac79af4f
-  - SS-32889d70171f
-  - SS-90a568ec00c7
-  - SS-e5df8a61beb8
-  - SS-85003718d17b
-  - SS-14d88f46ae71
-  - SS-73337896c036
+  - SS-9d547e65eab9
+  - VMESS-0e7c531d2696
+  - SS-6ee7dddd6261
+  - SS-494ebacb9dd0
   - SS-f52b09ee3a96
+  - SS-1d993c00fa4f
+  - SS-e5df8a61beb8
+  - SS-512f050aa579
+  - SS-14d88f46ae71
+  - SS-0c454e9ec16d
+  - SS-0a84d14b5d3c
+  - SS-7bea110ac09f
+  - SS-e69beb28aba2
+  - SS-32889d70171f
+  - SS-85003718d17b
+  - SS-90a568ec00c7
+  - SS-c256a8bfe4ee
 - name: GitHub
   type: select
   proxies:
   - GitHub自动优选
-  - VMESS-90b0e98e6ae3
-  - VMESS-e90347feaa8a
-  - VMESS-b47085d4eaa5
-  - VMESS-2e6a8ab8c5cc
-  - VMESS-7ac0c10eb811
-  - VMESS-7d961a84c05e
-  - VMESS-abc3dd15692a
+  - VMESS-27176818c9e2
+  - SS-1eabf2467f51
+  - VMESS-dcea97b05e1c
   - VMESS-ed8f949e00b5
-  - VMESS-cea70129f4a3
-  - VMESS-0644e5fd5351
-  - SS-698e212810cb
+  - VMESS-ae3d09354d3f
   - VMESS-965a0033ce62
   - VMESS-199c2a0ba9e0
-  - VMESS-6b1a9673a6fe
-  - VMESS-dcea97b05e1c
-  - SS-1eabf2467f51
+  - VMESS-90b0e98e6ae3
   - SS-d0f7636f5293
   - SS-2fe129117ebc
-  - SS-75b7971c282e
-  - TROJAN-712e129522c2
-  - SS-8f95b3a219d3
-  - SS-6ee7dddd6261
-  - SS-e4891f040b2d
-  - SS-c872ac151609
-  - SS-c5975a9cae1d
-  - SS-df5676b0d3fa
-  - SS-73481e04c45b
-  - VMESS-064b072dff01
-  - SS-894c6f0783be
-  - SS-2b6511b7421a
-  - SS-5fe2dc722932
-  - SS-f56a46cdb266
-  - SS-e495d662abac
-  - SS-fc28683d087b
-  - TROJAN-a768304cd760
-  - SS-569af469695d
-  - SS-9d547e65eab9
-  - SS-05726b5486f2
-  - SS-a16848884c07
-  - SS-8f375ac5803f
-  - SS-f9a0f6124e32
-  - SS-c0862e2e0724
-  - SS-513f4bdcb852
-  - TROJAN-cb5f52e303d3
-  - TROJAN-1b536e579618
-  - SS-47517da612ee
-  - SS-d94bf29dae94
-  - SS-47e06b976788
-  - SS-e252d42bbc16
-  - SS-436624e2ee19
-  - SS-316955220d8b
-  - SS-84f96d101af2
+  - VMESS-b021ee17e860
+  - VMESS-2e6a8ab8c5cc
+  - TROJAN-5337384e162c
+  - SS-cff500f5cf29
   - SS-3d5509d0a859
   - TROJAN-c9e90f67bd35
-  - SS-f0aff5d44fae
-  - SS-91efd066a8b2
-  - SS-793635766ef1
-  - SS-9445f35dbbed
-  - SS-431081f33797
-  - SS-6baf350e513f
-  - SS-3a1728bc53e9
-  - SS-9d1044c36d88
-  - TROJAN-3816893049cb
-  - SS-cff500f5cf29
-  - SS-6edccc37290c
   - SS-90e7ced46e96
+  - SS-47e06b976788
+  - SS-f56a46cdb266
+  - SS-c872ac151609
+  - SS-fc28683d087b
+  - SS-e4891f040b2d
+  - SS-436624e2ee19
+  - SS-698e212810cb
+  - SS-d94bf29dae94
+  - SS-f0aff5d44fae
+  - SS-75b7971c282e
+  - SS-f9a0f6124e32
+  - SS-e495d662abac
+  - SS-c0862e2e0724
+  - SS-894c6f0783be
+  - SS-316955220d8b
+  - SS-df5676b0d3fa
+  - SS-431081f33797
+  - SS-9d1044c36d88
+  - SS-6baf350e513f
+  - SS-73481e04c45b
+  - SS-3a1728bc53e9
+  - SS-513f4bdcb852
+  - SS-5fe2dc722932
+  - TROJAN-1b536e579618
+  - SS-8f375ac5803f
+  - SS-2b6511b7421a
+  - TROJAN-3816893049cb
+  - SS-84f96d101af2
+  - TROJAN-a768304cd760
+  - SS-6edccc37290c
+  - VMESS-064b072dff01
+  - SS-9445f35dbbed
+  - SS-c5975a9cae1d
+  - SS-a78fe6aeb728
+  - SS-05726b5486f2
+  - SS-7a3812c7c5df
+  - SS-47517da612ee
+  - SS-793635766ef1
+  - TROJAN-cb5f52e303d3
+  - SS-569af469695d
+  - SS-a16848884c07
+  - SS-8f95b3a219d3
+  - SS-91efd066a8b2
+  - SS-e252d42bbc16
   - SS-431cc5eb68e5
   - VMESS-bfff79016f7f
-  - SS-2e5648c54f12
-  - TROJAN-dcb0bf30aa8e
-  - SS-0a84d14b5d3c
-  - SS-69de6332fcdc
-  - SS-1981ac79af4f
-  - SS-32889d70171f
-  - SS-90a568ec00c7
-  - SS-e5df8a61beb8
-  - SS-85003718d17b
-  - SS-14d88f46ae71
-  - SS-73337896c036
+  - SS-9d547e65eab9
+  - VMESS-0e7c531d2696
+  - SS-6ee7dddd6261
+  - SS-494ebacb9dd0
   - SS-f52b09ee3a96
+  - SS-1d993c00fa4f
+  - SS-e5df8a61beb8
+  - SS-512f050aa579
+  - SS-14d88f46ae71
+  - SS-0c454e9ec16d
+  - SS-0a84d14b5d3c
+  - SS-7bea110ac09f
+  - SS-e69beb28aba2
+  - SS-32889d70171f
+  - SS-85003718d17b
+  - SS-90a568ec00c7
+  - SS-c256a8bfe4ee
 - name: 节点选择
   type: select
   proxies:
   - 自动选择
-  - VMESS-90b0e98e6ae3
-  - VMESS-e90347feaa8a
-  - VMESS-b47085d4eaa5
-  - VMESS-2e6a8ab8c5cc
-  - VMESS-7ac0c10eb811
-  - VMESS-7d961a84c05e
-  - VMESS-abc3dd15692a
+  - VMESS-27176818c9e2
+  - SS-1eabf2467f51
+  - VMESS-dcea97b05e1c
   - VMESS-ed8f949e00b5
-  - VMESS-cea70129f4a3
-  - VMESS-0644e5fd5351
-  - SS-698e212810cb
+  - VMESS-ae3d09354d3f
   - VMESS-965a0033ce62
   - VMESS-199c2a0ba9e0
-  - VMESS-6b1a9673a6fe
-  - VMESS-dcea97b05e1c
-  - SS-1eabf2467f51
+  - VMESS-90b0e98e6ae3
   - SS-d0f7636f5293
   - SS-2fe129117ebc
-  - SS-75b7971c282e
-  - TROJAN-712e129522c2
-  - SS-8f95b3a219d3
-  - SS-6ee7dddd6261
-  - SS-e4891f040b2d
-  - SS-c872ac151609
-  - SS-c5975a9cae1d
-  - SS-df5676b0d3fa
-  - SS-73481e04c45b
-  - VMESS-064b072dff01
-  - SS-894c6f0783be
-  - SS-2b6511b7421a
-  - SS-5fe2dc722932
-  - SS-f56a46cdb266
-  - SS-e495d662abac
-  - SS-fc28683d087b
-  - TROJAN-a768304cd760
-  - SS-569af469695d
-  - SS-9d547e65eab9
-  - SS-05726b5486f2
-  - SS-a16848884c07
-  - SS-8f375ac5803f
-  - SS-f9a0f6124e32
-  - SS-c0862e2e0724
-  - SS-513f4bdcb852
-  - TROJAN-cb5f52e303d3
-  - TROJAN-1b536e579618
-  - SS-47517da612ee
-  - SS-d94bf29dae94
-  - SS-47e06b976788
-  - SS-e252d42bbc16
-  - SS-436624e2ee19
-  - SS-316955220d8b
-  - SS-84f96d101af2
+  - VMESS-b021ee17e860
+  - VMESS-2e6a8ab8c5cc
+  - TROJAN-5337384e162c
+  - SS-cff500f5cf29
   - SS-3d5509d0a859
   - TROJAN-c9e90f67bd35
-  - SS-f0aff5d44fae
-  - SS-91efd066a8b2
-  - SS-793635766ef1
-  - SS-9445f35dbbed
-  - SS-431081f33797
-  - SS-6baf350e513f
-  - SS-3a1728bc53e9
-  - SS-9d1044c36d88
-  - TROJAN-3816893049cb
-  - SS-cff500f5cf29
-  - SS-6edccc37290c
   - SS-90e7ced46e96
+  - SS-47e06b976788
+  - SS-f56a46cdb266
+  - SS-c872ac151609
+  - SS-fc28683d087b
+  - SS-e4891f040b2d
+  - SS-436624e2ee19
+  - SS-698e212810cb
+  - SS-d94bf29dae94
+  - SS-f0aff5d44fae
+  - SS-75b7971c282e
+  - SS-f9a0f6124e32
+  - SS-e495d662abac
+  - SS-c0862e2e0724
+  - SS-894c6f0783be
+  - SS-316955220d8b
+  - SS-df5676b0d3fa
+  - SS-431081f33797
+  - SS-9d1044c36d88
+  - SS-6baf350e513f
+  - SS-73481e04c45b
+  - SS-3a1728bc53e9
+  - SS-513f4bdcb852
+  - SS-5fe2dc722932
+  - TROJAN-1b536e579618
+  - SS-8f375ac5803f
+  - SS-2b6511b7421a
+  - TROJAN-3816893049cb
+  - SS-84f96d101af2
+  - TROJAN-a768304cd760
+  - SS-6edccc37290c
+  - VMESS-064b072dff01
+  - SS-9445f35dbbed
+  - SS-c5975a9cae1d
+  - SS-a78fe6aeb728
+  - SS-05726b5486f2
+  - SS-7a3812c7c5df
+  - SS-47517da612ee
+  - SS-793635766ef1
+  - TROJAN-cb5f52e303d3
+  - SS-569af469695d
+  - SS-a16848884c07
+  - SS-8f95b3a219d3
+  - SS-91efd066a8b2
+  - SS-e252d42bbc16
   - SS-431cc5eb68e5
   - VMESS-bfff79016f7f
-  - SS-2e5648c54f12
-  - TROJAN-dcb0bf30aa8e
-  - SS-0a84d14b5d3c
-  - SS-69de6332fcdc
-  - SS-1981ac79af4f
-  - SS-32889d70171f
-  - SS-90a568ec00c7
-  - SS-e5df8a61beb8
-  - SS-85003718d17b
-  - SS-14d88f46ae71
-  - SS-73337896c036
+  - SS-9d547e65eab9
+  - VMESS-0e7c531d2696
+  - SS-6ee7dddd6261
+  - SS-494ebacb9dd0
   - SS-f52b09ee3a96
+  - SS-1d993c00fa4f
+  - SS-e5df8a61beb8
+  - SS-512f050aa579
+  - SS-14d88f46ae71
+  - SS-0c454e9ec16d
+  - SS-0a84d14b5d3c
+  - SS-7bea110ac09f
+  - SS-e69beb28aba2
+  - SS-32889d70171f
+  - SS-85003718d17b
+  - SS-90a568ec00c7
+  - SS-c256a8bfe4ee
 - name: Proxies
   type: select
   proxies:
   - 自动选择
-  - VMESS-90b0e98e6ae3
-  - VMESS-e90347feaa8a
-  - VMESS-b47085d4eaa5
-  - VMESS-2e6a8ab8c5cc
-  - VMESS-7ac0c10eb811
-  - VMESS-7d961a84c05e
-  - VMESS-abc3dd15692a
+  - VMESS-27176818c9e2
+  - SS-1eabf2467f51
+  - VMESS-dcea97b05e1c
   - VMESS-ed8f949e00b5
-  - VMESS-cea70129f4a3
-  - VMESS-0644e5fd5351
-  - SS-698e212810cb
+  - VMESS-ae3d09354d3f
   - VMESS-965a0033ce62
   - VMESS-199c2a0ba9e0
-  - VMESS-6b1a9673a6fe
-  - VMESS-dcea97b05e1c
-  - SS-1eabf2467f51
+  - VMESS-90b0e98e6ae3
   - SS-d0f7636f5293
   - SS-2fe129117ebc
-  - SS-75b7971c282e
-  - TROJAN-712e129522c2
-  - SS-8f95b3a219d3
-  - SS-6ee7dddd6261
-  - SS-e4891f040b2d
-  - SS-c872ac151609
-  - SS-c5975a9cae1d
-  - SS-df5676b0d3fa
-  - SS-73481e04c45b
-  - VMESS-064b072dff01
-  - SS-894c6f0783be
-  - SS-2b6511b7421a
-  - SS-5fe2dc722932
-  - SS-f56a46cdb266
-  - SS-e495d662abac
-  - SS-fc28683d087b
-  - TROJAN-a768304cd760
-  - SS-569af469695d
-  - SS-9d547e65eab9
-  - SS-05726b5486f2
-  - SS-a16848884c07
-  - SS-8f375ac5803f
-  - SS-f9a0f6124e32
-  - SS-c0862e2e0724
-  - SS-513f4bdcb852
-  - TROJAN-cb5f52e303d3
-  - TROJAN-1b536e579618
-  - SS-47517da612ee
-  - SS-d94bf29dae94
-  - SS-47e06b976788
-  - SS-e252d42bbc16
-  - SS-436624e2ee19
-  - SS-316955220d8b
-  - SS-84f96d101af2
+  - VMESS-b021ee17e860
+  - VMESS-2e6a8ab8c5cc
+  - TROJAN-5337384e162c
+  - SS-cff500f5cf29
   - SS-3d5509d0a859
   - TROJAN-c9e90f67bd35
-  - SS-f0aff5d44fae
-  - SS-91efd066a8b2
-  - SS-793635766ef1
-  - SS-9445f35dbbed
-  - SS-431081f33797
-  - SS-6baf350e513f
-  - SS-3a1728bc53e9
-  - SS-9d1044c36d88
-  - TROJAN-3816893049cb
-  - SS-cff500f5cf29
-  - SS-6edccc37290c
   - SS-90e7ced46e96
+  - SS-47e06b976788
+  - SS-f56a46cdb266
+  - SS-c872ac151609
+  - SS-fc28683d087b
+  - SS-e4891f040b2d
+  - SS-436624e2ee19
+  - SS-698e212810cb
+  - SS-d94bf29dae94
+  - SS-f0aff5d44fae
+  - SS-75b7971c282e
+  - SS-f9a0f6124e32
+  - SS-e495d662abac
+  - SS-c0862e2e0724
+  - SS-894c6f0783be
+  - SS-316955220d8b
+  - SS-df5676b0d3fa
+  - SS-431081f33797
+  - SS-9d1044c36d88
+  - SS-6baf350e513f
+  - SS-73481e04c45b
+  - SS-3a1728bc53e9
+  - SS-513f4bdcb852
+  - SS-5fe2dc722932
+  - TROJAN-1b536e579618
+  - SS-8f375ac5803f
+  - SS-2b6511b7421a
+  - TROJAN-3816893049cb
+  - SS-84f96d101af2
+  - TROJAN-a768304cd760
+  - SS-6edccc37290c
+  - VMESS-064b072dff01
+  - SS-9445f35dbbed
+  - SS-c5975a9cae1d
+  - SS-a78fe6aeb728
+  - SS-05726b5486f2
+  - SS-7a3812c7c5df
+  - SS-47517da612ee
+  - SS-793635766ef1
+  - TROJAN-cb5f52e303d3
+  - SS-569af469695d
+  - SS-a16848884c07
+  - SS-8f95b3a219d3
+  - SS-91efd066a8b2
+  - SS-e252d42bbc16
   - SS-431cc5eb68e5
   - VMESS-bfff79016f7f
-  - SS-2e5648c54f12
-  - TROJAN-dcb0bf30aa8e
-  - SS-0a84d14b5d3c
-  - SS-69de6332fcdc
-  - SS-1981ac79af4f
-  - SS-32889d70171f
-  - SS-90a568ec00c7
-  - SS-e5df8a61beb8
-  - SS-85003718d17b
-  - SS-14d88f46ae71
-  - SS-73337896c036
+  - SS-9d547e65eab9
+  - VMESS-0e7c531d2696
+  - SS-6ee7dddd6261
+  - SS-494ebacb9dd0
   - SS-f52b09ee3a96
+  - SS-1d993c00fa4f
+  - SS-e5df8a61beb8
+  - SS-512f050aa579
+  - SS-14d88f46ae71
+  - SS-0c454e9ec16d
+  - SS-0a84d14b5d3c
+  - SS-7bea110ac09f
+  - SS-e69beb28aba2
+  - SS-32889d70171f
+  - SS-85003718d17b
+  - SS-90a568ec00c7
+  - SS-c256a8bfe4ee
 rules:
 - GEOIP,LAN,DIRECT,no-resolve
 - DOMAIN,youtubei.googleapis.com,YouTube
