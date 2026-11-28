@@ -2,16 +2,19 @@
 Clash / Mihomo 节点自动聚合、清洗、测速及配置生成脚本
 功能：
 1. 定时拉取多个活跃公开源（支持多协议解析与镜像加速回退）；
-2. 高并发多线程 TCP 连通性测速，彻底剔除死节点；
-3. 过滤国内节点与垃圾广告节点，按延迟排序筛选最优质节点；
-4. 输出包含独立上游网关、策略组及分流规则的完整配置文件。
+2. 多线程 TCP 预筛选候选节点，不将握手成功视为代理可用；
+3. 生成按站点主动检测的 OpenClash / Mihomo 策略组。
 """
 
 import base64
 import concurrent.futures
+import hashlib
+import ipaddress
 import json
-import re
+import os
+from pathlib import Path
 import socket
+import tempfile
 import time
 import urllib.parse
 import requests
@@ -41,10 +44,17 @@ SUBSCRIBE_URLS = [
     "https://raw.githubusercontent.com/wzapple/V2RayAggregator/master/Eternity.yml",
 ]
 
-# 保留最大节点数
 MAX_PROXIES = 80
-TCP_TIMEOUT = 1.8        # 单个节点测速超时时间（秒）
-MAX_WORKERS = 50         # 测速并发线程数
+TCP_TIMEOUT = 2
+MAX_WORKERS = 32
+PROBE_TIMEOUT_MS = 6000
+TARGETS = {
+    "Google": ("https://www.google.com/generate_204", "204"),
+    "Telegram": ("https://web.telegram.org/", "200"),
+    "YouTube自动优选": ("https://www.youtube.com/generate_204", "204"),
+    "GitHub自动优选": ("https://raw.githubusercontent.com/wzapple/net_config_sync/main/requirements.txt", "200"),
+    "自动选择": ("https://www.gstatic.com/generate_204", "204"),
+}
 
 def fetch_url_content(url):
     """拉取远程源，支持镜像前缀智能回退"""
@@ -91,17 +101,33 @@ def parse_vmess(link):
         raw = link[8:]
         padded = raw + '=' * (-len(raw) % 4)
         info = json.loads(base64.b64decode(padded).decode('utf-8', errors='ignore'))
-        return {
+        network = info.get("net") or "tcp"
+        node = {
             "name": info.get("ps", "vmess-node").strip(),
             "type": "vmess",
             "server": info.get("add"),
             "port": int(info.get("port")),
             "uuid": info.get("id"),
             "alterId": int(info.get("aid", 0)),
-            "cipher": info.get("scy", "auto"),
-            "network": info.get("net", "tcp"),
-            "tls": True if info.get("tls") == "tls" else False
+            "cipher": info.get("scy") or "auto",
+            "network": network,
+            "tls": info.get("tls") == "tls",
         }
+        host = info.get("host") or ""
+        if info.get("sni") or (node["tls"] and host and network in ("ws", "httpupgrade")):
+            node["servername"] = info.get("sni") or host
+        if network in ("ws", "httpupgrade"):
+            node["network"] = "ws"
+            node["ws-opts"] = {"path": info.get("path") or "/"}
+            if host:
+                node["ws-opts"]["headers"] = {"Host": host}
+            if network == "httpupgrade":
+                node["ws-opts"]["v2ray-http-upgrade"] = True
+        elif network == "grpc":
+            node["grpc-opts"] = {"grpc-service-name": info.get("path") or ""}
+        elif network != "tcp" or info.get("type") not in (None, "", "none"):
+            return None
+        return node
     except Exception:
         return None
 
@@ -111,14 +137,29 @@ def parse_trojan(link):
     try:
         url = urllib.parse.urlparse(link)
         name = urllib.parse.unquote(url.fragment) if url.fragment else "trojan-node"
-        return {
+        params = dict(urllib.parse.parse_qsl(url.query))
+        if params.get("security", "tls") != "tls" or not url.username:
+            return None
+        network = params.get("type", "tcp")
+        node = {
             "name": name.strip(),
             "type": "trojan",
             "server": url.hostname,
             "port": url.port,
-            "password": url.username,
-            "sni": url.hostname
+            "password": urllib.parse.unquote(url.username),
+            "sni": params.get("sni") or url.hostname,
         }
+        if network == "ws":
+            node["network"] = "ws"
+            node["ws-opts"] = {"path": params.get("path") or "/"}
+            if params.get("host"):
+                node["ws-opts"]["headers"] = {"Host": params["host"]}
+        elif network == "grpc":
+            node["network"] = "grpc"
+            node["grpc-opts"] = {"grpc-service-name": params.get("serviceName") or ""}
+        elif network != "tcp":
+            return None
+        return node
     except Exception:
         return None
 
@@ -153,17 +194,17 @@ def extract_proxies_from_raw(content):
     if proxies:
         return proxies
 
-    # 尝试 Base64 解码
-    lines = []
-    try:
-        padded = content.strip() + '=' * (-len(content.strip()) % 4)
-        decoded = base64.b64decode(padded).decode('utf-8', errors='ignore')
-        lines = [line.strip() for line in decoded.splitlines() if line.strip()]
-    except Exception:
-        lines = [line.strip() for line in content.splitlines() if line.strip()]
+    lines = content.splitlines()
+    if not any(line.strip().startswith(("vmess://", "trojan://", "ss://")) for line in lines):
+        try:
+            encoded = "".join(content.split())
+            lines = base64.b64decode(encoded + "=" * (-len(encoded) % 4), altchars=b"-_", validate=True).decode("utf-8").splitlines()
+        except (ValueError, UnicodeError):
+            return []
 
     parsed = []
     for line in lines:
+        line = line.strip()
         node = None
         if line.startswith("vmess://"):
             node = parse_vmess(line)
@@ -191,15 +232,20 @@ def check_proxy_tcp(proxy):
 
     try:
         port = int(port)
-        start = time.time()
-        s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-        s.settimeout(TCP_TIMEOUT)
-        s.connect((server, port))
-        latency = (time.time() - start) * 1000
-        s.close()
-        return (proxy, latency)
-    except Exception:
-        return None
+        start = time.monotonic()
+        for family, kind, proto, _, address in socket.getaddrinfo(server, port, type=socket.SOCK_STREAM):
+            if not ipaddress.ip_address(address[0]).is_global:
+                continue
+            try:
+                with socket.socket(family, kind, proto) as sock:
+                    sock.settimeout(TCP_TIMEOUT)
+                    sock.connect(address)
+                return proxy, (time.monotonic() - start) * 1000
+            except OSError:
+                continue
+    except (OSError, ValueError, UnicodeError):
+        pass
+    return None
 
 
 def main():
@@ -216,9 +262,22 @@ def main():
     print(f"\n汇总得到 {len(raw_nodes)} 个节点，去重并过滤无效节点...")
     unique_nodes = {}
     for node in raw_nodes:
-        key = f"{node.get('server')}:{node.get('port')}"
-        if key not in unique_nodes:
-            unique_nodes[key] = node
+        if not isinstance(node, dict):
+            continue
+        if not all(isinstance(node.get(key), str) and node[key] for key in ("type", "server")):
+            continue
+        if not isinstance(node.get("name"), str):
+            continue
+        try:
+            port = int(node.get("port"))
+        except (TypeError, ValueError):
+            continue
+        if not 1 <= port <= 65535:
+            continue
+        node = {**node, "port": port}
+        # 同一 CDN 地址可以托管多个节点，不能按 IP 和端口去重。
+        signature = yaml.safe_dump({k: v for k, v in node.items() if k != "name"}, sort_keys=True)
+        unique_nodes.setdefault(signature, node)
     candidates = list(unique_nodes.values())
     print(f"去重后剩余候选节点: {len(candidates)} 个")
 
@@ -232,39 +291,31 @@ def main():
                 proxy, latency = res
                 valid_proxies.append((proxy, latency))
 
-    print(f"测速完成，共存活节点: {len(valid_proxies)} 个")
+    print(f"TCP 预筛选完成，共 {len(valid_proxies)} 个候选；实际可用性由 OpenClash 检测。")
+    if not valid_proxies:
+        raise SystemExit("TCP 预筛选无候选，保留旧配置且将本次更新标记为失败。")
 
-    # 按延迟升序排序并格式化重命名
-    valid_proxies.sort(key=lambda x: x[1])
     final_proxies = []
-    used_names = set()
-    for idx, (proxy, latency) in enumerate(valid_proxies[:MAX_PROXIES]):
-        p_type = proxy.get("type", "").upper()
-        # 命名规则：协议-延迟ms（取地区缩写）
-        region = ""
-        name_raw = proxy.get("name", "")
-        for tag in ["HK", "TW", "SG", "JP", "US", "DE", "UK", "KR", "AU"]:
-            if tag in name_raw.upper():
-                region = f"{tag}-"
-                break
-        clean_name = f"{region}{p_type}-{int(latency)}ms"
-        # 避免重名
-        base_name = clean_name
-        counter = 1
-        while clean_name in used_names:
-            clean_name = f"{base_name}-{counter}"
-            counter += 1
-        used_names.add(clean_name)
-        proxy["name"] = clean_name
-        final_proxies.append(proxy)
+    for proxy, _ in sorted(valid_proxies, key=lambda item: item[1])[:MAX_PROXIES]:
+        identity = yaml.safe_dump({k: v for k, v in proxy.items() if k != "name"}, sort_keys=True)
+        fingerprint = hashlib.sha256(identity.encode("utf-8")).hexdigest()[:12]
+        final_proxies.append({**proxy, "name": f"{proxy['type'].upper()}-{fingerprint}"})
 
-    if not final_proxies:
-        print("[警告] 测速后无可用节点，保留原有配置不覆盖！")
-        return
+    config_path = Path(__file__).with_name("config.yaml")
+    with tempfile.NamedTemporaryFile(mode="w", encoding="utf-8", dir=config_path.parent, delete=False) as file:
+        tmp_path = Path(file.name)
+        try:
+            yaml.safe_dump(build_config(final_proxies), file, allow_unicode=True, sort_keys=False)
+            file.close()
+            os.replace(tmp_path, config_path)
+        finally:
+            tmp_path.unlink(missing_ok=True)
+    print(f"\n[完成] 成功写入 config.yaml，包含 {len(final_proxies)} 个候选节点。")
 
+
+def build_config(final_proxies):
     node_names = [p["name"] for p in final_proxies]
-
-    full_config = {
+    return {
         "proxies": final_proxies,
         "proxy-groups": [
             *[
@@ -273,71 +324,41 @@ def main():
                     "type": "url-test",
                     "url": url,
                     "expected-status": status,
-                    "interval": 900,
-                    "timeout": 5000,
-                    "lazy": True,
+                    "interval": 120,
+                    "timeout": PROBE_TIMEOUT_MS,
+                    "max-failed-times": 3,
+                    "tolerance": 50,
+                    "lazy": False,
                     "proxies": node_names,
                 }
-                for name, url, status in (
-                    ("Google", "https://www.google.com/generate_204", 204),
-                    ("Telegram", "https://web.telegram.org/", 200),
+                for name, (url, status) in TARGETS.items()
+            ],
+            *[
+                {
+                    "name": name,
+                    "type": "select",
+                    "proxies": [auto_group] + node_names,
+                }
+                for name, auto_group in (
+                    ("YouTube", "YouTube自动优选"),
+                    ("GitHub", "GitHub自动优选"),
+                    ("节点选择", "自动选择"),
+                    ("Proxies", "自动选择"),
                 )
             ],
-            {
-                "name": "YouTube",
-                "type": "select",
-                "proxies": ["YouTube自动优选", "Proxies", "DIRECT"] + node_names,
-            },
-            {
-                "name": "YouTube自动优选",
-                "type": "url-test",
-                "url": "https://www.youtube.com/generate_204",
-                "interval": 180,
-                "tolerance": 50,
-                "lazy": True,
-                "proxies": node_names,
-            },
-            {
-                "name": "GitHub",
-                "type": "select",
-                "proxies": ["GitHub自动优选", "Proxies", "DIRECT"] + node_names,
-            },
-            {
-                "name": "GitHub自动优选",
-                "type": "url-test",
-                "url": "https://raw.githubusercontent.com",
-                "interval": 300,
-                "tolerance": 50,
-                "lazy": True,
-                "proxies": node_names,
-            },
-            {
-                "name": "自动选择",
-                "type": "url-test",
-                "url": "https://www.gstatic.com/generate_204",
-                "interval": 300,
-                "tolerance": 50,
-                "proxies": node_names,
-            },
-            {
-                "name": "节点选择",
-                "type": "select",
-                "proxies": ["自动选择", "DIRECT"] + node_names,
-            },
-            {
-                "name": "Proxies",
-                "type": "select",
-                "proxies": ["自动选择", "DIRECT"] + node_names,
-            },
         ],
         "rules": [
-            # ✅ 第一优先级：局域网 & 国内直连（必须放最前，否则后续规则全部失效！）
-            "GEOIP,LAN,DIRECT",
+            "GEOIP,LAN,DIRECT,no-resolve",
+            "DOMAIN,youtubei.googleapis.com,YouTube",
+            "DOMAIN,youtube.googleapis.com,YouTube",
             "DOMAIN-SUFFIX,google.com,Google",
+            "DOMAIN-SUFFIX,gstatic.com,Google",
+            "DOMAIN-SUFFIX,googleapis.com,Google",
+            "DOMAIN-SUFFIX,googleusercontent.com,Google",
             "DOMAIN-SUFFIX,telegram.org,Telegram",
             "DOMAIN-SUFFIX,t.me,Telegram",
-            "GEOIP,telegram,Telegram,no-resolve",
-            "GEOIP,CN,DIRECT",
+            "DOMAIN-SUFFIX,telegra.ph,Telegram",
+            "DOMAIN-SUFFIX,tdesktop.com,Telegram",
 
             # 常用国内大流量域名直连（GEOIP,CN 兜底前的快速匹配）
             "DOMAIN-SUFFIX,bilibili.com,DIRECT",
@@ -369,14 +390,12 @@ def main():
             "DOMAIN-SUFFIX,instagram.com,Proxies",
             "DOMAIN-SUFFIX,facebook.com,Proxies",
 
-            # 兜底：其余流量走代理
+            "GEOIP,telegram,Telegram,no-resolve",
+            "GEOIP,LAN,DIRECT",
+            "GEOIP,CN,DIRECT",
             "MATCH,Proxies",
         ],
     }
-
-    with open("config.yaml", "w", encoding="utf-8") as f:
-        yaml.dump(full_config, f, allow_unicode=True, sort_keys=False)
-    print(f"\n[完成] 成功写入完整配置至 config.yaml，包含 {len(final_proxies)} 个节点！")
 
 
 if __name__ == "__main__":
